@@ -4,7 +4,7 @@
 #include <queue>
 using namespace std;
 typedef long long ll;
-const ll INF = 1ll << 50;
+const ll INF = 1ll << 60;
 
 struct edge {
 	int u, v; edge() {}
