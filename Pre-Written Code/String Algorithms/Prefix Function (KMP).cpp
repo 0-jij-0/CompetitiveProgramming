@@ -1,6 +1,7 @@
-#include <string>
 #include <iostream>
+#include <string>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 //For each i in the returned vector, the number represents the length of 
@@ -17,17 +18,13 @@ vector<int> prefixFunction(string& s) {
 	return move(pf);
 }
 
-//checks if s is in t
-//t and s can NOT contain the character #
-bool stringMatch(string& t, string& s) {
-	string temp = s + '#' + t;
-	auto pf = prefixFunction(temp);
+//checks number of occurences of p in s as a substring
+//p and s can NOT contain the character #
+int stringMatch(string& s, string& p) {
+	string temp = p + '#' + s;
+	vector<int> pf = prefixFunction(temp);
 
-	for (int i = 0; i < pf.size(); i++) {
-		if (pf[i] == s.size()) { return true; }
-	}
-
-	return false;
+	return count(pf.begin() + p.size() + 1, pf.end(), p.size());
 }
 
 
