@@ -1,63 +1,59 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include <string>
 using namespace std;
-
 typedef long long ll;
 
-struct pt {
-	ll x, y;
-	pt(ll xx = 0, ll yy = 0) :x(xx), y(yy) {}
-	bool operator == (pt &a) { return (a.x - x == 0) && (a.y - y == 0); }
+struct Point {
+	ll x, y; Point() {}
+	Point(ll _x, ll _y) : x(_x), y(_y) {}
+	bool operator == (const Point& rhs) const { return x == rhs.x && y == rhs.y; }
+	Point operator - (const Point& rhs) const { return Point(x - rhs.x, y - rhs.y); }
+	bool operator < (const Point& rhs) const {
+		if (x != rhs.x) return x < rhs.x;
+		return y < rhs.y;
+	}
 };
 
-bool operator < (const pt &a, const pt &b) {
-	if (a.x != b.x) return a.x < b.x;
-	return a.y < b.y;
+istream& operator >> (istream& is, Point& p) { is >> p.x >> p.y; return is; }
+ll crossProduct(Point A, Point B) { return A.x * B.y - A.y * B.x; }
+
+//0: Colinear 1: Clockwise 2: Counterclockwise
+int orientation(Point& A, Point& B, Point& C) {
+	ll x = crossProduct(C - B, B - A);
+	return x ? 1 + (x < 0) : 0;
 }
 
-pt operator-(pt a, pt b) { return pt(a.x - b.x, a.y - b.y); }
-ll vec(pt a, pt b) { return a.x*b.y - a.y*b.x; }
-ll det(pt a, pt b, pt c) { return vec(b - a, c - a); }
+//Returns Hull Sorted Clockwise
+vector<Point> convexHullGrahamScan(vector<Point> P) {
+	sort(P.begin(), P.end());
+	P.erase(unique(P.begin(), P.end()), P.end());
+	int n = (int)P.size(); if (n < 3) { return move(P); }
 
-bool right(pt X, pt Y, pt Z) { return (det(X, Y, Z) <= 0); }
+	vector<Point> res;
+	auto incorrect = [&](Point& A, Point& B, Point& C) {
+		//Change to != 1 to remove points on CH boundary
+		return orientation(A, B, C) == 2;
+	};
 
-vector<pt> convexhull(vector<pt> ab) {
-	sort(ab.begin(), ab.end());
-	ab.erase(unique(ab.begin(), ab.end()), ab.end());
-	int l = (int)ab.size(), i, j = 0, k;
-	vector<pt> res(l + 1); if (l < 3) { return ab; }
-
-	for (i = 0; i < l; i++) {
-		while (j - 2 >= 0 && right(res[j - 2], res[j - 1], ab[i])) { j--; }
-		res[j++] = ab[i];
+	for (int i = 0; i < n; i++) {
+		while (res.size() > 1 && incorrect(res.end()[-2], res.end()[-1], P[i])) { res.pop_back(); }
+		res.push_back(P[i]);
 	}
-	k = j;
-	for (i = l - 2; i >= 0; i--) {
-		while (j - 1 >= k && right(res[j - 2], res[j - 1], ab[i])) { j--; }
-		res[j++] = ab[i];
+
+	int m = (int)res.size();
+	for (int i = n - 2; i >= 0; i--) {
+		if (P[i] == res.end()[-2]) { continue; }
+		while (res.size() > m && incorrect(res.end()[-2], res.end()[-1], P[i])) { res.pop_back(); }
+		res.push_back(P[i]);
 	}
-	if (res[j - 1] == res[0]) { j--; }
-	return vector<pt>(res.begin(), res.begin() + j);
+
+	res.pop_back(); return move(res);
 }
-
-// true iff inside or on border. use for real = ll!
-bool PointInConvexPol(vector<pt>& l, pt p) {
-	int a = 1, b = (int)l.size() - 1, c;
-	if (det(l[0], l[a], l[b]) > 0) swap(a, b);
-	if (det(l[0], l[a], p) > 0 || det(l[0], l[b], p) < 0) return 0;
-	while (abs(a - b) > 1) {
-		c = (a + b) / 2;
-		if (det(l[0], l[c], p) > 0) b = c; else a = c;
-	}
-	return det(l[a], l[b], p) <= 0;
-}
-
 
 int main() {
 	ios::sync_with_stdio(0);
-	cin.tie(0), cout.tie(0);
+	cin.tie(0); cout.tie(0);
 
 	cin.ignore(2); return 0;
 }

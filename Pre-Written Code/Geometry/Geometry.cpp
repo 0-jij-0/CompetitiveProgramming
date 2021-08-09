@@ -19,6 +19,7 @@ struct Frac {
 	Frac operator +(const Frac &rhs) { return Frac(num * rhs.denum + denum * rhs.num, denum * rhs.denum); }
 	Frac operator -(const Frac &rhs) { return Frac(num * rhs.denum - denum * rhs.num, denum * rhs.denum); }
 	Frac operator /(const Frac &rhs) { return Frac(num * rhs.denum, denum * rhs.num); }
+
 	Frac operator *=(const Frac &rhs) { return *this = *this * rhs; }
 	Frac operator +=(const Frac &rhs) { return *this = *this + rhs; }
 	Frac operator -=(const Frac &rhs) { return *this = *this - rhs; }
