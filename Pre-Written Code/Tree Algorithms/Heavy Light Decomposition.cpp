@@ -1,53 +1,49 @@
-//Handles path updates and path queries in O(log^2n)
 #include <iostream>
 #include <vector>
-#include <cmath>
-#include <stack>
-#include <string>
 #include <algorithm>
-#include <queue>
-#include <climits>
+#include <numeric>
+#include <array>
 using namespace std;
 typedef long long ll;
-vector<ll> base;
+
+vector<int> value;
 
 struct StVal {
 	ll v = 0; StVal() {}
 	StVal(const ll _v) : v(_v) {}
-	StVal(const StVal &v1, const StVal &v2) { v = v1 + v2; }
+	StVal(const StVal& v1, const StVal& v2) { v = max(v1, v2); }
 	operator ll() const { return v; }
 };
 
 struct StUpdate {
-	ll v = 0; StUpdate() {}
-	StUpdate(const ll v) : v(v) {}
-	StUpdate(const StUpdate &u1, const StUpdate &u2) { v = u1 + u2; }	//Combine two lazy values (we must change v in all cases otherwise it will reset)
-	operator ll() const { return v; }
-	void apply(StVal &sv, const int lo, const int hi) {	//Changes the current answer (Stval not Stupdate) according to the lazy value
-		sv.v += (ll)(hi - lo + 1)*v;
-	}
+	ll u = 0; StUpdate() {}
+	StUpdate(const ll u) : u(u) {}
+	StUpdate(const StUpdate& u1, const StUpdate& u2) { u = u1 + u2; }
+	operator ll() const { return u; }
+	void apply(StVal& v, const int lo, const int hi) { v.v += u; }
 };
 
 struct SegTree {
-	int n;
 	vector<StVal> st;
 	vector<StUpdate> lazy;
+	vector<int> leaves;
+	int n = 0; SegTree() {}
 
-	SegTree(const int n) : n(n) {
-		init(1, 0, n - 1);
-		lazy.resize(st.size());
+	SegTree(const int n, vector<int> &arr) : n(n), leaves(n) {
+		init(1, 0, n - 1, arr); lazy.resize(st.size());
 	}
 
-	//lo, hi indices of the actual array; si is the index of the segment tree array
-	void init(const int si, const int lo, const int hi) {
+	void init(const int si, const int lo, const int hi, vector<int> &arr) {
 		if (lo == hi) {
-			if (si >= (int)st.size()) { st.resize(si + 1); }
-			st[si] = StVal(base[lo]);			//Set the actual array here
-			return;
+			if (si >= (int)st.size()) st.resize(si + 1);
+			st[si] = StVal(value[arr[lo]]); leaves[lo] = si;
 		}
-		int lC = si << 1, rC = (si << 1) | 1, mid = (lo + hi) >> 1;
-		init(lC, lo, mid); init(rC, mid + 1, hi);
-		st[si] = StVal(st[lC], st[rC]);
+		else {
+			const int mid = (lo + hi) >> 1;
+			init(si << 1, lo, mid, arr);
+			init(si << 1 | 1, mid + 1, hi, arr);
+			st[si] = StVal(st[si << 1], st[si << 1 | 1]);
+		}
 	}
 
 	void updateLazy(const int si, const int lo, const int hi) {
@@ -59,7 +55,7 @@ struct SegTree {
 		lazy[si] = StUpdate();
 	}
 
-	StVal query(const int l, const int r) { return (l <= r && l < n && r >= 0) ? query(l, r, 1, 0, n - 1) : StVal(); }
+	StVal query(const int l, const int r) { return (l <= r && l < n&& r >= 0) ? query(l, r, 1, 0, n - 1) : StVal(); }
 	StVal query(const int l, const int r, const int si, const int lo, const int hi) {
 		updateLazy(si, lo, hi);
 		if (l <= lo && hi <= r) return st[si];
@@ -70,8 +66,8 @@ struct SegTree {
 		return StVal(query(l, r, si << 1, lo, mid), query(l, r, si << 1 | 1, mid + 1, hi));
 	}
 
-	void update(const int l, const int r, const StUpdate& u) { if (l <= r) update(l, r, u, 1, 0, n - 1); }
-	void update(const int l, const int r, const StUpdate &u, const int si, const int lo, const int hi) {
+	void update(const int l, const int r, const StUpdate u) { if (l <= r) update(l, r, u, 1, 0, n - 1); }
+	void update(const int l, const int r, const StUpdate& u, const int si, const int lo, const int hi) {
 		if (l <= lo && hi <= r) {
 			lazy[si] = StUpdate(lazy[si], u);
 			updateLazy(si, lo, hi);
@@ -85,6 +81,12 @@ struct SegTree {
 			st[si] = StVal(st[si << 1], st[si << 1 | 1]);
 		}
 	}
+
+	void update(const int i, StUpdate U) {
+		int si = leaves[i]; lazy[si] = StUpdate(lazy[si], U);
+		updateLazy(si, i, i); for (si >>= 1; si; si >>= 1)
+			st[si] = StVal(st[si << 1], st[si << 1 | 1]);
+	}
 };
 
 struct edge {
@@ -92,195 +94,116 @@ struct edge {
 	edge(int _u, int _v) :
 		u(_u), v(_v) {}
 };
-struct node { vector<int> edges; };
 
-struct tree {
-	vector<vector<int>> anc;
-	vector<edge> edges;
-	vector<node> nodes;
-	vector<int> depth, subtreeSize;
-	vector<int> chainHead, chainIdx, chainSize, chainPos, posInBase;
-	int root, n, lg2, chainNum, ptr;
+struct node { vector<edge> edges; };
 
-	tree(int _n, int _r = 0) : n(_n), root(_r) {
-		lg2 = (int)(ceil(log2(n + 0.0)));
-		nodes.resize(n);
-		anc.resize(n + 1); for (auto &x : anc) { x.resize(lg2 + 1, -1); }
-		depth.resize(n, 0); subtreeSize.resize(n, 1);
-		chainNum = 0; ptr = 0; posInBase.resize(n);
-		chainHead.resize(n, -1); chainIdx.resize(n); chainPos.resize(n); chainSize.resize(n);
+struct HLDTree {
+	vector<node> nodes; int n; //Change based on N
+	vector<int> par, depth, subtreeSize; //Required Information for HLD
+	vector<int> segtreeIDX, pathIDX, nextPath;
+	vector<vector<int>> heavyPaths;
+	vector<SegTree> st;
+
+	HLDTree(int _n) : n(_n), nodes(_n), depth(_n, 0), par(_n),
+		subtreeSize(_n, 1),	segtreeIDX(_n), pathIDX(_n) {
+		
+		value.resize(n); for (auto& x : value) cin >> x;
+		for (int i = 1; i < _n; i++) {
+			int u, v; cin >> u >> v;
+			add_edge(--u, --v);
+		}
+
+		initDFS(0); initHLD();
 	}
 
 	void add_edge(int u, int v) {
-		edge e1(u, v); edge e2(v, u);
-		nodes[u].edges.push_back(edges.size()); edges.push_back(e1);
-		nodes[v].edges.push_back(edges.size()); edges.push_back(e2);
+		nodes[u].edges.emplace_back(u, v);
+		nodes[v].edges.emplace_back(v, u);
 	}
 
-	void dfsPre(int u, int p) {
-		for (auto &eIdx : nodes[u].edges) {
-			auto &e = edges[eIdx];
-			if (e.v == p) { continue; }
-			dfsPre(e.v, u);
-			subtreeSize[u] += subtreeSize[e.v];
+	//Finds parents, depths & substreeSizes
+	int initDFS(int cur, int p = -1) { 
+		for (auto& e : nodes[cur].edges) if (e.v != p) {
+			par[e.v] = cur; depth[e.v] = 1 + depth[cur];
+			subtreeSize[cur] += initDFS(e.v, cur);
 		}
+		return subtreeSize[cur];
 	}
 
-	//Preprocessing takes O(nlogn) time; finds the depth at the same time
-	void preprocess() {
-		dfsPre(0, -1);
-		queue<int> q; q.push(root);
-		vector<bool> visited(n, false);
-		visited[root] = true;
-		anc[root][0] = root;
+	//Computes Heavy-Paths
+	void initHLD() {
+		vector<int>	orderBFS(n);
+		iota(orderBFS.begin(), orderBFS.end(), 0);
+		auto depthOrder = [&](int& i, int& j) { return depth[i] < depth[j]; };
+		sort(orderBFS.begin(), orderBFS.end(), depthOrder);
 
-		while (!q.empty()) {
-			int cur = q.front(); q.pop();
-			for (auto &eIdx : nodes[cur].edges) {
-				auto &e = edges[eIdx];
-				if (visited[e.v]) { continue; }
-				anc[e.v][0] = cur;
-				depth[e.v] = depth[cur] + 1;
-				q.push(e.v); visited[e.v] = true;
+		for (int i = n - 1; i >= 0; i--) {
+			bool newPaths = true; int cur = orderBFS[i];
+			int subSize = subtreeSize[cur];
+			int heavy = (subSize + (subSize & 1)) >> 1;
+
+			for (auto& e : nodes[cur].edges) {
+				if (e.v == par[cur]) { continue; }
+
+				//End of previous heavy path
+				if (subtreeSize[e.v] < heavy) { addHeavyPath(e.v, cur); continue; }
+
+				newPaths = false; pathIDX[cur] = pathIDX[e.v];
+				heavyPaths[pathIDX[cur]].push_back(cur);
 			}
-		}
-		for (int i = 1; i <= lg2; i++)
-			for (int u = 0; u < n; u++)
-				anc[u][i] = anc[anc[u][i - 1]][i - 1];
-	}
-
-	//Need to preprocess before using!
-	//Returns the LCA of nodes u and v in O(logn)		
-	int LCA(int u, int v) {
-		if (depth[u] < depth[v]) { swap(u, v); }
-
-		for (int i = lg2; i >= 0; i--) {
-			if (depth[u] - (1 << i) >= depth[v])
-				u = anc[u][i];	//furthest parent found is 2^i
-		}
-
-		if (u == v) { return v; }
-
-		for (int i = lg2; i >= 0; i--) {
-			if (anc[u][i] != anc[v][i]) {
-				u = anc[u][i];
-				v = anc[v][i];
+			if (newPaths) { //Node doesn't have a down heavy edge
+				pathIDX[orderBFS[i]] = (int)heavyPaths.size();
+				heavyPaths.push_back({ orderBFS[i] });
+				st.emplace_back(); nextPath.emplace_back(-1);
 			}
 		}
 
-		return anc[u][0];
+		addHeavyPath(0); for (int i = 0; i < (int)nextPath.size(); i++)
+			if(nextPath[i] != -1) nextPath[i] = pathIDX[nextPath[i]];
 	}
 
-	void hld(int cur, int p) {
-		if (chainHead[chainNum] == -1) { chainHead[chainNum] = cur; }
-		chainIdx[cur] = chainNum;
-		chainPos[cur] = chainSize[chainNum];
-		chainSize[chainNum]++;
+	//Adds a Heavy Path, Initializes Corresponding Segment Trees
+	void addHeavyPath(int u, int p = -1) {
+		int idx = pathIDX[u], m = (int)heavyPaths[idx].size();
+		reverse(heavyPaths[idx].begin(), heavyPaths[idx].end());
+		for (int i = 0; i < m; i++)
+			segtreeIDX[heavyPaths[idx][i]] = i;
 
-		posInBase[cur] = ptr;	//sets the idx of the node in the segment tree array
-		base[ptr++] = 0;		//sets the inital array
+		st[idx] = SegTree(m, heavyPaths[idx]);
+		nextPath[idx] = p;
+	}
 
-		int idx = -1, maxS = -1;
-		for (auto &eIdx : nodes[cur].edges) {
-			auto &e = edges[eIdx];
-			if (e.v == p) { continue; }
-			if (subtreeSize[e.v] > maxS) {
-				maxS = subtreeSize[e.v];
-				idx = e.v;
-			}
+	StVal query(int a, int b) { //O(log^2(n))
+		int A = pathIDX[a], B = pathIDX[b];
+		StVal res = StVal(); while (A != B) {
+			if (depth[heavyPaths[A][0]] < depth[heavyPaths[B][0]]) { swap(A, B); swap(a, b); }
+			res = StVal(res, st[A].query(0, segtreeIDX[a]));
+			a = par[heavyPaths[A][0]]; A = nextPath[A];
 		}
+		int L = min(segtreeIDX[a], segtreeIDX[b]);
+		int R = max(segtreeIDX[a], segtreeIDX[b]);
+		return StVal(res, st[A].query(L, R));
+	}
 
-		if (idx >= 0) { hld(idx, cur); }
-
-		for (auto &eIdx : nodes[cur].edges) {
-			auto &e = edges[eIdx];
-			if (e.v == p || e.v == idx) { continue; }
-			chainNum++; hld(e.v, cur);
+	void pointUpdate(int a, StUpdate U) {
+		st[pathIDX[a]].update(segtreeIDX[a], U);
+	}
+	void rangeUpdate(int a, int b, StUpdate U) { //O(log^2(n))
+		int A = pathIDX[a], B = pathIDX[b];
+		while (A != B) {
+			if (depth[heavyPaths[A][0]] < depth[heavyPaths[B][0]]) { swap(A, B); swap(a, b); }
+			st[A].update(0, segtreeIDX[a], U);
+			a = par[heavyPaths[A][0]]; A = nextPath[A];
 		}
-	}
-
-	//v should be an ancestor of u
-	StVal query_up(int u, int v, SegTree& st) {
-		int uchain, vchain = chainIdx[v];
-		StVal ans;
-
-		while (true) {
-			uchain = chainIdx[u];
-			if (uchain == vchain) {
-				//In this particular problem, the values were on the edges, hence the break here and the +1 below
-				if (u == v) { break; }
-				StVal qq = st.query(posInBase[v] + 1, posInBase[u]); //+1 to avoid the edge above the lca
-				ans = StVal(qq, ans);
-				break;
-			}
-
-			int headU = chainHead[uchain];
-			StVal qq = st.query(posInBase[headU], posInBase[u]);
-			ans = StVal(qq, ans);
-			u = anc[headU][0];	//Move to the parent of the head, i.e. to a new chain
-		}
-
-		return ans;
-	}
-
-	void update_up(int u, int v, SegTree &st) {
-		int uchain, vchain = chainIdx[v];
-		while (true) {
-			uchain = chainIdx[u];
-			if (uchain == vchain) {
-				//For node updates, remove the break and the +1
-				if (u == v) { break; }
-				st.update(posInBase[v] + 1, posInBase[u], StUpdate(1)); 
-				break;
-			}
-			int headU = chainHead[uchain];
-			st.update(posInBase[headU], posInBase[u], StUpdate(1));
-			u = anc[headU][0];	//Move to the parent of the head, i.e. to a new chain
-		}
-	}
-
-	//O(log^2n)
-	StVal query(int u, int v, SegTree& st) {
-		int lca = LCA(u, v);
-		StVal t1 = query_up(u, lca, st);
-		StVal t2 = query_up(v, lca, st);
-		//If we were working on nodes, make sure to not count the lca twice
-		return StVal(t1, t2);
-	}
-
-	void update(int u, int v, SegTree &st) {
-		int lca = LCA(u, v);
-		update_up(u, lca, st); update_up(v, lca, st);
-		//We might be updating the lca twice
+		int L = min(segtreeIDX[a], segtreeIDX[b]);
+		int R = max(segtreeIDX[a], segtreeIDX[b]);
+		st[A].update(L, R, U);
 	}
 };
 
 int main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0), cout.tie(0);
-
-	int n, m; cin >> n >> m;
-	tree t(n);
-	for (int i = 0; i < n - 1; i++) {
-		int u, v; cin >> u >> v; u--; v--;
-		t.add_edge(u, v);
-	}
-
-	base.clear(); base.resize(n);
-
-	t.preprocess();
-	t.hld(0, -1);
-	SegTree segT(t.ptr);
-
-	while (m--) {
-		char op; cin >> op;
-		if (op == 'P') {
-			int u, v; cin >> u >> v; u--; v--;
-			t.update(u, v, segT);
-		}
-		else {
-			int u, v; cin >> u >> v; u--; v--;
-			cout << t.query(u, v, segT) << '\n';
-		}
-	}
+	
+	cin.ignore(2); return 0;
 }
