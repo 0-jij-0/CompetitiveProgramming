@@ -6,7 +6,7 @@
 using namespace std;
 typedef long long ll;
 
-vector<int> value;
+vector<ll> value;
 
 struct StVal {
 	ll v = 0; StVal() {}
@@ -180,9 +180,8 @@ struct HLDTree {
 			res = StVal(res, st[A].query(0, segtreeIDX[a]));
 			a = par[heavyPaths[A][0]]; A = nextPath[A];
 		}
-		int L = min(segtreeIDX[a], segtreeIDX[b]);
-		int R = max(segtreeIDX[a], segtreeIDX[b]);
-		return StVal(res, st[A].query(L, R));
+		if (segtreeIDX[a] > segtreeIDX[b]) { swap(a, b); }
+		return StVal(res, st[A].query(segtreeIDX[a], segtreeIDX[b]));
 	}
 
 	void pointUpdate(int a, StUpdate U) {
@@ -195,9 +194,8 @@ struct HLDTree {
 			st[A].update(0, segtreeIDX[a], U);
 			a = par[heavyPaths[A][0]]; A = nextPath[A];
 		}
-		int L = min(segtreeIDX[a], segtreeIDX[b]);
-		int R = max(segtreeIDX[a], segtreeIDX[b]);
-		st[A].update(L, R, U);
+		if (segtreeIDX[a] > segtreeIDX[b]) { swap(a, b); }
+		st[A].update(segtreeIDX[a], segtreeIDX[b], U);
 	}
 };
 
