@@ -2,8 +2,9 @@
 #include <vector>
 #include <algorithm>
 using namespace std;
-
 typedef long long ll;
+
+ll res = 0; int k;
 
 struct edge {
 	int u, v; ll w; edge() {}
@@ -14,11 +15,10 @@ struct edge {
 struct node { vector<edge> edges; };
 
 struct Tree {
-	vector<node> nodes;
-	vector<int> sz;
-	int root, n;
+	int n; vector<node> nodes;
+	vector<int> subSize, vis, depthCount;
 
-	Tree(int _n, int _r = 0) : n(_n), root(_r) { nodes.resize(n); sz.resize(n, 1); }
+	Tree(int _n) : n(_n), nodes(_n), subSize(_n, 1), vis(_n, 0), depthCount(_n, 0) {}
 
 	void add_edge(int u, int v, ll w = 1ll) {
 		edge e1(u, v, w); edge e2(v, u, w);
@@ -26,67 +26,58 @@ struct Tree {
 		nodes[v].edges.push_back(e2);
 	}
 
-	void centroidDecomposition() {
-		vector<bool> dead(n, false);
-		CDRec(0, dead);
+	int subSizeDFS(int cur, int par = -1) {
+		subSize[cur] = 1;
+		for (edge& e : nodes[cur].edges)
+			if (!vis[e.v] && e.v != par)
+				subSize[cur] += subSizeDFS(e.v, cur);
+		return subSize[cur];
 	}
 
-	Tree buildCDT() {
-		Tree CDT(n);
-		vector<bool> dead(n, false);
-		CDUtil(0, -1, dead, CDT);
-		return move(CDT);
+	int getCentroid(int threshold, int cur, int par = -1) {
+		for (auto& e : nodes[cur].edges)
+			if (!vis[e.v] && e.v != par && subSize[e.v] >= threshold)
+				return getCentroid(threshold, e.v, cur);
+		return cur;
 	}
 
-private:
-	int subtreeN;
-	int getCentroid(int root, vector<bool>& dead) {
-		getSize(root, -1, dead);
-		subtreeN = sz[root];
-		return findCentroid(root, -1, dead);
-	}
-	void getSize(int u, int p, vector<bool>& dead) {
-		sz[u] = 1;
-		for (auto& e : nodes[u].edges) {
-			if (e.v == p || dead[e.v]) { continue; }
-			getSize(e.v, u, dead);
-			sz[u] += sz[e.v];
+	void centroidDecompositionRec(int root) {
+		int centroid = getCentroid(subSizeDFS(root) >> 1, root);
+		vis[centroid] = true;
+
+		for (edge& e : nodes[centroid].edges) if (!vis[e.v]) {
+			CDQuery(e.v, centroid); CDUpdate(e.v, centroid);
 		}
-	}
-	int findCentroid(int u, int p, vector<bool>& dead) {
-		for (auto e : nodes[u].edges) {
-			if (e.v == p || dead[e.v]) { continue; }
-			if (sz[e.v] > subtreeN / 2) { return findCentroid(e.v, u, dead); }
-		}
-		return u;
+
+		CDReset();
+		for (edge& e : nodes[centroid].edges)
+			if (!vis[e.v]) centroidDecompositionRec(e.v);
 	}
 
-	//DOES NOT BUILD A TREE
-	void CDRec(int start, vector<bool>& dead) {
-		int c = getCentroid(start, dead);
-		dead[c] = true;
-
-		for (auto& e : nodes[c].edges) {
-			if (dead[e.v]) { continue; }
-			CDRec(e.v, dead);
-		}
-		//ADD REQUIRED CODE
-		//...
-		dead[c] = false;
+	void CDQuery(int cur, int par, int depth = 1) {
+		if (depth > k) return;
+		res += depthCount[k - depth];
+		for (edge& e : nodes[cur].edges)
+			if (!vis[e.v] && e.v != par)
+				CDQuery(e.v, cur, depth + 1);
 	}
 
-	//BUILD THE CENTROID TREE
-	void CDUtil(int start, int parent, vector<bool>& dead, Tree &CDT) {
-		int c = getCentroid(start, dead);
-		if (parent != -1) { CDT.add_edge(c, parent); }
-		else { CDT.root = c; }
+	void CDUpdate(int cur, int par, int depth = 1) {
+		if (depth > k) return;
+		depthCount[depth]++;
+		for (edge& e : nodes[cur].edges)
+			if (!vis[e.v] && e.v != par)
+				CDUpdate(e.v, cur, depth + 1);
+	}
 
-		dead[c] = true;
-		for (auto& e : nodes[c].edges) {
-			if (dead[e.v]) { continue; }
-			CDUtil(e.v, c, dead, CDT);
-		}
-		dead[c] = false;
+	void CDReset() {
+		for (int i = 1; i < n && depthCount[i]; i++) depthCount[i] = 0;
+	}
+
+	ll centroidDecomposition() {
+		depthCount[0] = 1;
+		centroidDecompositionRec(0);
+		return res;
 	}
 };
 
