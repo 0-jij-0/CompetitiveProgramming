@@ -1,85 +1,61 @@
 #include <iostream>
 #include <string>
-#include <map>
-#include <set>
-#include <cstring>
 #include <vector>
-#include <cmath>
+#include <numeric>
 #include <algorithm>
-
 using namespace std;
 typedef long long ll;
 
-void countingSort(vector<int> &p, vector<int> &c) {
-	int n = p.size();
-	vector<int> cnt(n, 0);
-	for (auto &x : c) { cnt[x]++; }
+vector<int> countingSortStable(vector<int>& p, vector<int>& c) {
+	int n = p.size(); vector<int> cnt(n, 0);
+	for (auto& x : c) { cnt[x]++; }
 
-	vector<int> newP(n);
-	vector<int> pos(n); pos[0] = 0;
-	for (int i = 1; i < n; i++) { pos[i] = pos[i - 1] + cnt[i - 1]; }
-	for (auto x : p) {
-		int i = c[x];
-		newP[pos[i]] = x; pos[i]++;
-	}
-	p = newP;
+	vector<int> res(n), pos(n); pos[0] = 0;
+	partial_sum(cnt.begin(), --cnt.end(), pos.begin() + 1);
+	for (auto x : p) res[pos[c[x]]++] = x;
+	return move(res);
 }
 
-//Builds the suffix array (lexicographical ordering of the suffixes defined by their start idx) of s in O(nlogn)
-//sufA[i] gives the start index in s of the ith suffix
-void suffArray(string s, vector<int> &sufA, vector<int> &lcp) {
-	s.push_back('#');
-	int n = s.size();
-	vector<int> p(n), c(n);
+//Builds the suffix array of s in O(nlogn)
+void suffixArray(string& s, vector<int>& SA, vector<int>& LCP) {
+	s.push_back('#'); int n = (int)s.size();
+	vector<int> c(n); SA.resize(n);
+	iota(SA.begin(), SA.end(), 0);
 
-	vector<pair<char, int>> a(n);
-	for (int i = 0; i < n; i++) { a[i] = { s[i], i }; }
-	sort(a.begin(), a.end());
+	auto comp = [&](const int& i, const int& j) {
+		return s[i] < s[j] || (s[i] == s[j] && i < j);
+	}; sort(SA.begin(), SA.end(), comp);
 
-	for (int i = 0; i < n; i++) { p[i] = a[i].second; }
-	c[p[0]] = 0;
-	for (int i = 1; i < n; i++) {
-		if (a[i].first == a[i - 1].first) { c[p[i]] = c[p[i - 1]]; }
-		else { c[p[i]] = c[p[i - 1]] + 1; }
-	}
+	c[SA[0]] = 0; for (int i = 1; i < n; i++)
+		c[SA[i]] = c[SA[i - 1]] + (s[SA[i]] != s[SA[i - 1]]);
 
-	int k = 0;
-	while (c[p[n - 1]] != n - 1) {
-		for (int i = 0; i < n; i++) { p[i] = (p[i] - (1 << k) + n) % n; }
-		//p was shifted back but no need to change c
-		//p is already sorted by the second half so radix sort only needs one additional counting sort
-		countingSort(p, c);
+	for (int k = 1; k <= n; k <<= 1) {
+		for (int i = 0; i < n; i++) SA[i] = (SA[i] - k + n) % n;
+		SA = countingSortStable(SA, c);
 
-		vector<int> newC(n); newC[p[0]] = 0;
+		vector<int> newC(n); newC[SA[0]] = 0;
 		for (int i = 1; i < n; i++) {
-			pair<int, int> prev = { c[p[i - 1]], c[(p[i - 1] + (1 << k)) % n] };
-			pair<int, int> now = { c[p[i]], c[(p[i] + (1 << k)) % n] };
-			if (prev == now) { newC[p[i]] = newC[p[i - 1]]; }
-			else { newC[p[i]] = newC[p[i - 1]] + 1; }
+			pair<int, int> prev = { c[SA[i - 1]], c[(SA[i - 1] + k) % n] };
+			pair<int, int> now = { c[SA[i]], c[(SA[i] + k) % n] };
+			newC[SA[i]] = newC[SA[i - 1]] + (prev != now);
 		}
-
-		c = newC; k++;
+		c = move(newC);
 	}
-	sufA = p;
 
 	//Finds the Longest Common Prefix of all contiguous suffixes in the suffix array in O(n)
 	//lcp[pi] = lcp(s[p[i]..], s[p[i-1]..])
-	lcp.clear(); lcp.resize(n); k = 0;
+	LCP.clear(); LCP.resize(n); int k = 0;
 	for (int i = 0; i < n - 1; i++) {
-		int pi = c[i];	//pos of suffix i in the suffix array
-		int j = p[pi - 1];
-
+		int pi = c[i], j = SA[pi - 1]; //pi pos of suffix i in the suffix array
 		while (s[i + k] == s[j + k]) { k++; }
-		lcp[pi] = k; k = max(k - 1, 0);
+		LCP[pi] = k; k = max(k - 1, 0);
 	}
-	//LCP of any two suffixes i, j becomes min(lcp[pos[i]]...lcp[pos[j]]) = min(lcp[c[i]]...lcp[c[j]])
-
-	//	for (int i = 0; i < n; i++) { cout << lcp[i] << " " << sufA[i] << " " << s.substr(sufA[i], n - sufA[i]) << endl; }
+	s.pop_back();
 }
 
 //Checks if t is a substring of s in O(|t|log|s|)
 bool isSubstr(string &s, string &t, vector<int> &sufA) {
-	int l = 0, r = s.size();
+	int l = 0, r = (int)s.size(); 
 	while (l <= r) {
 		int mid = (l + r) >> 1;
 		int curS = sufA[mid], curT = 0;
@@ -101,7 +77,7 @@ int countSubstr(string &s, string &t, vector<int> &sufA) {
 
 	//At k = 0, find the first occ of the substr, at k = 1, the last occ
 	for (int k = 0; k < 2; k++) {
-		int l = 0, r = s.size();
+		int l = 0, r = (int)s.size();
 		while (l <= r) {
 			int mid = (l + r) >> 1;
 			int curS = sufA[mid], curT = 0;
@@ -122,20 +98,17 @@ int countSubstr(string &s, string &t, vector<int> &sufA) {
 	return lastOcc - firstOcc + 1;
 }
 
-//Counts the number of different substrings in s in O(n)
-ll numOfDifSubstr(string &s, vector<int> &sufA, vector<int> &lcp) {
-	ll res = 0; int n = s.size();
-	for (int i = 1; i <= n; i++) {
-		res += (n - sufA[i] - lcp[i]);
-	}
+ll countDistinctSubstr(string &s, vector<int> &sufA, vector<int> &lcp) {
+	int n = s.size(); ll res = n;
+	res = (res * (res + 1)) >> 1;
+	for (int i = 1; i <= n; i++) res -= lcp[i];
 	return res;
 }
 
-//Finds the longest common substring between s and t
-string LCSubstr(string &s, string &t) {
-	string tt = s + '$' + t;		//'$' > '#'
+string longestCommonSubstr(string &s, string &t) {
+	string tt = s + '$' + t; //'$' > '#'
 	vector<int> sufA, lcp;
-	suffArray(tt, sufA, lcp);
+	suffixArray(tt, sufA, lcp);
 
 	//Enough to check consecutive suffixes where a suffix starts in s and another in t
 	int n = tt.size(), sep = t.size(), LCSlen = 0, LCSstart = -1;
@@ -152,14 +125,12 @@ string LCSubstr(string &s, string &t) {
 	return s.substr(LCSstart, LCSlen);
 }
 
-//Finds the kth distinct substring in the corresponding string in O(n)
-string findKthDistinct(string &s, ll k, vector<int>& sufA, vector<int>& lcp) {
+string kthDistinctSubstr(string &s, ll k, vector<int>& sufA, vector<int>& lcp) {
 	int n = s.size(), idx = -1, len = -1;
 	for (int i = 1; i <= n; i++) {
 		ll curSub = n - sufA[i] - lcp[i];
 		if (k > curSub) { k -= curSub; continue; }
-		idx = sufA[i]; len = lcp[i] + k;
-		break;
+		idx = sufA[i]; len = lcp[i] + k; break;
 	}
 	return s.substr(idx, len);
 }
@@ -192,10 +163,9 @@ pair<int, int> findKthSubstr(ll& k, int l, int r, int rem, int n, vector<int>& s
 	return findKthSubstr(k, idx, r, rem, n, sufA, st);
 }
 
-
-
 int main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0), cout.tie(0);
 	
+	cin.ignore(2); return 0;
 }
