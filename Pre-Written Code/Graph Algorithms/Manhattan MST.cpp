@@ -28,35 +28,33 @@ struct DSU {
 	}
 };
 
-struct edge {
-	int u, v, w; edge() {}
-	edge(int _u, int _v, int _w) :
+struct Edge {
+	int u, v, w; Edge() {}
+	Edge(int _u, int _v, int _w) :
 		u(_u), v(_v), w(_w) {}
-	bool operator < (const edge& rhs) const { return w < rhs.w; }
+	bool operator < (const Edge& rhs) const { return w < rhs.w; }
 };
 
-struct node { vector<edge> edges; };
+struct Node { vector<Edge> edges; };
 
-struct graph {
-	vector<node> nodes; int n = 0;
-	vector<edge> edges; int m = 0;
+struct Graph {
+	vector<Node> nodes; int n = 0;
+	vector<Edge> edges; int m = 0;
 	int root;
 
-	graph(int _n) : n(_n), root(0) {
-		nodes.resize(n);
-	}
+	Graph(int _n) : n(_n), nodes(_n), root(0) {}
 
-	void add_edge(int u, int v, int w) {
+	void addEdge(int u, int v, int w) {
 		nodes[u].edges.emplace_back(u, v, w);
 		nodes[v].edges.emplace_back(v, u, w);
 		edges.emplace_back(u, v, w); m++;
 	}
 
-	void KruskalMST(vector<edge>& res) {
+	void KruskalMST(vector<Edge>& res) {
 		sort(edges.begin(), edges.end());
 		DSU dsu(n); res.clear(); int i = 0;
 		while (i < m && res.size() != n - 1) {
-			edge& e = edges[i];
+			Edge& e = edges[i];
 			if (!dsu.merge(e.u, e.v)) { i++; continue; }
 			res.push_back(e);
 		}
@@ -100,7 +98,7 @@ inline int dist(point& p1, point& p2) {
 vector<int> v; int a[N];
 
 //Creates a graph with nlogn edges, assumes distance is manhattan between points
-void manhattan(graph& g) {
+void manhattan(Graph& g) {
 	for (int i = 1; i <= n; ++i) { p[i].index = i; }
 	for (int dir = 1; dir <= 4; ++dir) {
 		if (dir == 2 || dir == 4) {
@@ -126,7 +124,7 @@ void manhattan(graph& g) {
 		for (int i = n; i >= 1; --i) {
 			int pos = query(a[i]);
 			if (pos != -1) {
-				g.add_edge(p[i].index - 1, p[pos].index - 1, dist(p[i], p[pos]));
+				g.addEdge(p[i].index - 1, p[pos].index - 1, dist(p[i], p[pos]));
 			}
 			modify(a[i], p[i].x + p[i].y, i);
 		}

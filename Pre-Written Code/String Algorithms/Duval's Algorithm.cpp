@@ -10,7 +10,7 @@ vector<string> duval(string s) {
         while (j < n && s[k] <= s[j]) { s[k] < s[j] ? k = i : k++; j++; }
         while (i <= k) { fact.push_back(s.substr(i, j - k)); i += j - k; }
     }
-    return move(fact);
+    return fact;
 }
 
 string minCyclicShift(string s) {
@@ -20,12 +20,11 @@ string minCyclicShift(string s) {
         while (j < n && s[k] <= s[j]) { s[k] < s[j] ? k = i : k++; j++; }
         while (i <= k) i += j - k;
     }
-    return move(s.substr(start, n >> 1));
+    return s.substr(start, n >> 1);
 }
 
 int main() {
     ios::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
 
-    cin.ignore(2); return 0;
 }

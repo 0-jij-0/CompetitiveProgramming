@@ -4,6 +4,7 @@
 #include <numeric>
 using namespace std;
 typedef long long ll;
+const int INF = 1 << 30;
 
 struct FT {
 	int n; vector<int> vals; FT() {};
@@ -21,7 +22,6 @@ struct FT {
 	int query(int l, int r) { return query(r) - query(l - 1); }
 };
 
-const int MIN = 0, MAX = 1e6; //Min and max possible values in the array; [-1e9,1e9] are too much --> compress
 vector<int> A, B; //A used to build wavelet tree B copy of A
 
 //Wavelet Tree supports:
@@ -33,7 +33,7 @@ struct WaveletTree {
 	vector<int> left; 		//left[i] = number of elements from the first i elements that go to left child
 	FT aLeft, aRight, aLeaf; //Used to map the indices of range queries (we can deduce from it how much goes to the right child)
 
-	WaveletTree(int _n) : WaveletTree(0, _n - 1, MIN, MAX) { }
+	WaveletTree(int _n, int MIN, int MAX) : WaveletTree(0, _n - 1, MIN, MAX) { }
 
 	//Numbers are in the range [lVal, rVal]
 	//Array indices are in [lo, hi]
@@ -64,7 +64,7 @@ struct WaveletTree {
 
 	//Query #1: kth smallest element in [l, r]
 	int kthSmallest(int l, int r, int k) {
-		if (l > r) { return MAX + 2; }
+		if (l > r) { return INF; }
 		if (lVal == rVal) { return lVal; }
 
 		int befL = (l ? left[l - 1] : 0);
@@ -112,5 +112,4 @@ int main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0), cout.tie(0);
 
-	cin.ignore(2); return 0;
 }

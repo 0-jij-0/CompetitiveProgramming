@@ -15,8 +15,7 @@ struct DSU {
 	int size(int u) { return rank[find(u)]; }
 
 	bool merge(int u, int v) {
-		u = find(u); v = find(v);
-		if (u == v) { return false; }
+		if((u = find(u)) == (v = find(v))) return false;
 		if (rank[u] < rank[v]) { swap(u, v); }
 		rank[u] += rank[v];	parent[v] = u;
 		return true;
@@ -27,5 +26,4 @@ int main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0), cout.tie(0);
 
-	cin.ignore(2); return 0;
 }

@@ -10,8 +10,7 @@ struct TrieNode {
 	int nextNode[K];
 	bool word = false;
 	int par = -1; char parChar = dontCare;
-	int suffixLink = -1;
-	int dfaLinks[K];
+	int suffixLink = -1, dfaLinks[K];
 
 	TrieNode(char c = dontCare, int p = -1) : par(p), parChar(c) {
 		fill(nextNode, nextNode + K, -1);
@@ -55,5 +54,4 @@ int main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0); cout.tie(0);
 
-	cin.ignore(2); return 0;
 }

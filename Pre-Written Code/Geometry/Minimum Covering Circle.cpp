@@ -1,9 +1,6 @@
-#include <algorithm> 
-#include <assert.h> 
 #include <iostream> 
-#include <cmath> 
+#include <algorithm> 
 #include <vector> 
-#include <iomanip>
 using namespace std;
 typedef double ld; 
 
@@ -44,8 +41,8 @@ bool isValidCircle(const Circle& c, const vector<Point>& P) {
     return true;
 }
 
-Circle minEnclosingCircleTrivial(vector<Point>& P) {
-    assert(P.size() <= 3);
+//Called only circles of size <= 3
+Circle minEnclosingCircleTrivial(vector<Point>& P) { 
     if (P.empty()) { return { { 0, 0 }, 0 }; }
     else if (P.size() == 1) { return { P[0], 0 }; }
     else if (P.size() == 2) { return smallestCircleFrom2Points(P[0], P[1]); }
@@ -96,5 +93,5 @@ int main() {
     ios::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
 
-    cin.ignore(2); return 0;
+
 }

@@ -4,21 +4,13 @@
 #include <numeric>
 using namespace std;
 
-struct edge {
-	int u, v; edge() {}
-	edge(int _u, int _v) :
-		u(_u), v(_v) {}
-};
+struct Tree {
+	vector<vector<int>> nodes; int n;
+	Tree(int _n) : n(_n), nodes(_n) {}
 
-struct node { vector<edge> edges; };
-
-struct graph {
-	vector<node> nodes; int n;
-	graph(int _n) : n(_n), nodes(_n) {}
-
-	void add_edge(int u, int v) {
-		nodes[u].edges.emplace_back(u, v);
-		nodes[v].edges.emplace_back(v, u);
+	void addEdge(int u, int v) {
+		nodes[u].emplace_back(v);
+		nodes[v].emplace_back(u);
 	}
 };
 
@@ -53,18 +45,16 @@ struct RMQ {
 
 struct ETT { //Euler Tour Technique
 	vector<int> tree, start, finish, d, v; ETT() {}
-	ETT(graph &g, int root) : d(g.n, 0), start(g.n), finish(g.n) {
+	ETT(Tree &g, int root) : d(g.n, 0), start(g.n), finish(g.n) {
 		int t = 0; init(g, root, -1, t);
 	}
-	void init(graph &g, int cur, int p, int &t) {
-		tree.push_back(cur); start[cur] = t++;
-		v.push_back(d[cur]);
-		for (edge &e : g.nodes[cur].edges) {
-			if (e.v == p) { continue; }
-			d[e.v] = 1 + d[cur];
-			init(g, e.v, cur, t);
-			tree.push_back(cur); t++;
-			v.push_back(d[cur]);
+	void init(Tree &g, int cur, int p, int &t) {
+		tree.push_back(cur); v.push_back(d[cur]);
+
+		start[cur] = t++;
+		for (int &e : g.nodes[cur]) if(e != p) {
+			d[e] = 1 + d[cur]; init(g, e, cur, t); t++;
+			tree.push_back(cur); v.push_back(d[cur]);
 		}
 		finish[cur] = t - 1;
 	}
@@ -72,7 +62,7 @@ struct ETT { //Euler Tour Technique
 
 struct LCA {
 	ETT ett; RMQ rmq; LCA() {}
-	LCA(graph &g, int root) : ett(g, root), rmq(ett.v) {}
+	LCA(Tree &g, int root) : ett(g, root), rmq(ett.v) {}
 	int find(int i, int j) { return ett.tree[rmq.query(ett.start[i], ett.start[j])]; }
 	int dist(int i, int j) { return ett.d[i] + ett.d[j] - 2 * ett.d[find(i, j)]; }
 };
@@ -81,5 +71,4 @@ int main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0); cout.tie(0);
 
-	cin.ignore(2); return 0;
 }

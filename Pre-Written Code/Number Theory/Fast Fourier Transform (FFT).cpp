@@ -13,7 +13,7 @@ void FFT(vector<complex<ld>>& a, bool inverse) {
 	for (int i = 1, j = 0; i < n; i++) { //Sorting by reverse bits
 		int bit = n >> 1;
 		for (; j & bit; bit >>= 1) j ^= bit;
-		if (i < (j ^= bit)) { swap(a[i], a[j]); }
+		if (i < (j ^= bit)) swap(a[i], a[j]);
 	}
 
 	for (int len = 2; len <= n; len <<= 1) {
@@ -44,12 +44,11 @@ vector<ll> polyMult(vector<int>& a, vector<int>& b) {
 	for (int i = 0; i < n; i++)
 		res[i] = (ll)round(A[i].real());
 
-	return move(res);
+	return res;
 }
 
 int main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0); cout.tie(0);
 
-	cin.ignore(2); return 0;
 }

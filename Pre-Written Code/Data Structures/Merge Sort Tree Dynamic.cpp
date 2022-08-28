@@ -10,8 +10,7 @@ typedef long long ll;
 
 #pragma region treap
 struct node {
-	int val, priority, size;	//size accounts for duplicates here
-	int freq;
+	int val, priority, size, freq;	//size accounts for duplicates here
 	node *l = NULL, *r = NULL;
 
 	node() {}
@@ -163,6 +162,5 @@ struct SegTree {
 int main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0), cout.tie(0);
-
 
 }

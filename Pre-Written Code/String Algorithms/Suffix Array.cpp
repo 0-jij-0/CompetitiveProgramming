@@ -13,7 +13,7 @@ vector<int> countingSortStable(vector<int>& p, vector<int>& c) {
 	vector<int> res(n), pos(n); pos[0] = 0;
 	partial_sum(cnt.begin(), --cnt.end(), pos.begin() + 1);
 	for (auto x : p) res[pos[c[x]]++] = x;
-	return move(res);
+	return res;
 }
 
 //Builds the suffix array of s in O(nlogn)
@@ -125,7 +125,7 @@ string longestCommonSubstr(string &s, string &t) {
 	return s.substr(LCSstart, LCSlen);
 }
 
-string kthDistinctSubstr(string &s, ll k, vector<int>& sufA, vector<int>& lcp) {
+string findKthDistinctSubstr(string &s, ll k, vector<int>& sufA, vector<int>& lcp) {
 	int n = s.size(), idx = -1, len = -1;
 	for (int i = 1; i <= n; i++) {
 		ll curSub = n - sufA[i] - lcp[i];
@@ -135,37 +135,20 @@ string kthDistinctSubstr(string &s, ll k, vector<int>& sufA, vector<int>& lcp) {
 	return s.substr(idx, len);
 }
 
-//O(nlogn)
-//st is a segment tree of the lcp array that returns the min and the min index
-//Returns {startPos, len} of the kth substring
-//Initial call: l = 1, r = lcp.size()-1 (remember that l,r are indices in the lcp/suf array; NOT the string)
-pair<int, int> findKthSubstr(ll& k, int l, int r, int rem, int n, vector<int>& sufA, SegTree& st) {
-	if (l > r) { return { -1, -1 }; }
-	if (l == r) {
-		ll curS = n - sufA[l] - rem;
-		if (k > curS) { k -= curS; return { -1, -1 }; }
-		return { sufA[l], rem + k };
-	}
+string findKthSubstr(int l, int r, ll k, RMQ& rmq, vector<int>& SA, vector<ll>& pref, const string& s) {
+	if (l == r) { return s.substr(SA[l], (int)k); }
 
-	StVal mi = st.query(l + 1, r);
-	int idx = mi.idx;
-	ll range = r - l + 1, height = mi.v - rem;
+	int i = rmq.query(l + 1, r), len = r - l + 1;
+	ll h = rmq.get(i), rightLCPPart = h * (r - i + 1);
+	if (k <= h * len) { return s.substr(SA[l], (int)(k + len - 1) / len); }
 
-	ll curS = range * height;
-	if (k <= curS) {
-		k = (k + range - 1) / range;
-		return { sufA[l], rem + k };
-	}
-
-	k -= curS; rem = mi.v;
-	pair<int, int> c1 = findKthSubstr(k, l, idx - 1, rem, n, sufA, st);
-	if (c1.first != -1) { return c1; }
-	return findKthSubstr(k, idx, r, rem, n, sufA, st);
+	ll leftTotal = (i ? pref[i - 1] - (l ? pref[l - 1] : 0) : 0);
+	if (k <= leftTotal + rightLCPPart) return findKthSubstr(l, i - 1, k - rightLCPPart, rmq, SA, pref, s);
+	else return findKthSubstr(i, r, k - leftTotal, rmq, SA, pref, s);
 }
 
 int main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0), cout.tie(0);
 	
-	cin.ignore(2); return 0;
 }

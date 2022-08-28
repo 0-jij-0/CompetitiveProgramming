@@ -25,7 +25,7 @@ struct FunctionalGraph {
                 anc[i][u] = anc[i - 1][anc[i - 1][u]];
 
         for (int i = 0; i < n; i++) if (!vis[i]) {
-            dfs(i); int cycleRoot = toKth(i, len[i]);
+            dfs(i); int cycleRoot = kthAncestor(i, len[i]);
             if (!inCycle[cycleRoot]) { markCycle(cycleRoot); }
         }      
     }
@@ -43,12 +43,10 @@ struct FunctionalGraph {
 
     //Finds the kth ancestor of Node x
     //toKth(x, len[x]) is the considered cycleRoot
-    int toKth(int x, int k) {
+    int kthAncestor(int x, int k) {
         if (k <= 0) { return x; }
-        int i = 0; while (k) {
+        for (int i = 0; k; k >>= 1, i++)
             if (k & 1) { x = anc[i][x]; }
-            k >>= 1; i++;
-        }
         return x;
     }
 
@@ -64,31 +62,23 @@ struct FunctionalGraph {
     //Find the length of the path starting from u ending at a visited node
     int pathLength(int u) {
         pair<int, int> p = findFirstCycleNode(u);
-        return p.second + len[toKth(u, len[u])];
+        return p.second + len[kthAncestor(u, len[u])];
     }
 
     //Finds the shortest path from node u to node v (if this path exists)
     int dist(int u, int v) {
         if (u == v) { return 0; }
-        int cU = toKth(u, len[u]), cV = toKth(v, len[v]);
+        int cU = kthAncestor(u, len[u]), cV = kthAncestor(v, len[v]);
         if (cU != cV || (inCycle[u] && !inCycle[v])) { return -1; }
         if (inCycle[u] && inCycle[v]) { return len[u] - len[v] + len[cU] * (len[u] < len[v]); }
-        if (toKth(u, len[u] - len[v]) == v) { return len[u] - len[v]; }
-        if (toKth(cU, len[cU] - len[v]) == v) { return len[u] + len[cU] - len[v]; }
+        if (kthAncestor(u, len[u] - len[v]) == v) { return len[u] - len[v]; }
+        if (kthAncestor(cU, len[cU] - len[v]) == v) { return len[u] + len[cU] - len[v]; }
         return -1;
     }
 };
-
-vector<int> v;
-
 
 int main() {
     ios::sync_with_stdio(0);
     cin.tie(0), cout.tie(0);
 
-    int n; cin >> n; v.resize(n);
-    for (auto& x : v) { cin >> x; x--; }
-    FunctionalGraph g(n, v);
-
-    cin.ignore(2); return 0;
 }

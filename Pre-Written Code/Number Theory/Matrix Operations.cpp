@@ -14,13 +14,6 @@ struct Matrix {
 	}
 	vector<ll>& operator[](int idx) { return v[idx]; }
 
-	Matrix operator +(Matrix &rhs) {
-		Matrix res(n, m, 0);
-		for (int i = 0; i < n; i++)
-			for (int j = 0; j < m; j++)
-				res[i][j] = (v[i][j] + rhs[i][j]) % mod;
-		return move(res);
-	}
 	Matrix operator *(Matrix &rhs) {
 		Matrix res(n, rhs.m, 0);
 		for (int i = 0; i < n; i++)
@@ -58,5 +51,4 @@ int main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0); cout.tie(0);
 
-	cin.ignore(2); return 0;
 }

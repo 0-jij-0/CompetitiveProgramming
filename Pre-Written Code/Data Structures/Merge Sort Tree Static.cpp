@@ -63,13 +63,4 @@ int main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0), cout.tie(0);
 
-	int n; cin >> n;
-	base.resize(n);
-	for (auto& x : base) { cin >> x; }
-	SegTree sT(n);
-	int q; cin >> q;
-	while (q--) {
-		int l, r, k; cin >> l >> r >> k; l--; r--;
-		cout << sT.query(l, r, k) << '\n';
-	}
 }

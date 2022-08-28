@@ -66,7 +66,7 @@ vector<ll> polyModMult(vector<ll>& a, vector<ll>& b) {
 	NTT(A, curInvRoot); ll invN = modInv(n);
 	for (auto& x : A) x = (x * invN) % mod;
 	
-	return move(A);
+	return A;
 }
 
 void generateConstants(const ll &MOD) {
@@ -92,5 +92,4 @@ int main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0); cout.tie(0);
 
-	cin.ignore(2); return 0;
 }

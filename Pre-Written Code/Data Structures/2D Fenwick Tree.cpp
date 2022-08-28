@@ -1,11 +1,9 @@
-#include <vector>
-#include <string>
-#include <assert.h>
 #include <iostream>
+#include <vector>
 using namespace std;
 typedef long long ll;
 
-//Queries take O(log^2n) time
+//Queries take O(log^2 n) time
 struct FT2D {
 	int n, m; vector<vector<int>> vals; FT2D() {}
 	FT2D(int _n, int _m) : n(_n), m(_m), vals(_n + 1, vector<int>(_m + 1, 0)) {}
@@ -37,5 +35,4 @@ int main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0), cout.tie(0);
 
-	cin.ignore(2); return 0;
 }

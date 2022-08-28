@@ -52,21 +52,6 @@ void buildSieve() {
 	}
 }
 
-ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a; }
-ll lcm(ll a, ll b) { return (a / gcd(a, b)) * b; }
-
-ll euler_phi(int n, vector<pair<int, int>> &v) {
-	ll res = n;
-	for (auto &x : v) { res -= res / x.first; }
-	return res;
-}
-
-int divisor_function(int n, vector<pair<int, int>> &v) {
-	int res = 1;
-	for (auto &x : v) { res *= x.second + 1; }
-	return res;
-}
-
 void getDivisorsHelper(int i, int curr, vector<pair<int, int>> &v) {
 	if (i == (int)v.size()) { return; }
 	getDivisorsHelper(i + 1, curr, v);
@@ -90,5 +75,4 @@ int main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0), cout.tie(0);
 
-	cin.ignore(2); return 0;
 }

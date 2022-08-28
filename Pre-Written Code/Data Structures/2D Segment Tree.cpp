@@ -11,7 +11,7 @@ vector<vector<int>> base;	//nxm
 struct StVal {
 	int v = 0; StVal() {}
 	StVal(const int _v) : v(_v) {}
-	StVal(const StVal& v1, const StVal& v2) { v = v1 + v2; }
+	StVal(const StVal& L, const StVal& R) { v = L + R; }
 	operator int() const { return v; }	//Casts StVal to int
 };
 

@@ -5,12 +5,11 @@
 #include <algorithm>
 using namespace std;
 
-int time = 0;
-
 struct DSU {
 	vector<int> parent;
 	vector<vector<int>> children;
 	vector<vector<pair<int, int>>> history;
+	int TIME = 0;
 
 	DSU(int n) : parent(n), children(n), history(n) {
 		iota(parent.begin(), parent.end(), 0);
@@ -23,10 +22,10 @@ struct DSU {
 		u = parent[u]; v = parent[v]; if (u == v) { return false; }
 		if (size(u) > size(v)) { swap(u, v); }
 		for (auto &x : children[u]) {
-			history[x].push_back({ time, w });
+			history[x].push_back({ TIME, w });
 			parent[x] = v; children[v].push_back(x);
 		}
-		time++; children[u].clear(); return true;
+		TIME++; children[u].clear(); return true;
 	}
 
 	int query(int u, int v) {
@@ -47,5 +46,4 @@ int main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0), cout.tie(0);
 
-	cin.ignore(2); return 0;
 }

@@ -4,18 +4,18 @@ using namespace std;
 typedef long long ll;
 
 struct PrefSum2D {
-	vector<vector<ll>> v; int n; PrefSum2D() {}
-	PrefSum2D(vector<vector<ll>> &_v) : n(_v.size()), v(_v) {
-		for (int j = 1; j < n; j++) { v[0][j] += v[0][j - 1]; }
-		for (int i = 1; i < n; i++) { v[i][0] += v[i - 1][0]; }
+	vector<vector<ll>> pref; int n; PrefSum2D() {}
+	PrefSum2D(vector<vector<ll>> &_v) : n(_v.size()), pref(_v) {
+		for (int j = 1; j < n; j++) { pref[0][j] += pref[0][j - 1]; }
+		for (int i = 1; i < n; i++) { pref[i][0] += pref[i - 1][0]; }
 		for (int i = 1; i < n; i++)	for (int j = 1; j < n; j++)
-				v[i][j] += v[i - 1][j] + v[i][j - 1] - v[i - 1][j - 1];
+				pref[i][j] += pref[i - 1][j] + pref[i][j - 1] - pref[i - 1][j - 1];
 	}
-	ll query(int x1, int y1, int x2, int y2) {
-		ll res = v[x2][y2];
-		if (x1) { res -= v[x1 - 1][y2]; }
-		if (y1) { res -= v[x2][y1 - 1]; }
-		if (x1 && y1) { res += v[x1 - 1][y1 - 1]; }
+	ll query(int xTL, int yTL, int xBR, int yBR) {
+		ll res = pref[xBR][yBR];
+		if (xTL) { res -= pref[xTL - 1][yBR]; }
+		if (yTL) { res -= pref[xBR][yTL - 1]; }
+		if (xTL && yTL) { res += pref[xTL - 1][yTL - 1]; }
 		return res;
 	}
 };
@@ -24,5 +24,4 @@ int main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0); cout.tie(0);
 
-	cin.ignore(2); return 0;
 }

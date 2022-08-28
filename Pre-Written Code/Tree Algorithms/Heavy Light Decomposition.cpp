@@ -11,14 +11,14 @@ vector<ll> value;
 struct StVal {
 	ll v = 0; StVal() {}
 	StVal(const ll _v) : v(_v) {}
-	StVal(const StVal& v1, const StVal& v2) { v = max(v1, v2); }
+	StVal(const StVal& L, const StVal& R) { v = max(L, R); }
 	operator ll() const { return v; }
 };
 
 struct StUpdate {
 	ll u = 0; StUpdate() {}
 	StUpdate(const ll u) : u(u) {}
-	StUpdate(const StUpdate& u1, const StUpdate& u2) { u = u1 + u2; }
+	StUpdate(const StUpdate& oldU, const StUpdate& newU) { u = oldU + newU; }
 	operator ll() const { return u; }
 	void apply(StVal& v, const int lo, const int hi) { v.v += u; }
 };
@@ -89,16 +89,14 @@ struct SegTree {
 	}
 };
 
-struct edge {
-	int u, v; edge() {}
-	edge(int _u, int _v) :
+struct Edge {
+	int u, v; Edge() {}
+	Edge(int _u, int _v) :
 		u(_u), v(_v) {}
 };
 
-struct node { vector<edge> edges; };
-
 struct HLDTree {
-	vector<node> nodes; int n; //Change based on N
+	vector<vector<Edge>> nodes; int n; //Change based on N
 	vector<int> par, depth, subtreeSize; //Required Information for HLD
 	vector<int> segtreeIDX, pathIDX, nextPath;
 	vector<vector<int>> heavyPaths;
@@ -110,20 +108,20 @@ struct HLDTree {
 		value.resize(n); for (auto& x : value) cin >> x;
 		for (int i = 1; i < _n; i++) {
 			int u, v; cin >> u >> v;
-			add_edge(--u, --v);
+			addEdge(--u, --v);
 		}
 
 		initDFS(0); initHLD();
 	}
 
-	void add_edge(int u, int v) {
-		nodes[u].edges.emplace_back(u, v);
-		nodes[v].edges.emplace_back(v, u);
+	void addEdge(int u, int v) {
+		nodes[u].emplace_back(u, v);
+		nodes[v].emplace_back(v, u);
 	}
 
 	//Finds parents, depths & substreeSizes
 	int initDFS(int cur, int p = -1) { 
-		for (auto& e : nodes[cur].edges) if (e.v != p) {
+		for (auto& e : nodes[cur]) if (e.v != p) {
 			par[e.v] = cur; depth[e.v] = 1 + depth[cur];
 			subtreeSize[cur] += initDFS(e.v, cur);
 		}
@@ -142,7 +140,7 @@ struct HLDTree {
 			int subSize = subtreeSize[cur];
 			int heavy = (subSize + (subSize & 1)) >> 1;
 
-			for (auto& e : nodes[cur].edges) {
+			for (auto& e : nodes[cur]) {
 				if (e.v == par[cur]) { continue; }
 
 				//End of previous heavy path
@@ -203,5 +201,4 @@ int main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0), cout.tie(0);
 	
-	cin.ignore(2); return 0;
 }

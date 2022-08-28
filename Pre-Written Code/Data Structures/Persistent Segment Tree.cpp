@@ -10,8 +10,8 @@ struct StVal {
 	StVal* left = NULL, * right = NULL;
 	ll sum = 0; int idx = 0; StVal() {}
 	StVal(const ll _v, int i) : sum(_v), idx(i) { left = right = NULL; }
-	StVal(StVal* v1, StVal* v2, int i) : idx(i) {	//v1, v2 are never NULL
-		sum = *v1 + *v2; left = v1; right = v2;
+	StVal(StVal* L, StVal* R, int i) : idx(i) {	//L, R are never NULL
+		sum = *L + *R; left = L; right = R;
 	}
 	operator ll() const { return sum; }
 };
@@ -59,6 +59,7 @@ struct PSSegTree {
 		if(setUpdate) x -= query(i, i, v)->sum;
 		PSUpdate(0, n - 1, i, x, versions[v]);
 	}
+
 	int PSUpdate(int lo, int hi, int i, ll inc, int& curRoot, bool b = true) {
 		st.push_back(new StVal(st[curRoot]->sum + inc, last));
 		st[last]->left = st[curRoot]->left;
@@ -76,5 +77,4 @@ int main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0); cout.tie(0);
 
-	cin.ignore(2); return 0;
 }

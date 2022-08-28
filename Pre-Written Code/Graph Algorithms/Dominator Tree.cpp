@@ -4,7 +4,7 @@
 #include <numeric>
 using namespace std;
 
-struct graph {
+struct Graph {
 	int n;
 	vector<vector<int>> dfsEdgesIN, edgesOUT, sdomBucket, dominatorTree;
 	vector<int> labelToDfs, dfsToLabel, dfsParent;
@@ -36,9 +36,7 @@ private:
 		dsu[u] = v; return d ? v : dsuMinSdom[u];
 	}
 
-	void dsuMerge(int u, int v) {
-		dsu[v] = u;
-	}
+	void dsuMerge(int u, int v) { dsu[v] = u; }
 
 	void computeDominatorTree() {
 		for (int i = n - 1; i >= 0; i--) {
@@ -64,7 +62,7 @@ private:
 
 public:
 
-	graph(int _n) : n(_n),
+	Graph(int _n) : n(_n),
 		edgesOUT(_n), dfsParent(_n), dfsToLabel(_n),
 		sdom(_n), idom(_n), dsu(_n), dsuMinSdom(_n) {}
 

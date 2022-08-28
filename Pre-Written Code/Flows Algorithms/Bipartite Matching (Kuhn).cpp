@@ -3,17 +3,17 @@
 #include <vector>
 using namespace std;
 
-struct edge {
-	int u, v; bool match = 0; edge() {}
-	edge(int _u, int _v) : u(_u), v(_v) {}
+struct Edge {
+	int u, v; bool match = 0; Edge() {}
+	Edge(int _u, int _v) : u(_u), v(_v) {}
 };
 
-struct node { vector<edge> edges; node() {} };
+struct node { vector<Edge> edges; node() {} };
 
 //Classic Problems:
 //Maximum Matching - Minimum Vertex Cover
 //Minimum Path Cover - Maximum Bipartite Clique
-struct bipartiteGraph {
+struct BipartiteGraph {
 	//Matching: Set of edges that do not share a node
 	//Vertex Cover: Set of nodes that cover all edges
 	//Cut Capacity: Set of edges that disconnect source(L) from sink(R) upon removal
@@ -25,10 +25,10 @@ struct bipartiteGraph {
 	vector<bool> Z, vis; 
 	vector<int> unMatched, match;
 
-	bipartiteGraph(int _n, int _m) : n(_n), m(_m), 
+	BipartiteGraph(int _n, int _m) : n(_n), m(_m), 
 		nodes(_n + _m), Z(_n + _m, 0), match(_n + _m, -1), vis(_n + _m, 0) {}
 
-	void add_edge(int u, int v) {
+	void addEdge(int u, int v) {
 		nodes[u].edges.emplace_back(u, v);
 		nodes[v].edges.emplace_back(v, u);
 	}
@@ -72,11 +72,11 @@ struct bipartiteGraph {
 				cout << i + 1 << " " << match[i] - n + 1 << endl;
 	}
 
-	void vertexCoverDFS(int u, bool m, vector<bool>& visited) {
-		visited[u] = Z[u] = 1;
+	void vertexCoverDFS(int u, bool m, vector<bool>& vis) {
+		vis[u] = Z[u] = 1;
 		for (auto &e : nodes[u].edges)
-			if (!visited[e.v] && e.match != m)
-				vertexCoverDFS(e.v, e.match, visited);
+			if (!vis[e.v] && e.match != m)
+				vertexCoverDFS(e.v, e.match, vis);
 	}
 
 	//Let A = {unmatched nodes}, Z = {connected component of A via alternating paths ONLY}
@@ -92,13 +92,13 @@ struct bipartiteGraph {
 				if (e.v == u) { e.match = 1; break; }
 		}
 
-		vector<bool> visited(n + m, 0); for (auto &x : unMatched)
-			if (!visited[x]) { vertexCoverDFS(x, 1, visited); }
+		vector<bool> vis(n + m, 0); for (auto &x : unMatched)
+			if (!vis[x]) { vertexCoverDFS(x, 1, vis); }
 
 		vector<pair<int, int>> ans;
 		for (int i = 0; i < n; i++)	if (!Z[i]) ans.push_back({ 1, i + 1 });
 		for (int i = n; i < m + n; i++)	if (Z[i]) ans.push_back({ 2, i - n + 1 });
-		return move(ans);
+		return ans;
 	}
 };
 
@@ -106,5 +106,4 @@ int main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0), cout.tie(0);
 
-	cin.ignore(2); return 0;
 }

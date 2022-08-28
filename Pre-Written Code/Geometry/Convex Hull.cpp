@@ -10,12 +10,12 @@ struct Point {
 	bool operator == (const Point& rhs) const { return x == rhs.x && y == rhs.y; }
 	Point operator - (const Point& rhs) const { return Point(x - rhs.x, y - rhs.y); }
 	bool operator < (const Point& rhs) const {
-		if (x != rhs.x) return x < rhs.x;
-		return y < rhs.y;
+		return (x != rhs.x) ? x < rhs.x : y < rhs.y;
 	}
 };
 
 istream& operator >> (istream& is, Point& p) { is >> p.x >> p.y; return is; }
+ostream& operator << (ostream& os, const Point& p) { os << p.x << p.y; return os; }
 ll crossProduct(Point A, Point B) { return A.x * B.y - A.y * B.x; }
 
 //0: Colinear 1: Clockwise 2: Counterclockwise
@@ -28,7 +28,7 @@ int orientation(Point& A, Point& B, Point& C) {
 vector<Point> convexHullGrahamScan(vector<Point> P) {
 	sort(P.begin(), P.end());
 	P.erase(unique(P.begin(), P.end()), P.end());
-	int n = (int)P.size(); if (n < 3) { return move(P); }
+	int n = (int)P.size(); if (n < 3) { return P; }
 
 	vector<Point> res;
 	auto incorrect = [&](Point& A, Point& B, Point& C) {
@@ -48,12 +48,11 @@ vector<Point> convexHullGrahamScan(vector<Point> P) {
 		res.push_back(P[i]);
 	}
 
-	res.pop_back(); return move(res);
+	res.pop_back(); return res;
 }
 
 int main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0); cout.tie(0);
 
-	cin.ignore(2); return 0;
 }

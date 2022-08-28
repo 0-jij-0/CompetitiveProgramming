@@ -6,30 +6,29 @@
 #include <stack>
 using namespace std;
 
-struct edge {
-	int u, v; edge() {}
-	edge(int _u, int _v) :
+struct Edge {
+	int u, v; Edge() {}
+	Edge(int _u, int _v) :
 		u(_u), v(_v) {}
 };
 
-struct node { int inD = 0, outD = 0; vector<int> edges; };
+struct Node { int inD = 0, outD = 0; vector<int> edges; };
 
 //Goes over all edges, not necessarily all vertices
-struct graph {
-	vector<edge> edges;
-	vector<node> nodes;
-	int n, m;
-	graph(int _n) : n(_n), m(0) { nodes.resize(n); }
+struct Graph {
+	vector<Edge> edges; int m = 0;
+	vector<Node> nodes; int n;
+	Graph(int _n) : n(_n), nodes(_n) {}
 
-	void add_edge(int u, int v) {
+	void addEdge(int u, int v) {
 		nodes[u].edges.push_back(m++);
 		nodes[u].outD++; nodes[v].inD++;
-		edges.push_back(edge(u, v));
+		edges.push_back(Edge(u, v));
 	}
 
 	//Start can be any node; if it has to be 0 we should add a check
 	//Since node 0 could have 0 edges and start becomes 1 for ex
-	vector<int> euler_directed() {
+	vector<int> eulerTourDirected() {
 		int start = -1, oddIn = 0, oddOut = 0;
 		for (int i = 0; i < n; ++i) {
 			int diff = nodes[i].inD - nodes[i].outD;
@@ -57,8 +56,7 @@ struct graph {
 			}
 		}
 		if (count(used.begin(), used.end(), false)) { return vector<int>(); }	//Not all edges were reachable
-		reverse(res.begin(), res.end());
-		return move(res);
+		reverse(res.begin(), res.end()); return res;
 	}
 };
 
@@ -66,5 +64,4 @@ int main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0), cout.tie(0);
 
-	cin.ignore(2); return 0;
 }

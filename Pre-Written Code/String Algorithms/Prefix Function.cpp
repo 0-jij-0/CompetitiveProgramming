@@ -15,10 +15,10 @@ vector<int> prefixFunction(string& s) {
 		if (s[j] == s[i]) { j++; }
 		pf[i] = j;
 	}
-	return move(pf);
+	return pf;
 }
 
-//checks number of occurences of p in s as a substring
+//counts #occurence of p in s as a substring
 //p and s can NOT contain the character #
 int stringMatch(string& s, string& p) {
 	string temp = p + '#' + s;

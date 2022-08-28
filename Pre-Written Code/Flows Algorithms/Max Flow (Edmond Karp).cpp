@@ -6,40 +6,38 @@ using namespace std;
 typedef long long ll;
 ll INF = 1ll << 40;
 
-struct edge {
-	int u, v; ll cap, flow = 0; edge() {}
-	edge(int _u, int _v, ll _cap) :
+struct Edge {
+	int u, v; ll cap, flow = 0; Edge() {}
+	Edge(int _u, int _v, ll _cap) :
 		u(_u), v(_v), cap(_cap) {}
 };
 
-struct node { vector<int> edges; };
-
-struct graph {
-	vector<node> nodes; int n;
-	vector<edge> edges; int m;
+struct Graph {
+	vector<vector<int>> nodes; int n;
+	vector<Edge> edges; int m = 0;
 	vector<int> parent;
 
-	graph(int _n) : n(_n), nodes(_n), parent(_n) {}
+	Graph(int _n) : n(_n), nodes(_n), parent(_n) {}
 
-	void add_edge(int u, int v, ll c1, ll c2 = 0) {
-		nodes[u].edges.emplace_back(edges.size());
-		nodes[v].edges.emplace_back(edges.size() + 1);
-		edges.emplace_back(u, v, c1); m++;
-		edges.emplace_back(v, u, c2); m++;
+	void addEdge(int u, int v, ll c1, ll c2 = 0) {
+		nodes[u].emplace_back(m++);
+		nodes[v].emplace_back(m++);
+		edges.emplace_back(u, v, c1); 
+		edges.emplace_back(v, u, c2); 
 	}
 
 	ll maxflow(int s, int t, ll prevFlow = 0) {
-		ll flow = prevFlow, new_flow = maxFlowBFS(s, t, parent);
+		ll flow = prevFlow, newFlow = maxFlowBFS(s, t, parent);
 
-		while (new_flow) {
-			flow += new_flow; int cur = t;
+		while (newFlow) {
+			flow += newFlow; int cur = t;
 			while (cur != s) {
 				int &e = parent[cur];
-				edges[e].cap -= new_flow; edges[e ^ 1].cap += new_flow;
-				edges[e].flow += new_flow; edges[e ^ 1].flow -= new_flow;
+				edges[e].cap -= newFlow; edges[e ^ 1].cap += newFlow;
+				edges[e].flow += newFlow; edges[e ^ 1].flow -= newFlow;
 				cur = edges[e].u;
 			}
-			new_flow = maxFlowBFS(s, t, parent);
+			newFlow = maxFlowBFS(s, t, parent);
 		}
 		return flow;
 	}
@@ -50,13 +48,13 @@ struct graph {
 
 		while (!q.empty()) {
 			int cur = q.front().first; ll flow = q.front().second; q.pop();
-			for (auto &e : nodes[cur].edges) {
+			for (auto &e : nodes[cur]) {
 				int &next = edges[e].v;
 				if (parent[next] == -1 && edges[e].cap) {
 					parent[next] = e;
-					ll new_flow = min(flow, edges[e].cap);
-					if (next == t) { return new_flow; }
-					q.push({ next, new_flow });
+					ll newFlow = min(flow, edges[e].cap);
+					if (next == t) { return newFlow; }
+					q.push({ next, newFlow });
 				}
 			}
 		}
@@ -68,5 +66,4 @@ int main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0); cout.tie(0);
 
-	cin.ignore(2); return 0;
 }
