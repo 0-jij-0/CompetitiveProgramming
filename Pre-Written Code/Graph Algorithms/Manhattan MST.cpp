@@ -1,10 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <queue>
-#include <cmath>
-#include <numeric>
-#include <algorithm>
-#include <climits>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 

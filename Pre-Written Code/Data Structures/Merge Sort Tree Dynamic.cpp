@@ -2,9 +2,7 @@
 //O(nlog^2n) time to preprocess with O(nlogn) space
 //O(log^2n) time per query
 
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 

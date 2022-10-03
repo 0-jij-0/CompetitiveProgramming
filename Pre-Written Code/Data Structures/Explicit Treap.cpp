@@ -1,8 +1,6 @@
 //Treap implementation of multiset
 
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct node {

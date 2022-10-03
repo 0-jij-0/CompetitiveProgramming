@@ -1,9 +1,7 @@
 //Does not handle updates
 //Handles queries in O(log^2n)
 
-#include <iostream>
-#include <algorithm>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 

@@ -1,9 +1,7 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
-const ll INF = 1 << 60;
+const ll INF = 1ll << 60;
 
 struct Point {
 	ll x, y; Point() {}
@@ -19,7 +17,8 @@ bool yCoordComp(const Point& lhs, const Point& rhs) { return lhs.y < rhs.y; }
 bool xCoordComp(const Point& lhs, const Point& rhs) { return lhs.x < rhs.x; }
 ll dist2(Point A, Point B) { return (A.x - B.x) * (A.x - B.x) + (A.y - B.y) * (A.y - B.y); }
 
-ll closestPair(vector<Point>& P) { //P should first be sorted with xCoordComp
+//Assumes P is sorted with xCoordComp O(NlogN)
+ll closestPair(vector<Point>& P) {
 	if (P.size() < 2) { return INF; }
 
 	int n = (int)P.size(), mid = n >> 1; ll Xmid = P[mid].x;

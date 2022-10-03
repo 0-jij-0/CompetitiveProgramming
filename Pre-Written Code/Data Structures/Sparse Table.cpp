@@ -1,21 +1,21 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
 struct RMQ {
-	vector<vector<ll>> rmq;
+	vector<vector<int>> rmq;
 	vector<int> logb2; RMQ() {}
+	vector<int> v;
 
-	ll combine(ll a, ll b) { return min(a, b); }
+	//Combine depends on what sparse table should do
+	int combine(int a, int b) { return v[a] < v[b] ? a : b; }
 
-	RMQ(vector<int> &v) {
-		int n = (int)v.size(); logb2.resize(n + 1, 0);
-		rmq.resize(1, vector<ll>(n));
+	RMQ(vector<int>& _v) : v(_v) {
+		int n = (int)_v.size(); logb2.resize(n + 1, 0);
+		rmq.resize(1, vector<int>(n));
 
 		//Initialization depends on what sparse table should do
-		for (int i = 0; i < n; i++) { rmq[0][i] = v[i]; }
+		for (int i = 0; i < n; i++) { rmq[0][i] = i; }
 
 		//Precomputing Logs
 		for (int i = 0; (1 << i) <= n; i++) { logb2[1 << i] = i; }
@@ -29,7 +29,7 @@ struct RMQ {
 		}
 	}
 
-	ll query(int i, int j) {
+	int query(int i, int j) {
 		if (i > j) { swap(i, j); }
 		int k = logb2[j - i + 1];
 		return combine(rmq[k][i], rmq[k][j - (1 << k) + 1]);

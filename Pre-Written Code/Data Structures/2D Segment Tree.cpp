@@ -1,9 +1,7 @@
 //Handles queries on submatrices in O(log^2(nm))
 //O(4nm) space
 
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 
 vector<vector<int>> base;	//nxm

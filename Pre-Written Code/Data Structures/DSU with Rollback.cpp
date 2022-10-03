@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <numeric>
-#include <map>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct DSUwithRollback {

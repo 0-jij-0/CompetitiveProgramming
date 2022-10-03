@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -24,7 +22,7 @@ int orientation(Point& A, Point& B, Point& C) {
 	return x ? 1 + (x < 0) : 0;
 }
 
-//Returns Hull Sorted Clockwise
+//Returns Hull Sorted Counter-Clockwise
 vector<Point> convexHullGrahamScan(vector<Point> P) {
 	sort(P.begin(), P.end());
 	P.erase(unique(P.begin(), P.end()), P.end());
@@ -32,20 +30,20 @@ vector<Point> convexHullGrahamScan(vector<Point> P) {
 
 	vector<Point> res;
 	auto incorrect = [&](Point& A, Point& B, Point& C) {
-		//Change to != 1 to remove points on CH boundary
-		return orientation(A, B, C) == 2;
+		//Change to == 1 to keep points on CH boundary
+		//Chnage to (!= 1 / == 2) to sort Clockwise
+		return orientation(A, B, C) != 2;
 	};
 
-	for (int i = 0; i < n; i++) {
-		while (res.size() > 1 && incorrect(res.end()[-2], res.end()[-1], P[i])) { res.pop_back(); }
-		res.push_back(P[i]);
+	int m = 0; for (int i = 0; i < n; ++i) {
+		while (m > 1 && incorrect(res[m - 2], res[m - 1], P[i])) { res.pop_back(); --m; }
+		res.push_back(P[i]); ++m;
 	}
 
-	int m = (int)res.size();
-	for (int i = n - 2; i >= 0; i--) {
-		if (P[i] == res.end()[-2]) { continue; }
-		while (res.size() > m && incorrect(res.end()[-2], res.end()[-1], P[i])) { res.pop_back(); }
-		res.push_back(P[i]);
+	for (int i = n - 2, M = m; i >= 0; i--) {
+		if (P[i] == res[m - 2]) { continue; }
+		while (m > M && incorrect(res[m - 2], res[m - 1], P[i])) { res.pop_back(); --m; }
+		res.push_back(P[i]); ++m;
 	}
 
 	res.pop_back(); return res;

@@ -1,26 +1,24 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 const ll INF = 1ll << 60;
 
-template<class Type> struct Line {
-	Type a = 1, b = 0;
-	Line(Type _a, Type _b) : a(_a), b(_b) {}
-	Type operator()(Type X) { return a * X + b; }
+struct Line {
+	ll a = 1, b = 0;
+	Line(ll _a, ll _b) : a(_a), b(_b) {}
+	ll operator()(ll X) { return a * X + b; }
 };
 
-template<class Type> struct LiChaoTree {
-	vector<Line<Type>> lines; int n;
+struct LiChaoTree {
+	vector<Line> lines; int n;
 
 	//Change these to change behavior
-	LiChaoTree(int _n) : n(_n), lines((_n + 1) << 2, Line<Type>(0, INF)) {}
-	Type combine(Type a, Type b) { return min(a, b); }
-	bool check(Type a, Type b) { return a < b; }
+	LiChaoTree(int _n) : n(_n), lines((_n + 1) << 2, Line(0, INF)) {}
+	ll combine(ll a, ll b) { return min(a, b); }
+	bool check(ll a, ll b) { return a < b; }
 
-	void insert(Line<Type> curLine) { insert(curLine, 0, n, 1); }
-	void insert(Line<Type> curLine, int L, int R, int cur) {
+	void insert(Line curLine) { insert(curLine, 0, n, 1); }
+	void insert(Line curLine, int L, int R, int cur) {
 		if (L == R) {
 			if (check(curLine(L), lines[cur](L)))
 				lines[cur] = curLine;
@@ -36,8 +34,8 @@ template<class Type> struct LiChaoTree {
 		else insert(curLine, M + 1, R, cur << 1 | 1);
 	}
 
-	Type query(Type X) { return query(X, 0, n, 1); }
-	Type query(Type X, int L, int R, int cur) {
+	ll query(ll X) { return query(X, 0, n, 1); }
+	ll query(ll X, int L, int R, int cur) {
 		if (L == R) { return lines[L](X); }
 
 		int M = (L + R) >> 1, left = cur << 1, right = cur << 1 | 1;

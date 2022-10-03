@@ -1,30 +1,31 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <numeric>
-#include <functional>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
 struct BinaryTrie {
-	struct TrieNode {int count = 0; TrieNode* next[2] = { NULL, NULL }; } *root;
-	int depth; BinaryTrie(int d) : depth(d) { root = new TrieNode(); }
+	struct TrieNode { int next[2] = { -1, -1 }; };
+	vector<TrieNode> nodes; int depth;
+	
+	BinaryTrie(int d) : depth(d), nodes(1) { }
 
 	void insert(ll &x) {
-		TrieNode *cur = root;
+		int cur = 0;
 		for (int i = depth - 1; i >= 0; i--) {
 			bool bit = (x >> i) & 1;
-			if (cur->next[bit] == NULL) { cur->next[bit] = new TrieNode(); }
-			cur->count++; cur = cur->next[bit];
+			if (nodes[cur].next[bit] == -1) {
+				nodes[cur].next[bit] = (int) nodes.size();
+				nodes.emplace_back();
+			}
+			cur = nodes[cur].next[bit];
 		}
 	} 
 
 	ll maxXor(ll &x) {
-		ll res = 0; TrieNode* cur = root;
+		ll res = 0; int cur = 0;
 		for(int i = depth - 1; i >= 0; i--) {
-			res <<= 1; bool bit = (x >> i) & 1;
-			if (cur->next[!bit] == NULL) { cur = cur->next[bit]; }
-			else { res |= 1; cur = cur->next[!bit]; }
+			bool bit = (x >> i) & 1;
+			if (nodes[cur].next[!bit] == -1) { cur = nodes[cur].next[bit]; }
+			else { res |= (1ll << i); cur = nodes[cur].next[!bit]; }
 		}
 		return res;
 	}

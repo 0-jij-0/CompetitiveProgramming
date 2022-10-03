@@ -1,8 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <queue>
-#include <stack>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 const ll INF = 1ll << 60;
@@ -25,11 +21,11 @@ struct Graph {
 	vector<ll> dijkstra(int s, vector<int> &par) {
 		vector<ll> dist(n, INF); dist[s] = 0ll;
 		priority_queue<pair<ll, int>, vector<pair<ll, int>>, greater<pair<ll, int>>> pq;
-		pq.push({ 0, s }); vector<bool> visited(n, false);
+		pq.push({ 0, s }); vector<bool> vis(n, false);
 
 		while (!pq.empty()) {
-			if (visited[pq.top().second]) { pq.pop(); continue; }
-			int cur = pq.top().second; pq.pop(); visited[cur] = true;
+			if (vis[pq.top().second]) { pq.pop(); continue; }
+			int cur = pq.top().second; pq.pop(); vis[cur] = true;
 			for (Edge &e : nodes[cur])
 				if (dist[e.v] > dist[cur] + e.w) {
 					dist[e.v] = dist[par[e.v] = cur] + e.w;

@@ -1,7 +1,4 @@
-#include <iostream>
-#include <algorithm>
-#include <vector>
-#include <queue>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 ll INF = 1ll << 40;
@@ -72,6 +69,7 @@ struct Graph {
 		return res;
 	}
 
+	//Remove this step if all costs are positive
 	void potentialSPFA(const int& s, int t) {
 		P.assign(n, INF); P[s] = 0;
 		vector<bool> inQueue(n, false);

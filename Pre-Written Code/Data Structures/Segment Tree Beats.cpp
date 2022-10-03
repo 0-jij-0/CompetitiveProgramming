@@ -7,9 +7,7 @@
 //O(nlogn) if we remove queries of type 3
 //O(nlog^2n) amortized in total
 
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 const ll INF = 1e15;	//Change if needed
