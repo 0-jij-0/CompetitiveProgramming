@@ -15,5 +15,4 @@ int main() {
 		}
 		cout << x << '\n';
 	}
-	cin.ignore(2); return 0;
 }

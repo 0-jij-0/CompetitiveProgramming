@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -25,8 +23,7 @@ struct graph {
 		edges.emplace_back(u, v, w);
 	}
 
-	//Check if Cycle is reachable if given some destination (switch to vector)
-	ll bellman_ford(int src, int dst) { //returns negative weight cycle
+	ll bellman_ford(int src, int dst) { 
 		vector<ll> d(n, 1ll << 50);
 		int x; d[src] = 0;
 		for (int i = 0; i < n; i++) {
@@ -63,6 +60,4 @@ int main() {
 		if (x == 1ll << 60) { cout << "broken heart" << '\n'; }
 		else { cout << x << '\n'; }
 	}
-
-	cin.ignore(2); return 0;
 }

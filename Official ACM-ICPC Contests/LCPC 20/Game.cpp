@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 
 vector<int> v;
@@ -21,5 +19,4 @@ int main() {
 		while (cur != 0) { ok = !ok; cur = pref[cur - 1]; }
 		cout << (ok ? "Mike" : "Jack") << '\n';
 	}
-	cin.ignore(2); return 0;
 }

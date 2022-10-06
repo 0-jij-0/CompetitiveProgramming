@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 
 vector<vector<int>> v;
@@ -22,5 +20,4 @@ int main() {
 	}
 
 	cout << (ok ? "YES" : "NO") << '\n';
-	cin.ignore(2); return 0;
 }

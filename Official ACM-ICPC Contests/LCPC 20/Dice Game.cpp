@@ -3,16 +3,16 @@ using namespace std;
 typedef long long ll;
 const ll mod = 1000 * 1000 * 1000 + 7;
 
-inline ll power(ll x, ll n) {
+ll power(ll x, ll n) {
 	ll res = 1;
 	for (; n; n >>= 1, x = (x * x) % mod)
 		if (n & 1) res = (res * x) % mod;
 	return res;
 }
 
-inline ll modInv(ll x) { return power(x, mod - 2); }
+ll modInv(ll x) { return power(x, mod - 2); }
 
-inline ll geomSum(ll f, ll q, ll k) {
+ll geomSum(ll f, ll q, ll k) {
 	ll num = (power(q, k) - 1 + mod) % mod;
 	ll denum = (q - 1 + mod) % mod;
 	ll frac = num * modInv(denum) % mod;
@@ -34,6 +34,4 @@ int main() {
 
 		cout << geomSum(win, draw, m) << '\n';
 	}
-
-	cin.ignore(2); return 0;
 }

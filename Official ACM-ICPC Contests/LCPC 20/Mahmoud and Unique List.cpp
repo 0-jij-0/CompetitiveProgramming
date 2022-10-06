@@ -1,8 +1,4 @@
-#include <iostream>
-#include <map>
-#include <vector>
-#include <algorithm>
-#include <sstream>
+#include <bits/stdc++.h>
 using namespace std;
 
 vector<string> res;
@@ -56,5 +52,4 @@ int main() {
 		string w = ""; minWords(root, w);
 		for (auto& x : res) cout << x << '\n';
 	}
-	cin.ignore(2); return 0;
 }

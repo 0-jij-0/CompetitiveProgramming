@@ -1,5 +1,4 @@
-#include <iostream>
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
 
 string s;
@@ -19,5 +18,4 @@ int main() {
 	if (cur >= k) { c = s[i]; }
 	if (c == '0') { cout << "NO" << '\n'; }
 	else { cout << "YES " << c << '\n'; }
-	cin.ignore(2); return 0;
 }
