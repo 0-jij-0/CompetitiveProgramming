@@ -3,7 +3,7 @@
 Accepted solutions to the [CSES Problem Set](https://cses.fi/problemset/), written in C++ by [0-jij-0](https://cses.fi/user/16768). 
 
 | Problem Section       | Number Solved |
-|-----------------------|:-------------:|
+|:---------------------:|:-------------:|
 | Introductory Problems |     19/19     |
 | Sorting and Searching |     35/35     |
 | Dynamic Programming   |     19/19     |
@@ -20,6 +20,10 @@ Accepted solutions to the [CSES Problem Set](https://cses.fi/problemset/), writt
 # Table of Contents
 
 ## Introductory Problems
+
+<details>
+    <summary>Click Here to Expand</summary>
+
 1. [Weird Algorithm](/CSES%20Problem%20Set/01%20-%20Introductory%20Problems/Weird%20Algorithm.cpp)
 1. [Missing Number](/CSES%20Problem%20Set/01%20-%20Introductory%20Problems/Missing%20Number.cpp)
 1. [Repetitions](/CSES%20Problem%20Set/01%20-%20Introductory%20Problems/Repetitions.cpp)
@@ -40,7 +44,15 @@ Accepted solutions to the [CSES Problem Set](https://cses.fi/problemset/), writt
 1. [Digit Queries](/CSES%20Problem%20Set/01%20-%20Introductory%20Problems/Digit%20Queries.cpp)
 1. [Grid Paths](/CSES%20Problem%20Set/01%20-%20Introductory%20Problems/Grid%20Paths%20I.cpp)
 
+</details>
+
+<br/><br/>
+
 ## Sorting and Searching
+
+<details>
+    <summary>Click Here to Expand</summary>
+
 1. [Distinct Numbers](/CSES%20Problem%20Set/02%20-%20Sorting%20and%20Searching/Distinct%20Numbers.cpp)
 1. [Apartments](/CSES%20Problem%20Set/02%20-%20Sorting%20and%20Searching/Apartments.cpp)
 1. [Ferris Wheel](/CSES%20Problem%20Set/02%20-%20Sorting%20and%20Searching/Ferris%20Wheel.cpp)
@@ -77,7 +89,14 @@ Accepted solutions to the [CSES Problem Set](https://cses.fi/problemset/), writt
 1. [Movie Festival II](/CSES%20Problem%20Set/02%20-%20Sorting%20and%20Searching/Movie%20Festival%20II.cpp)
 1. [Maximum Subarray Sum II](/CSES%20Problem%20Set/02%20-%20Sorting%20and%20Searching/Maximum%20Subarray%20Sum%20II.cpp)
 
+</details>
+
+<br/><br/>
+
 ## Dynamic Programming
+
+<details>
+    <summary>Click Here to Expand</summary>
 
 1. [Dice Combinations](/CSES%20Problem%20Set/03%20-%20Dynamic%20Programming/Dice%20Combinations.cpp)
 1. [Minimizing Coins](/CSES%20Problem%20Set/03%20-%20Dynamic%20Programming/Minimizing%20Coins.cpp)
@@ -99,7 +118,14 @@ Accepted solutions to the [CSES Problem Set](https://cses.fi/problemset/), writt
 1. [Counting Tilings](/CSES%20Problem%20Set/03%20-%20Dynamic%20Programming/Counting%20Tilings.cpp)
 1. [Counting Numbers](/CSES%20Problem%20Set/03%20-%20Dynamic%20Programming/Counting%20Numbers.cpp)
 
+</details>
+
+<br/><br/>
+
 ## Graph Algorithms
+
+<details>
+    <summary>Click Here to Expand</summary>
 
 1. [Counting Rooms](/CSES%20Problem%20Set/04%20-%20Graph%20Algorithms/Counting%20Rooms.cpp)
 1. [Labyrinth](/CSES%20Problem%20Set/04%20-%20Graph%20Algorithms/Labyrinth.cpp)
@@ -138,7 +164,14 @@ Accepted solutions to the [CSES Problem Set](https://cses.fi/problemset/), writt
 1. [School Dance](/CSES%20Problem%20Set/04%20-%20Graph%20Algorithms/School%20Dance.cpp)
 1. [Distinct Routes](/CSES%20Problem%20Set/04%20-%20Graph%20Algorithms/Distinct%20Routes%20I.cpp)
 
+</details>
+
+<br/><br/>
+
 ## Range Queries
+
+<details>
+    <summary>Click Here to Expand</summary>
 
 1. [Static Range Sum Queries](/CSES%20Problem%20Set/05%20-%20Range%20Queries/Static%20Range%20Sum%20Queries.cpp)
 1. [Static Range Minimum Queries](/CSES%20Problem%20Set/05%20-%20Range%20Queries/Static%20Range%20Minimum%20Queries.cpp)
@@ -160,7 +193,14 @@ Accepted solutions to the [CSES Problem Set](https://cses.fi/problemset/), writt
 1. [Polynomial Queries](/CSES%20Problem%20Set/05%20-%20Range%20Queries/Polynomial%20Queries.cpp)
 1. [Range Queries and Copies](/CSES%20Problem%20Set/05%20-%20Range%20Queries/Range%20Queries%20and%20Copies.cpp)
 
+</details>
+
+<br/><br/>
+
 ## Tree Algorithms
+
+<details>
+    <summary>Click Here to Expand</summary>
 
 1. [Subordinates](/CSES%20Problem%20Set/06%20-%20Tree%20Algorithms/Subordinates.cpp)
 1. [Tree Matching](/CSES%20Problem%20Set/06%20-%20Tree%20Algorithms/Tree%20Matching.cpp)
@@ -179,7 +219,14 @@ Accepted solutions to the [CSES Problem Set](https://cses.fi/problemset/), writt
 1. [Fixed-Length Paths I](/CSES%20Problem%20Set/06%20-%20Tree%20Algorithms/Fixed%20Length%20Paths%20I.cpp)
 1. [Fixed-Length Paths II](/CSES%20Problem%20Set/06%20-%20Tree%20Algorithms/Fixed%20Length%20Paths%20II.cpp)
 
+</details>
+
+<br/><br/>
+
 ## Mathematics
+
+<details>
+    <summary>Click Here to Expand</summary>
 
 1. [Josephus Queries](/CSES%20Problem%20Set/07%20-%20Mathematics/Josephus%20Queries.cpp)
 1. [Exponentiation](/CSES%20Problem%20Set/07%20-%20Mathematics/Exponentiation%20I.cpp)
@@ -213,7 +260,14 @@ Accepted solutions to the [CSES Problem Set](https://cses.fi/problemset/), writt
 1. [Grundy's Game](/CSES%20Problem%20Set/07%20-%20Mathematics/Grundy's%20Game.cpp)
 1. [Another Game](/CSES%20Problem%20Set/07%20-%20Mathematics/Another%20Game.cpp)
 
+</details>
+
+<br/><br/>
+
 ## String Algorithms
+
+<details>
+    <summary>Click Here to Expand</summary>
 
 1. [Word Combinations](/CSES%20Problem%20Set/08%20-%20String%20Algorithms/Word%20Combinations.cpp)
 1. [String Matching](/CSES%20Problem%20Set/08%20-%20String%20Algorithms/String%20Matching.cpp)
@@ -233,8 +287,14 @@ Accepted solutions to the [CSES Problem Set](https://cses.fi/problemset/), writt
 1. [Substring Order II](/CSES%20Problem%20Set/08%20-%20String%20Algorithms/Substring%20Order%20II.cpp)
 1. [Substring Distribution](/CSES%20Problem%20Set/08%20-%20String%20Algorithms/Substring%20Distribution.cpp)
 
+</details>
+
+<br/><br/>
 
 ## Geometry
+
+<details>
+    <summary>Click Here to Expand</summary>
 
 1. [Point Location Test](/CSES%20Problem%20Set/09%20-%20Geometry/Point%20Location%20Test.cpp)
 1. [Line Segment Intersection](/CSES%20Problem%20Set/09%20-%20Geometry/Line%20Segment%20Intersection.cpp)
@@ -244,7 +304,14 @@ Accepted solutions to the [CSES Problem Set](https://cses.fi/problemset/), writt
 1. [Minimum Euclidean Distance](/CSES%20Problem%20Set/09%20-%20Geometry/Minimum%20Euclidean%20Distance.cpp)
 1. [Convex Hull](/CSES%20Problem%20Set/09%20-%20Geometry/Convex%20Hull.cpp)
 
+</details>
+
+<br/><br/>
+
 ## Advanced Techniques
+
+<details>
+    <summary>Click Here to Expand</summary>
 
 1. [Meet in the Middle](/CSES%20Problem%20Set/10%20-%20Advanced%20Techniques/Meet%20in%20the%20Middle.cpp)
 1. [Hamming Distance](/CSES%20Problem%20Set/10%20-%20Advanced%20Techniques/Hamming%20Distance.cpp)
@@ -271,7 +338,14 @@ Accepted solutions to the [CSES Problem Set](https://cses.fi/problemset/), writt
 1. [Task Assignment](/CSES%20Problem%20Set/10%20-%20Advanced%20Techniques/Task%20Assignment.cpp)
 1. [Distinct Routes II](/CSES%20Problem%20Set/10%20-%20Advanced%20Techniques/Distinct%20Routes%20II.cpp)
 
+</details>
+
+<br/><br/>
+
 ## Additional Problems
+
+<details>
+    <summary>Click Here to Expand</summary>
 
 1. [Shortest Subsequence](/CSES%20Problem%20Set/11%20-%20Additional%20Problems/Shortest%20Subsequence.cpp)
 1. [Counting Bits](/CSES%20Problem%20Set/11%20-%20Additional%20Problems/Counting%20Bits.cpp)
@@ -350,3 +424,5 @@ Accepted solutions to the [CSES Problem Set](https://cses.fi/problemset/), writt
 1. Functional Graph Distribution
 1. New Flight Routes
 1. Grid Path Construction
+
+</details>
