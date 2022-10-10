@@ -1,9 +1,4 @@
-#include <iostream>
-#include <string>
-#include <map>
-#include <set>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -80,6 +75,4 @@ int main() {
 	string s; cin >> s;
 	vector<int> SA, lcp; suffArray(s, SA, lcp);
 	cout << numOfDifSubstr(s, SA, lcp) << '\n';
-
-	cin.ignore(2); return 0;
 }

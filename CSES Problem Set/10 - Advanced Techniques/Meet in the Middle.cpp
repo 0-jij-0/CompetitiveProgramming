@@ -1,8 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <map>
-#include <unordered_map>
+#include <bits/stdc++.h>
 using namespace std;
 using ll = long long;
 
@@ -32,5 +28,5 @@ int main() {
 	unordered_map<int, int> m2; generate(m2, v, n >> 1, n - 1);
 	ll res = m1[x] + m2[x]; for (auto y : m2)
 		res += ((ll)y.second * (ll)m1[x - y.first]);
-	cout << res << '\n'; cin.ignore(2); return 0;
+	cout << res << '\n';
 }

@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <queue>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 ll INF = 1ll << 40;
@@ -73,6 +70,5 @@ int main() {
 		int u, v, c; cin >> u >> v >> c;
 		u--; v--; g.add_edge(u, v, c);
 	}
-	cout << g.maxflow(0, n - 1) << endl;
-	cin.ignore(2); return 0;
+	cout << g.maxflow(0, n - 1) << '\n';
 }

@@ -1,5 +1,4 @@
-#include <iostream>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 
 int dp[501][501];
@@ -19,6 +18,5 @@ int main() {
 			for (int k = 1; k <= j / 2; k++)
 				dp[i][j] = dp[j][i] = min(dp[i][j], 1 + dp[i][k] + dp[i][j - k]);
 		}
-	cout << dp[a][b] << endl;
-	cin.ignore(2); return 0;
+	cout << dp[a][b] << '\n';
 }

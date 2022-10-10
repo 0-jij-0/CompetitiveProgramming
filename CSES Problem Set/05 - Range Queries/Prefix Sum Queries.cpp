@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -64,6 +62,4 @@ int main() {
 		if (t == 1) { st.update(--a, b); continue; }
 		cout << st.query(--a, --b).maxPref << '\n';
 	}
-
-	cin.ignore(2); return 0;
 }

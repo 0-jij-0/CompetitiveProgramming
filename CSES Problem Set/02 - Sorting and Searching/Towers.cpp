@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <set>
+#include <bits/stdc++.h>
 using namespace std;
 
 vector<int> v; multiset<int> s;
@@ -12,6 +10,5 @@ int main() {
 		if (it == s.end()) { s.insert(x); continue; }
 		s.erase(it); s.insert(x);
 	}
-	cout << s.size() << endl;
-	cin.ignore(2); return 0;
+	cout << s.size() << '\n';
 }

@@ -13,5 +13,4 @@ int main() {
 		}
 		cout << (res ? "first" : "second") << '\n';
 	}
-	cin.ignore(2); return 0;
 }

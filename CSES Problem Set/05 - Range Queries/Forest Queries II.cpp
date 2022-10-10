@@ -1,7 +1,4 @@
-#include <vector>
-#include <string>
-#include <assert.h>
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -57,6 +54,4 @@ int main() {
 			cout << ft.query(i1, j1, i2, j2) << '\n';
 		}
 	}
-
-	cin.ignore(2); return 0;
 }

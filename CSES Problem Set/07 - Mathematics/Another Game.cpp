@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 
 vector<int> v;
@@ -15,6 +13,4 @@ int main() {
 		bool b = count(v.begin(), v.end(), 1);
 		cout << (b ? "first" : "second") << '\n';
 	}
-
-	cin.ignore(2); return 0;
 }

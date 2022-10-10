@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <numeric>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct node {
@@ -109,5 +106,4 @@ int main() {
 		cur = nextCur;
 	}
 	cout << Treap->val << '\n';
-	cin.ignore(2); return 0;
 }

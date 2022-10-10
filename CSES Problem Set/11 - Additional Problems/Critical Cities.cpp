@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <numeric>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct graph {
@@ -99,6 +96,5 @@ int main() {
 	}
 	sort(res.begin(), res.end());
 	cout << res.size() << '\n';
-	for (auto& x : res) cout << x + 1 << ' '; 
-	cout << '\n';
+	for (auto& x : res) cout << x + 1 << ' '; cout << '\n';
 }

@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <assert.h>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -37,7 +35,6 @@ int main() {
 			a--; ft.update(a, -v[a]);
 			ft.update(a, v[a] = b);
 		}
-		else { cout << ft.query(--a, --b) << endl; }
+		else { cout << ft.query(--a, --b) << '\n'; }
 	}
-	cin.ignore(2); return 0;
 }

@@ -1,8 +1,4 @@
-#include <iostream>
-#include <string>
-#include <vector>
-#include <algorithm>
-#include <numeric>
+#include <bits/stdc++.h>
 using namespace std;
 
 vector<int> countingSortStable(vector<int>& p, vector<int>& c) {
@@ -66,5 +62,4 @@ int main() {
 	string s; cin >> s;
 	vector<int> res = distribution(s);
 	for (auto& x : res) cout << x << ' '; cout << '\n';
-	cin.ignore(2); return 0;
 }

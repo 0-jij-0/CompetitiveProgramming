@@ -1,8 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <queue>
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct edge {
@@ -51,5 +47,4 @@ int main() {
 	cout << res.size() - 1 << '\n';
 	for (int i = 1; i < (int)res.size(); i++)
 		cout << res[i - 1] + 1 << ' ' << res[i] + 1 << '\n';
-	cin.ignore(2); return 0;
 }

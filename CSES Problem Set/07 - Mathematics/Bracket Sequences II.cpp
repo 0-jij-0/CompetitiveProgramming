@@ -1,6 +1,4 @@
-#include <iostream>
-#include <string>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 const ll mod = 1000 * 1000 * 1000 + 7;
@@ -40,5 +38,4 @@ int main() {
 	ll scale = ((k + 1) * power(n + k + 1, mod - 2)) % mod;
 	ll res = (scale * choose(2 * n + k, n)) % mod;
 	cout << res << '\n';
-	cin.ignore(2); return 0;
 }

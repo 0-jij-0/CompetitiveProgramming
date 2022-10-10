@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -70,5 +68,4 @@ int main() {
 		int b = st2.query(0, k) - (n - 1 - k);
 		cout << min(a, b) << '\n';
 	}
-	cin.ignore(2); return 0;
 }

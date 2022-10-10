@@ -1,5 +1,4 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -12,7 +11,6 @@ int main() {
 	}
 	while (q--) {
 		int a, b; cin >> a >> b;
-		cout << v[b] - v[a - 1] << endl;
+		cout << v[b] - v[a - 1] << '\n';
 	}
-	cin.ignore(2); return 0;
 }

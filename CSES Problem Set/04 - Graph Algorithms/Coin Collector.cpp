@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -82,7 +80,5 @@ int main() {
 	for (edge &e : g.edges)	G.add_edge(scc[e.u], scc[e.v]);
 	for (int i = 0; i < n; i++) C[scc[i]] += c[i];
 	for (int i = 0; i < t; i++) longestPath(G, i);
-	cout << *max_element(lp.begin(), lp.end()) << endl;
-
-	cin.ignore(2); return 0;
+	cout << *max_element(lp.begin(), lp.end()) << '\n';
 }

@@ -13,5 +13,4 @@ int main() {
 	int n; cin >> n;
 	cout << (1 << n) - 1 << '\n';
 	Hanoi(1, 2, 3, n);
-	cin.ignore(2); return 0;
 }

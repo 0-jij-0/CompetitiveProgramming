@@ -15,5 +15,5 @@ int main() {
 		ll len = (choose2(r + 1) - choose2(i) + mod) % mod;
 		res = (res + c * len) % mod; i = r;
 	}
-	cout << res << endl; cin.ignore(2); return 0;
+	cout << res << '\n';
 }

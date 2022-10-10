@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <tuple>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 const int MIN = -1000000, MAX = 1000000;

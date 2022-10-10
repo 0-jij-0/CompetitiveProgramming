@@ -1,5 +1,4 @@
-#include <iostream>
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
 const int mod = 1000 * 1000 * 1000 + 7;
 
@@ -17,5 +16,4 @@ int main() {
 	}
 
 	cout << sum << '\n';
-	cin.ignore(2); return 0;
 }

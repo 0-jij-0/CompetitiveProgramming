@@ -1,7 +1,4 @@
-#include <iostream>
-#include <string>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 
 vector<string> grayCode(int n) {
@@ -18,5 +15,4 @@ int main() {
 	int n; cin >> n;
 	vector<string> v = grayCode(n);
 	for (auto& x : v) cout << x << '\n';
-	cin.ignore(2); return 0;
 }

@@ -1,9 +1,6 @@
 #pragma GCC target("popcnt")
 
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <bitset>
+#include <bits/stdc++.h>
 using namespace std;
  
 struct edge {
@@ -32,7 +29,7 @@ struct graph {
 		vector<int> visited(n, false), ans;
 		for (int i = 0; i < n; ++i)
 			if (!visited[i]) { topSortDFS(i, visited, ans); }
-		reverse(ans.begin(), ans.end()); return move(ans);
+		reverse(ans.begin(), ans.end()); return ans;
 	}
 };
  
@@ -56,6 +53,4 @@ int main() {
 	}
  
 	for (auto& x : dp) cout << x.count() << ' '; cout << '\n';
- 
-	cin.ignore(2); return 0;
 }

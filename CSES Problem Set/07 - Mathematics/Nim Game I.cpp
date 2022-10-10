@@ -8,5 +8,4 @@ int main() {
 		while (n--) { int x; cin >> x; res ^= x; }
 		cout << (res ? "first" : "second") << '\n';
 	}
-	cin.ignore(2); return 0;
 }

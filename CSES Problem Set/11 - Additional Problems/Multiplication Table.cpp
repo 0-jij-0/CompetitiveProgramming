@@ -1,5 +1,4 @@
-#include <iostream>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -23,5 +22,4 @@ ll find_middle() {
 
 int main() {
 	cin >> n; cout << find_middle() << '\n';
-	cin.ignore(2); return 0;
 }

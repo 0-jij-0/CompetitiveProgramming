@@ -1,5 +1,4 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -27,6 +26,5 @@ ll findMinMaxSum() {
 int main() {
 	cin >> n >> k; v.resize(n);
 	for (auto &x : v) { cin >> x; }
-	cout << findMinMaxSum() << endl;
-	cin.ignore(2); return 0;
+	cout << findMinMaxSum() << '\n';
 }

@@ -1,8 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <queue>
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct edge {
@@ -41,10 +37,10 @@ void bfs() {
 			parent[v] = edge(cur, v, d[i]); q.push({ v, b }); visited[v] = true;
 		}
 	}
-	if (dest == -1) { cout << "NO" << endl; return; }
-	cout << "YES" << endl; string res = "";
+	if (dest == -1) { cout << "NO\n"; return; }
+	cout << "YES\n"; string res = "";
 	while (dest != source) { res.push_back(parent[dest].c); dest = parent[dest].u; }
-	reverse(res.begin(), res.end()); cout << res.size() << endl << res << endl;
+	reverse(res.begin(), res.end()); cout << res.size() << '\n' << res << '\n';
 }
 
 int main() {
@@ -54,5 +50,5 @@ int main() {
 	cin >> n >> m; v.resize(n);
 	for (auto &x : v) { cin >> x; }
 
-	bfs(); cin.ignore(2); return 0;
+	bfs();
 }

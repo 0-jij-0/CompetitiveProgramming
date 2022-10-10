@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -10,5 +8,5 @@ int main() {
 	int cur = 0; ll res = 0;
 
 	for (auto &x : v) { cur = max(cur, x); res += cur - x; }
-	cout << res << endl; cin.ignore(2); return 0;
+	cout << res << '\n';
 }

@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 
 vector<pair<int, int>> v;
@@ -13,5 +11,5 @@ int main() {
 		if (x.second < cur) { continue; }
 		res++; cur = x.first;
 	}
-	cout << res << endl; cin.ignore(2); return 0;
+	cout << res << '\n';
 }

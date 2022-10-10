@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <iomanip>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 typedef double ld;
 
@@ -22,5 +19,4 @@ int main() {
 			res += ((inv + 0.0) / (v[i] + 0.0)) / (v[j] + 0.0);
 		}
 	cout << fixed << setprecision(6) << res << '\n';
-	cin.ignore(2); return 0;
 }

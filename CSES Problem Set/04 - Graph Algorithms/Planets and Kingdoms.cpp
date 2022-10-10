@@ -1,5 +1,4 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct edge {
@@ -57,7 +56,7 @@ struct graph {
 				component.clear(); t++;
 			}
 		}
-		return move(res);
+		return res;
 	}
 };
 
@@ -72,6 +71,5 @@ int main() {
 	}
 	int t = 1; vector<int> res = g.SCC(t);
 	cout << t - 1 << '\n';
-	for (auto &x : res) { cout << x << ' '; }
-	cout << '\n'; cin.ignore(2); return 0;
+	for (auto &x : res) cout << x << ' '; cout << '\n'; 
 }

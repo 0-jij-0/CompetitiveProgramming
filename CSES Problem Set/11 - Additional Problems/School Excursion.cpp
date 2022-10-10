@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <numeric>
-#include <bitset>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct DSU {
@@ -43,6 +40,4 @@ int main() {
 
 	for (int i = 1; i <= n; i++)
 		cout << dp[i]; cout << '\n';
-
-	cin.ignore(2); return 0;
 }

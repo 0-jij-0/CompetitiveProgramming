@@ -1,5 +1,4 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -18,5 +17,5 @@ int main() {
 	for (auto &x : first) { cout << x << ' '; }
 	cout << '\n' << second.size() << '\n';
 	for (auto &x : second) { cout << x << ' '; }
-	cout << '\n'; cin.ignore(2); return 0;
+	cout << '\n';
 }

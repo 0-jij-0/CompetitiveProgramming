@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <map>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -35,5 +32,5 @@ int main() {
 			dp[i] = max(dp[i], dp[v[j].s - 1] + v[j].r); j++;
 		}
 	}
-	cout << dp.back() << endl; cin.ignore(2); return 0;
+	cout << dp.back() << '\n';
 }

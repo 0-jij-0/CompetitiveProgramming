@@ -6,5 +6,5 @@ int main() {
 	for (int i = 0; i < n - 1; i++) {
 		int x; cin >> x; res ^= x ^ (i + 1);
 	}
-	cout << (res ^ n) << endl; cin.ignore(2); return 0;
+	cout << (res ^ n) << '\n';
 }

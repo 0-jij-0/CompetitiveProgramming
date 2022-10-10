@@ -1,5 +1,4 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct edge {
@@ -52,7 +51,7 @@ struct graph {
 				component.clear(); t++;
 			}
 		}
-		return move(scc);
+		return scc;
 	}
 
 	vector<int> TWOSAT() {
@@ -76,7 +75,6 @@ int main() {
 		u--; v--; g.add_edge(u, v, c1 == '+', c2 == '+');
 	}
 	vector<int> res = g.TWOSAT();
-	if (res.empty()) { cout << "IMPOSSIBLE" << '\n'; return 0; }
+	if (res.empty()) { cout << "IMPOSSIBLE\n"; return 0; }
 	for (auto &x : res) cout << (x ? '+' : '-') << ' '; cout << '\n';
-	cin.ignore(2); return 0;
 }

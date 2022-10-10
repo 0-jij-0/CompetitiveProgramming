@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <set>
+#include <bits/stdc++.h>
 using namespace std;
 
 set<int> res;
@@ -34,7 +31,7 @@ struct graph {
 
 			artPointDFS(e.v, cur, vis, low, tin, timer);
 			low[cur] = min(low[cur], low[e.v]); c++;
-			if (p != -1 && low[e.v] >= tin[cur]) res.insert(cur); //isArtPoint(cur);		Might run this for node cur multiple times (once for each child)
+			if (p != -1 && low[e.v] >= tin[cur]) res.insert(cur); 
 		}
 		if (p == -1 && c > 1) res.insert(cur);
 	}
@@ -59,6 +56,4 @@ int main() {
 
 	g.findArtPoints(); cout << res.size() << '\n';
 	for (auto& x : res) cout << x + 1 << ' '; cout << '\n';
-
-	cin.ignore(2); return 0;
 }

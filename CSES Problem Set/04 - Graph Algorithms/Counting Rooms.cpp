@@ -1,8 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <queue>
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct edge {
@@ -60,5 +56,5 @@ int main() {
 			for (int k = 0; k < 2; k++) connect(g, i, j, i + dx[k], j + dy[k]);
 		}
 	int res = 0; for (int i = 0; i < n * m; i++) { res += g.bfs(i, visited); }
-	cout << res << '\n'; cin.ignore(2); return 0;
+	cout << res << '\n';
 }

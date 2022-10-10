@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 
 vector<int> res(64, 0);
@@ -62,6 +60,4 @@ int main() {
 
 	for (int i = 0; i < 64; i++)
 		cout << res[i] << " \n"[i % 8 == 7];
-
-	cin.ignore(2); return 0;
 }

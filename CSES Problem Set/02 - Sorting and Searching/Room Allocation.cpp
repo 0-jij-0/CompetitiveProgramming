@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <set>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct cust { 
@@ -36,5 +33,5 @@ int main() {
 	}
 	cout << *max_element(res.begin(), res.end()) << '\n';
 	for (auto &x : res) { cout << x << ' '; }
-	cout << '\n'; cin.ignore(2); return 0;
+	cout << '\n';
 }

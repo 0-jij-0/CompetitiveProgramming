@@ -1,5 +1,4 @@
-#include <iostream>
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
 
 string minCyclicShift(string s) {
@@ -18,6 +17,4 @@ int main() {
 
     string s; cin >> s;
     cout << minCyclicShift(s) << '\n';
-
-    cin.ignore(2); return 0;
 }

@@ -1,8 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <numeric>
-#include <queue>
-#include <set>
+#include <bits/stdc++.h>
 using namespace std;
 
 vector<int> c, res;
@@ -66,6 +62,5 @@ int main() {
 		u--; v--; g.add_edge(u, v);
 	}
 	DSU dsu(n); g.dfs(0, -1, dsu);
-	for (auto &x : res) cout << x << ' ';
-	cout << '\n'; cin.ignore(2); return 0;
+	for (auto &x : res) cout << x << ' '; cout << '\n';
 }

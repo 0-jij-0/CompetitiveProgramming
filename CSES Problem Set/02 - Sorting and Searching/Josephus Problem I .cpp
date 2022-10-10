@@ -1,5 +1,4 @@
-#include <iostream>
-#include <set>
+#include <bits/stdc++.h>
 using namespace std;
 
 set<int> s;
@@ -15,7 +14,5 @@ int main() {
 		nextCur++; if (nextCur == s.end()) { nextCur = s.begin(); }
 		cur = *nextCur; s.erase(it);
 	}
-
 	cout << *s.begin() << '\n'; 
-	cin.ignore(2); return 0;
 }

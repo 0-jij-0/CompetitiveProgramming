@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <set>
+#include <bits/stdc++.h>
 using namespace std;
 
 vector<int> v;
@@ -14,5 +11,5 @@ int main() {
 	while (i <= j)
 		if (v[i] + v[j] > X) { j--; res++; }
 		else { i++; j--; res++; }
-	cout << res << endl; cin.ignore(2); return 0;
+	cout << res << '\n'; 
 }

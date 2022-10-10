@@ -1,5 +1,4 @@
-#include <iostream>
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -17,5 +16,4 @@ int main() {
 	int q; cin >> q; while (q--) {
 		ll k; cin >> k; cout << query(--k) << '\n';
 	}
-	cin.ignore(2); return 0;
 }

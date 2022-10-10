@@ -1,9 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <numeric>
-#include <queue>
-#include <unordered_set>
-#include <unordered_map>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct DSU {
@@ -55,5 +50,4 @@ int main() {
 	}
 
 	for (auto &x : res) cout << x << ' '; cout << '\n';
-	cin.ignore(2); return 0;
 }

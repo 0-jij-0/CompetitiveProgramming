@@ -1,7 +1,4 @@
-#include <iostream>
-#include <string>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 
 vector<int> prefixFunction(string& s) {
@@ -28,5 +25,4 @@ int main() {
 
 	reverse(res.begin(), res.end());
 	for (auto& x : res) cout << x + 1 << ' '; cout << '\n';
-	cin.ignore(2); return 0;
 }

@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <queue>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 ll INF = 1ll << 40;
@@ -84,7 +81,7 @@ struct graph {
 			for (int i = 1; i < N; i++) { FLOW[v[i - 1]][v[i]] -= f; }
 			res.push_back(v); v.clear();
 		}
-		return move(res);
+		return res;
 	}
 };
 
@@ -102,7 +99,5 @@ int main() {
 		cout << x.size() << endl; for (auto &y : x)
 			cout << y + 1 << ' '; cout << '\n';
 	}
-
-	cin.ignore(2); return 0;
 }
 

@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 const ll INF = 1ll << 60;
@@ -46,7 +44,6 @@ int main() {
 	}
 	g.allPairsShortestPath(); while (q--) {
 		int u, v; cin >> u >> v;
-		cout << (g.D[--u][--v] == INF ? -1 : g.D[u][v]) << endl;
+		cout << (g.D[--u][--v] == INF ? -1 : g.D[u][v]) << '\n';
 	}
-	cin.ignore(2); return 0;
 }

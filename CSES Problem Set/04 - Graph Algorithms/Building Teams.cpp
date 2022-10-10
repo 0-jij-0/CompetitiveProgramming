@@ -1,9 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <set>
-#include <queue>
-#include <stack>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct edge {
@@ -46,7 +41,6 @@ int main() {
 	}
 	vector<int> team(n, 0), vis(n, 0); bool ok = true;
 	for (int i = 0; i < n; i++) if (!vis[i] && !g.dfs(i, vis, team)) { ok = false; break; }
-	if (!ok) { cout << "IMPOSSIBLE" << '\n'; return 0; }
-	for (auto &x : team) { cout << 1 + x << ' '; }
-	cout << '\n'; cin.ignore(2); return 0;
+	if (!ok) { cout << "IMPOSSIBLE\n"; return 0; }
+	for (auto &x : team) cout << 1 + x << ' '; cout << '\n';
 }

@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct edge {
@@ -38,12 +36,12 @@ int main() {
 	}
 	vector<int> lp(n, 0); lp.back() = 1;
 	for (int i = 0; i < n; i++) g.longestPath(i, lp);
-	if (lp[0] < 0) { cout << "IMPOSSIBLE" << endl; return 0; }
-	int i = 0; cout << lp[0] << endl;
+	if (lp[0] < 0) { cout << "IMPOSSIBLE\n"; return 0; }
+	int i = 0; cout << lp[0] << '\n';
 	while (lp[i] != 1) {
 		cout << i + 1 << ' ';
 		for (edge &e : g.nodes[i].edges)
 			if (lp[e.v] == lp[i] - 1) { i = e.v; break; }
 	}
-	cout << i + 1 << '\n'; cin.ignore(2); return 0;
+	cout << i + 1 << '\n';
 }

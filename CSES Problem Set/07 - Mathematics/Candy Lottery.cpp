@@ -1,7 +1,4 @@
-#include <iostream>
-#include <cmath>
-#include <iomanip>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long double ld;
 
@@ -13,6 +10,5 @@ int main() {
 		v[i] -= sum; sum += v[i];
 	}
 	for (int i = 0; i < k; i++) { res += (i + 1) * v[i]; }
-	cout << fixed << setprecision(6) << res << endl;
-	cin.ignore(2); return 0;
+	cout << fixed << setprecision(6) << res << '\n';
 }

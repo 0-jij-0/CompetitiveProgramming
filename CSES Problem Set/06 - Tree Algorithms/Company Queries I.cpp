@@ -1,5 +1,4 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 const int SZ = 20;
 
@@ -11,7 +10,6 @@ int main() {
 
 	int n, q; cin >> n >> q;
 	for (int i = 0; i < SZ; i++) { anc[i].resize(n, -2); }
-
 	for (int i = 1; i < n; i++) { cin >> anc[0][i]; anc[0][i]--; }
 	for (int i = 1; i < SZ; i++) for (int u = 0; u < n; u++)
 		anc[i][u] = (anc[i - 1][u] == -2) ? -2 : anc[i - 1][anc[i - 1][u]];
@@ -25,5 +23,4 @@ int main() {
 		}
 		cout << v + 1 << '\n';
 	}
-	cin.ignore(2); return 0;
 }

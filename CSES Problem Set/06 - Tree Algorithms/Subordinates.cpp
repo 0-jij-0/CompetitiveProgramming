@@ -1,5 +1,4 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
 vector<int> res;
@@ -40,6 +39,5 @@ int main() {
 		int p; cin >> p; p--; g.add_edge(i, p);
 	} g.subordinates(0, -1);
 
-	for (auto &x : res) cout << x << ' ';
-	cout << '\n'; cin.ignore(2); return 0;
+	for (auto &x : res) cout << x << ' '; cout << '\n'; 
 }

@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 
 vector<pair<int, int>> res;
@@ -59,6 +57,4 @@ int main() {
 
 	g.findBridges(); cout << res.size() << '\n';
 	for (auto& x : res)	cout << x.first << ' ' << x.second << '\n';
-
-	cin.ignore(2); return 0;
 }

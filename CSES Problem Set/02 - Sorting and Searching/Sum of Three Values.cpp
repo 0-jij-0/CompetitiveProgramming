@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -18,9 +16,8 @@ int main() {
 			if (v[i].first + v[j].first + v[k].first < x) { j++; continue; }
 			if (v[i].first + v[j].first + v[k].first > x) { k--; continue; }
 			cout << v[i].second << ' ' << v[j].second << ' ' << v[k].second << '\n';
-			cin.ignore(2); return 0;
+			return 0;
 		}
 	}
-	cout << "IMPOSSIBLE" << endl;
-	cin.ignore(2); return 0;
+	cout << "IMPOSSIBLE\n";
 }

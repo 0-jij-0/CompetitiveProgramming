@@ -1,5 +1,4 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 const ll mod = 1000 * 1000 * 1000 + 7;
@@ -42,5 +41,5 @@ int main() {
 	if (n <= 6) { cout << (1 << (n - 1)) << endl; return 0; }
 	M = M ^ (n - 6); for (int i = 0; i < 6; i++) 
 		res = (res + (1ll << (5 - i)) * M[0][i]) % mod;
-	cout << res << endl; cin.ignore(2); return 0;
+	cout << res << '\n';
 }

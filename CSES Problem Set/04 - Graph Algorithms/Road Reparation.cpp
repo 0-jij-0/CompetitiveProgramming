@@ -1,8 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <numeric>
-#include <algorithm>
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -56,6 +52,5 @@ int main() {
 	}
 	vector<edge> v = g.KruskalMST(); ll res = 0;
 	for (auto &x : v) { res += x.w; }
-	cout << (v.empty() ? "IMPOSSIBLE" : to_string(res)) << endl; 
-	cin.ignore(2); return 0;
+	cout << (v.empty() ? "IMPOSSIBLE" : to_string(res)) << '\n'; 
 }

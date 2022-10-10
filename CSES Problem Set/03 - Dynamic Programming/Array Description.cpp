@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 const int mod = 1000 * 1000 * 1000 + 7;
 
@@ -25,5 +23,5 @@ int main() {
 	fill(dp[0], dp[0] + 100001 * 101, -1);
 	int res = 0; if (v[0] != 0) { res = count(1, v[0]); }
 	else for (int i = 1; i <= m; i++) { res = (res + count(1, i)) % mod; }
-	cout << res << endl; cin.ignore(2); return 0;
+	cout << res << '\n';
 }

@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct edge {
@@ -60,8 +58,7 @@ int main() {
 		int u, v; cin >> u >> v;
 		u--; v--; g.add_edge(u, v);
 	}
-	if (g.find_cycle()) { cout << "IMPOSSIBLE" << '\n'; return 0; }
+	if (g.find_cycle()) { cout << "IMPOSSIBLE\n"; return 0; }
 	vector<int> res = g.topologicalSort();
-	for (auto &x : res) { cout << x + 1 << ' '; }
-	cout << '\n'; cin.ignore(2); return 0;
+	for (auto &x : res) cout << x + 1 << ' '; cout << '\n';
 }

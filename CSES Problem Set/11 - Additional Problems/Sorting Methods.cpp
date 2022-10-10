@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -12,7 +10,7 @@ struct FT {
 		for (++i; i <= n; i += i & -i) { vals[i] += x; }
 	}
 
-	ll query(int i) const { // sum from 0 ... i
+	ll query(int i) const { 
 		ll sum = 0;
 		for (++i; i; i -= i & -i) { sum += vals[i]; }
 		return sum;
@@ -68,6 +66,4 @@ int main() {
 	cout << swapAny() << ' ';
 	cout << moveToAny() << ' ';
 	cout << moveToFront() << '\n';
-
-	cin.ignore(2); return 0;
 }

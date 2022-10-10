@@ -1,8 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <stack>
-#include <algorithm>
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
 
 vector<string> v;
@@ -39,5 +35,4 @@ int main() {
     cin >> n >> m; v.resize(n);
     for (auto& x : v) { cin >> x; }
     cout << maximalRectangle() << '\n';
-    cin.ignore(2); return 0;
 }

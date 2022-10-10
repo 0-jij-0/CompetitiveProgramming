@@ -1,10 +1,4 @@
-#include <iostream>
-#include <string>
-#include <map>
-#include <set>
-#include <vector>
-#include <cmath>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -48,6 +42,4 @@ int main() {
 	vector<int> Z = ZAlgo(s), P = prefixFunction(s);
 	for (auto &x : Z) cout << x << ' '; cout << '\n';
 	for (auto &x : P) cout << x << ' '; cout << '\n';
-
-	cin.ignore(2); return 0;
 }

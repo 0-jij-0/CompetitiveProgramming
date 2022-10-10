@@ -1,7 +1,4 @@
-#include <iostream>
-#include <set>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 
 vector<int> v; multiset<int> s;
@@ -15,6 +12,5 @@ int main() {
 		auto a = s.lower_bound(x - k); if (a == s.end()) { break; }
 		if (*a <= x + k) { s.erase(a); res++; }
 	}
-	cout << res << endl;
-	cin.ignore(2); return 0;
+	cout << res << '\n';
 }

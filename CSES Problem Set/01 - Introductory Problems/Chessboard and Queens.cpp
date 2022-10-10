@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
 
 vector<int> column(8), diag1(16), diag2(16);
@@ -14,8 +12,8 @@ void placeQueens(int i) {
 			column[j] = diag1[i + j] = diag2[i - j + 8] = 0;
 		}
 }
+
 int main() {
 	for (auto &x : v) { cin >> x; }
 	placeQueens(0); cout << res << endl;
-	cin.ignore(2); return 0;
 }

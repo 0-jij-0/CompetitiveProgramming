@@ -1,5 +1,4 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
 vector<int> preorder, inorderIDX;
@@ -26,5 +25,4 @@ int main() {
 	}
 
 	postorder(0, n - 1, 0, n - 1);
-	cin.ignore(2); return 0;
 }

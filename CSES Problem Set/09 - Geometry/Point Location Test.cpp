@@ -23,6 +23,4 @@ int main() {
 		if (crossProduct == 0) { cout << "TOUCH\n"; }
 		else { cout << (crossProduct < 0 ? "RIGHT" : "LEFT") << '\n'; }
 	}
-
-	cin.ignore(2); return 0;
 }

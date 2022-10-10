@@ -1,5 +1,4 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -91,6 +90,4 @@ int main() {
 		}
 		else { versions.push_back(versions[k]); }
 	}
-
-	cin.ignore(2); return 0;
 }

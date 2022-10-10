@@ -1,8 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <queue>
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct edge {
@@ -32,10 +28,10 @@ struct graph {
 				parent[e.v] = e;
 			}
 		}
-		if (parent[d].c == '0') { cout << "NO" << endl; return; }
-		cout << "YES" << endl; string res = "";
+		if (parent[d].c == '0') { cout << "NO\n"; return; }
+		cout << "YES\n"; string res = "";
 		while (d != s) { res.push_back(parent[d].c); d = parent[d].u; }
-		reverse(res.begin(), res.end()); cout << res.size() << endl << res << endl;
+		reverse(res.begin(), res.end()); cout << res.size() << '\n' << res << '\n';
 	}
 };
 
@@ -65,5 +61,5 @@ int main() {
 			for (int k = 0; k < 4; k++) 
 				connect(g, i, j, i + dx[k], j + dy[k], ch[k]);
 		}
-	g.bfs(s, e); cin.ignore(2); return 0;
+	g.bfs(s, e);
 }

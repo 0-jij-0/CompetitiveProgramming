@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -15,6 +13,5 @@ int main() {
 	for (int d = 2; d <= n; d++) for (int i = 0; i <= n - d; i++)
 		dp[d & 1][i] = max(v[i] - dp[(d & 1) ^ 1][i + 1], v[i + d - 1] - dp[(d & 1) ^ 1][i]);
 
-	cout << (dp[n & 1][0] + sum) / 2 << endl;
-	cin.ignore(2); return 0;
+	cout << (dp[n & 1][0] + sum) / 2 << '\n';
 }

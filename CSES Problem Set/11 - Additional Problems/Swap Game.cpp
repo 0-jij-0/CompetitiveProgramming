@@ -1,9 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <string>
-#include <array>
-#include <queue>
-#include <unordered_map>
+#include <bits/stdc++.h>
 using namespace std;
 
 string t = "";
@@ -45,5 +40,4 @@ int main() {
 	}
 
 	cout << bfs() << '\n';
-	cin.ignore(2); return 0;
 }

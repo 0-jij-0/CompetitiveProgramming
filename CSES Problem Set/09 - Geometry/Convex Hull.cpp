@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -59,6 +57,4 @@ int main() {
 	vector<Point> res = convexHullGrahamScan(P);
 	cout << res.size() << '\n'; for(auto &x : res)
 		cout << x.x << ' ' << x.y << '\n';
-
-	cin.ignore(2); return 0;
 }

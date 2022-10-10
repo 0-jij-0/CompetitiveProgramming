@@ -1,9 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <stack>
-#include <algorithm>
-#include <string>
-#include <numeric>
+#include <bits/stdc++.h>
 using namespace std;
 
 vector<string> v;
@@ -41,7 +36,7 @@ vector<vector<int>> countRectangles() {
 		partial_sum(res[i].rbegin(), res[i].rend(), res[i].rbegin());
 		partial_sum(res[i].rbegin(), res[i].rend(), res[i].rbegin());
 	}
-	return move(res);
+	return res;
 }
 
 int main() {
@@ -52,5 +47,4 @@ int main() {
 	for (auto& x : v) { cin >> x; }
 	vector<vector<int>> res = countRectangles();
 	for (auto &x : res) { for (auto &y : x) cout << y << ' '; cout << '\n'; }
-	cin.ignore(2); return 0;
 }

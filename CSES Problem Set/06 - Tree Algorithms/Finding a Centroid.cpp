@@ -1,5 +1,4 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct graph {
@@ -40,5 +39,4 @@ int main() {
 
 	g.subsizeDFS(0);
 	cout << g.findCentroid(0) + 1 << '\n';
-	cin.ignore(2); return 0;
 }

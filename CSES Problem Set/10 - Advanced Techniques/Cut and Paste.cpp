@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -66,5 +64,4 @@ int main() {
 	}
 
 	print(treap); cout << '\n';
-	cin.ignore(2); return 0;
 }

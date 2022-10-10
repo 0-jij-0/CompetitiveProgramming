@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <numeric>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -59,6 +56,4 @@ int main() {
 
 	ll res = dp[k & 1][n - 1]; for (int i = n - 1; i >= k - 1; i--)
 		res = min(res, dp[k & 1][i - 1] + prefCost(i, n - 1));
-
-	cout << res << '\n';
 }

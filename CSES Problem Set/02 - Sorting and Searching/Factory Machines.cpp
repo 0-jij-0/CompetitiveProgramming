@@ -1,5 +1,4 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -24,6 +23,5 @@ ll minTime() {
 int main() {
 	cin >> n >> T; v.resize(n);
 	for (auto &x : v) { cin >> x; }
-	cout << minTime() << endl;
-	cin.ignore(2); return 0;
+	cout << minTime() << '\n';
 }

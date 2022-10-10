@@ -1,8 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <numeric>
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
 
 string inverseBWT(string& BWT) {

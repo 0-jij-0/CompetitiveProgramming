@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 const ll INF = 1ll << 61;
@@ -41,6 +39,5 @@ int main() {
 		u--; v--; M[u][v] = min(M[u][v], c);
 	}
 	M = M ^ k; ll res = M[0].back();
-	cout << (res > 1e18 ? -1 : res) << endl;
-	cin.ignore(2); return 0;
+	cout << (res > 1e18 ? -1 : res) << '\n';
 }

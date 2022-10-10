@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <queue>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct edge {
@@ -49,5 +46,4 @@ int main() {
 
 	vector<int> res = g.sortedTopologicalSort();
 	for (auto& x : res) cout << x + 1 << ' '; cout << '\n';
-	cin.ignore(2); return 0;
 }

@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <string>
-#include <array>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 const ll mod = 1000 * 1000 * 1000 + 7;
@@ -42,5 +39,4 @@ int main() {
 	}
 
 	cout << dp[0] << '\n'; delete root;
-	cin.ignore(2); return 0;
 }

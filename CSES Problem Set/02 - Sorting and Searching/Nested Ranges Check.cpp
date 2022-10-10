@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <numeric>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -71,6 +68,4 @@ int main() {
 
 	for (auto& x : res1) cout << x << ' '; cout << '\n';
 	for (auto& x : res2) cout << x << ' '; cout << '\n';
-
-	cin.ignore(2); return 0;
 }

@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -76,5 +74,4 @@ int main() {
 	}
 
 	cout << T.centroidDecomposition() << '\n';
-	cin.ignore(2); return 0;
 }

@@ -1,8 +1,4 @@
-#include <iostream>
-#include <algorithm>
-#include <vector>
-#include <queue>
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 ll INF = 1ll << 40;

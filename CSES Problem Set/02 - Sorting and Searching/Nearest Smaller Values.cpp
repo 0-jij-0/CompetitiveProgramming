@@ -1,5 +1,4 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
 vector<int> v, res;
@@ -14,5 +13,5 @@ int main() {
 		res[i++] = j;
 	}
 	for (auto &x : res) { cout << x + 1 << ' '; }
-	cout << '\n'; cin.ignore(2); return 0;
+	cout << '\n';
 }

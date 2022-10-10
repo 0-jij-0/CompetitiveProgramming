@@ -1,5 +1,4 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -33,5 +32,4 @@ int main() {
 
 	P.points.back() = P.points.front();
 	cout << P.area() << '\n';
-	cin.ignore(2); return 0;
 }

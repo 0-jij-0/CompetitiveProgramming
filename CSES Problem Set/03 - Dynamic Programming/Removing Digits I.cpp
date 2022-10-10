@@ -1,5 +1,4 @@
-#include <iostream>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 
 int dp[10] = {0, 1, 1, 1, 1, 1, 1, 1, 1, 1};
@@ -13,5 +12,4 @@ int main() {
 		}
 	}
 	cout << dp[n % 10] << '\n';
-	cin.ignore(2); return 0;
 }

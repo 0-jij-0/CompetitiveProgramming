@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <queue>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 const ll INF = 1ll << 60;
@@ -33,7 +30,7 @@ struct graph {
 			for (edge &e : nodes[cur].edges) if (visited[e.v] != k)
 				pq.push({ dist[cur][visited[cur] - 1] + e.w, e.v });
 		}
-		return move(dist.back());
+		return dist.back();
 	}
 };
 
@@ -47,6 +44,5 @@ int main() {
 		u--; v--; g.add_edge(u, v, c);
 	}
 	vector<ll> v = g.dijkstra(0, k);
-	for (auto &x : v) cout << x << ' ';
-	cout << '\n'; cin.ignore(2); return 0;
+	for (auto &x : v) cout << x << ' '; cout << '\n'; 
 }

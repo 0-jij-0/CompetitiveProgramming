@@ -1,7 +1,4 @@
-#include <iostream>
-#include <string>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 
 string s, a, b;
@@ -16,8 +13,7 @@ int main() {
 		a += string(freq[i] / 2, i + 'A');
 		b += string(freq[i] / 2, i + 'A');
 	}
-	if (ok == -1) { cout << "NO SOLUTION" << endl; return 0; }
+	if (ok == -1) { cout << "NO SOLUTION\n"; return 0; }
 	if (n % 2) { a += string(freq[ok], ok + 'A'); }
-	reverse(b.begin(), b.end()); cout << a + b << endl;
-	cin.ignore(2); return 0;
+	reverse(b.begin(), b.end()); cout << a + b << '\n';
 }

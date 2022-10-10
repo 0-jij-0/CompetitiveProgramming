@@ -1,5 +1,4 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -54,6 +53,5 @@ int main() {
 		int u, v, w; cin >> u >> v >> w;
 		u--; v--; g.add_edge(u, v, -w);
 	}
-	cout << g.bellman_ford(0) << endl;
-	cin.ignore(2); return 0;
+	cout << g.bellman_ford(0) << '\n';
 }

@@ -1,5 +1,4 @@
-#include <iostream>
-#include <bitset>
+#include <bits/stdc++.h>
 using namespace std;
 
 const int N = 100001;
@@ -13,6 +12,4 @@ int main() {
 	cout << dp.count() - 1 << '\n';
 	for (int i = 1; i < N; i++)	if (dp[i]) 
 		cout << i << ' '; cout << '\n';
-
-	cin.ignore(2); return 0;
 }

@@ -1,6 +1,4 @@
-#include <iostream>
-#include <algorithm>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct edge {
@@ -94,5 +92,4 @@ int main() {
 	vector<pair<int, int>> res = g.vertexCover();
 	cout << res.size() << '\n';
 	for (auto &x : res) cout << x.first << ' ' << x.second << '\n';
-	cin.ignore(2); return 0;
 }

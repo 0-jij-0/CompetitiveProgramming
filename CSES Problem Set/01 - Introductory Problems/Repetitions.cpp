@@ -1,6 +1,4 @@
-#include <iostream>
-#include <algorithm>
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
 
 int main() {
@@ -10,6 +8,5 @@ int main() {
 		if (s[j] == s[i]) { j++; continue; }
 		res = max(res, j - i); i = j;
 	}
-	cout << max(res, j - i) << endl;
-	cin.ignore(2); return 0;
+	cout << max(res, j - i) << '\n';
 }

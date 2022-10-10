@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <map>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -15,5 +13,5 @@ int main() {
 		while (r != n && m.count(v[r])) { m[v[r++]]++; }
 		res += r - i; m[v[i]]--; if (m[v[i]] == 0) { m.erase(v[i]); }
 	}
-	cout << res << '\n'; cin.ignore(2); return 0;
+	cout << res << '\n';
 }

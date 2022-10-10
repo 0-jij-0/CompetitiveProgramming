@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 
 vector<int> v;
@@ -59,6 +57,5 @@ int main() {
 		res.push_back(st.query(k));
 		if (idx != -1) { st.update(idx, k); }
 	}
-	for (auto &x : res) { cout << x + 1 << ' '; }
-	cout << '\n'; cin.ignore(2); return 0;
+	for (auto &x : res) cout << x + 1 << ' '; cout << '\n';
 }

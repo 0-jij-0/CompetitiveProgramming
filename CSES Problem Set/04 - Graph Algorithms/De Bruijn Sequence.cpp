@@ -1,9 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <set>
-#include <queue>
-#include <stack>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct edge {
@@ -58,7 +53,7 @@ struct graph {
 		}
 		if (count(used.begin(), used.end(), false)) { return vector<int>(); }	//Not all edges were reachable
 		reverse(res.begin(), res.end());
-		return move(res);
+		return res;
 	}
 };
 
@@ -67,7 +62,7 @@ int main() {
 	cin.tie(0), cout.tie(0);
 
 	int n; cin >> n; int mask = (1 << (n - 1)) - 1;
-	if (n == 1) { cout << "01" << '\n'; return 0; }
+	if (n == 1) { cout << "01\n"; return 0; }
 	graph g(1 << (n - 1));
 	for (int i = 0; i < g.n; i++) {
 		g.add_edge(i, (i << 1) & mask);
@@ -77,5 +72,5 @@ int main() {
 	string ans(n - 1, '0'); int cur = 0;
 	for (int i = 1; i < (int)res.size(); i++)
 		ans.push_back('0' + (cur = res[i]) % 2);
-	cout << ans << endl; cin.ignore(2); return 0;
+	cout << ans << '\n';
 }

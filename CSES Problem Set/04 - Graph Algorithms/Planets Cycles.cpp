@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 
 //Graphs where each vertex has out degree exactly one
@@ -91,6 +89,5 @@ int main() {
 
     FunctionalGraph g(n, v, 19);
     for (int i = 0; i < n; i++) cout << g.pathLength(i) << ' ';
-
-    cout << '\n'; cin.ignore(2); return 0;
+    cout << '\n'; 
 }

@@ -1,5 +1,4 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
 vector<int> a, v;
@@ -35,5 +34,4 @@ int main() {
 		}
 		cout << res << '\n';
 	}
-	cin.ignore(2); return 0;
 }

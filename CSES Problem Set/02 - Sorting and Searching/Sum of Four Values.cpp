@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <map>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -16,13 +14,11 @@ int main() {
 			int rem = x - v[i] - v[j];
 			if (before.count(rem)) {
 				cout << before[rem].first << ' ' << before[rem].second
-					<< ' ' << i + 1 << ' ' << j + 1 << '\n';
-				cin.ignore(2); return 0;
+					<< ' ' << i + 1 << ' ' << j + 1 << '\n'; return 0;
 			}
 		}
 		for (int j = 0; j < i; j++)
 			before[v[j] + v[i]] = { j + 1, i + 1 };
 	}
-	cout << "IMPOSSIBLE" << endl;
-	cin.ignore(2); return 0;
+	cout << "IMPOSSIBLE\n";
 }

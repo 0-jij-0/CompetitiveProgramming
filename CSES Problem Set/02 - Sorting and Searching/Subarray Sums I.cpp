@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <numeric>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -14,5 +11,5 @@ int main() {
 	int res = binary_search(v.begin(), v.end(), x);
 	for (int i = 0; i < n; i++)
 		res += binary_search(v.begin() + i + 1, v.end(), x + v[i]);
-	cout << res << endl; cin.ignore(2); return 0;
+	cout << res << '\n';
 }

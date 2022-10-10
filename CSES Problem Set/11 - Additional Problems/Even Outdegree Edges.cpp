@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <queue>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct Graph {
@@ -53,6 +51,5 @@ int main() {
 		int u, v; cin >> u >> v;
 		g.addEdge(--u, --v);
 	}
-
 	g.directEdges();
 }

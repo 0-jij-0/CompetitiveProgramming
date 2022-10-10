@@ -1,6 +1,4 @@
-#include <iostream>
-#include <algorithm>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
 int dp[2][100001];
@@ -16,6 +14,5 @@ int main() {
 			int take = t < h[i - 1] ? -1 : s[i - 1] + dp[(i + 1) & 1][t - h[i - 1]];
 			dp[i & 1][t] = max({ t ? dp[i & 1][t - 1] : -1, dp[(i + 1) & 1][t], take });
 		}
-	cout << dp[n & 1][x] << endl;
-	cin.ignore(2); return 0;
+	cout << dp[n & 1][x] << '\n';
 }

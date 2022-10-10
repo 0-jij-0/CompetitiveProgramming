@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 
 vector<int> dp(1223, 0);
@@ -20,5 +18,4 @@ int main() {
 		if (n > 1222) { cout << "first" << '\n'; continue; }
 		cout << (dp[n] ? "first" : "second") << '\n';
 	}
-	cin.ignore(2); return 0;
 }

@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -59,8 +57,6 @@ int main() {
 	SegTree st(n); while (q--) {
 		int t, a, b; cin >> t >> a >> b;
 		if (t == 1) { st.update(--a, b); continue; }
-		cout << st.query(--a, --b) << endl;
+		cout << st.query(--a, --b) << '\n';
 	}
-
-	cin.ignore(2); return 0;
 }

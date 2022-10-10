@@ -1,9 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <set>
-#include <queue>
-#include <stack>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct edge {
@@ -50,13 +45,13 @@ struct graph {
 			}
 		}
 		if (count(used.begin(), used.end(), false)) { return vector<int>(); }
-		return move(res);
+		return res;
 	}
 };
 
 int main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
+	ios::sync_with_stdio(0);
+	cin.tie(0), cout.tie(0);
 
 	int n, m; cin >> n >> m; graph g(n);
 	for (int i = 0; i < m; i++) {
@@ -65,6 +60,5 @@ int main() {
 	}
 	vector<int> res = g.euler_undirected();
 	if (res.empty()) { cout << "IMPOSSIBLE\n"; return 0; }
-	for (auto &x : res) { cout << x + 1 << ' '; }
-	cout << '\n';
+	for (auto &x : res) cout << x + 1 << ' '; cout << '\n';
 }

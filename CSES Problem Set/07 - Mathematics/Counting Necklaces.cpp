@@ -27,5 +27,5 @@ int main() {
 	}
 
 	res = (res * power(n, mod - 2)) % mod;
-	cout << res << '\n'; cin.ignore(2); return 0;
+	cout << res << '\n';
 }

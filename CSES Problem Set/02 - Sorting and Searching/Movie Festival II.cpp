@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <set>
+#include <bits/stdc++.h>
 using namespace std;
 
 vector<pair<int, int>> v;
@@ -20,5 +17,4 @@ int main() {
 	}
 
 	cout << res << '\n';
-	cin.ignore(2); return 0;
 }

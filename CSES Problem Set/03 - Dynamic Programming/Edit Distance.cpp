@@ -1,6 +1,4 @@
-#include <iostream>
-#include <string>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 
 int dp[2][5001];
@@ -16,6 +14,5 @@ int main() {
 			dp[I][j] = min({ dp[I][j], 1 + dp[pI][j - 1], 1 + dp[I][j - 1], 1 + dp[pI][j] });
 		}
 	}
-	cout << dp[n & 1][m] << endl;
-	cin.ignore(2); return 0;
+	cout << dp[n & 1][m] << '\n';
 }

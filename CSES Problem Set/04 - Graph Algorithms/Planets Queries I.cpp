@@ -1,5 +1,4 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 const int SZ = 30;
 
@@ -26,5 +25,4 @@ int main() {
 		}
 		cout << v + 1 << '\n';
 	}
-	cin.ignore(2); return 0;
 }

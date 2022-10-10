@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <queue>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 const ll mod = 1000 * 1000 * 1000 + 7;
@@ -64,5 +61,4 @@ int main() {
 
 	g.dijkstra(0); node& N = g.nodes[n - 1];
 	cout << g.dist[n - 1] << ' ' << N.num << ' ' << N.miL << ' ' << N.maL << '\n';
-	cin.ignore(2); return 0;
 }

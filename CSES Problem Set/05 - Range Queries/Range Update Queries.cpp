@@ -1,5 +1,4 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -94,8 +93,6 @@ int main() {
 			int a, b, u; cin >> a >> b >> u;
 			st.update(--a, --b, u); continue;
 		}
-		int k; cin >> k; cout << st.query(k - 1, k - 1) << endl;
+		int k; cin >> k; cout << st.query(k - 1, k - 1) << '\n';
 	}
-
-	cin.ignore(2); return 0;
 }

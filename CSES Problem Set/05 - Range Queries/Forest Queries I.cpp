@@ -1,5 +1,4 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
 vector<vector<int>> v;
@@ -18,7 +17,6 @@ int main() {
 		if (x1) { res -= v[x1 - 1][y2]; }
 		if (y1) { res -= v[x2][y1 - 1]; }
 		if (x1 && y1) { res += v[x1 - 1][y1 - 1]; }
-		cout << res << endl;
+		cout << res << '\n';
 	}
-	cin.ignore(2); return 0;
 }

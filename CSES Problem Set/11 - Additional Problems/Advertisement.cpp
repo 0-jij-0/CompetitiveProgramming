@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <stack>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -17,6 +14,5 @@ int main() {
 			res = max(res, h * w);
 		} s.push(i);
 	}
-	cout << res << endl;
-	cin.ignore(2); return 0;
+	cout << res << '\n';
 }

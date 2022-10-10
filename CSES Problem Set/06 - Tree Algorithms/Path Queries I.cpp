@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <assert.h>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -76,5 +74,4 @@ int main() {
 			cout << ft.query(0, start[s]) << '\n';
 		}
 	}
-	cin.ignore(2); return 0;
 }

@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <queue>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 ll INF = 1ll << 40;
@@ -94,5 +91,4 @@ int main() {
 	vector<pair<int, int>> res = g.minCut(0, n - 1);
 	cout << res.size() << '\n'; for (auto &x : res) 
 		cout << x.first + 1 << ' ' << x.second + 1 << '\n';
-	cin.ignore(2); return 0;
 }

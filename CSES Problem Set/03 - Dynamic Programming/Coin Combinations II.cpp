@@ -1,6 +1,4 @@
-#include <iostream>
-#include <algorithm>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 const int mod = 1000 * 1000 * 1000 + 7;
@@ -18,6 +16,5 @@ int main() {
 				dp[i & 1][t] = (dp[i & 1][t] + dp[i & 1][t - v[i - 1]]) % mod;
 		}
 	}
-	cout << dp[n & 1][x] << endl;
-	cin.ignore(2); return 0;
+	cout << dp[n & 1][x] << '\n';
 }

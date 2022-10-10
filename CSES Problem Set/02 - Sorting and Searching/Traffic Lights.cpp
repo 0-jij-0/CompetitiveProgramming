@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <set>
+#include <bits/stdc++.h>
 using namespace std;
 
 set<int> s; multiset<int> L;
@@ -14,7 +12,6 @@ int main() {
 		auto l = it, r = ++it;
 		L.erase(L.find(*r - *l)); s.insert(p);
 		L.insert(p - *l); L.insert(*r - p);
-		cout << *L.rbegin() << endl;
+		cout << *L.rbegin() << '\n';
 	}
-	cin.ignore(2); return 0;
 }

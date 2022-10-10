@@ -1,8 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <complex>
-#include <algorithm>
-#include <cmath>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 typedef double ld;
@@ -65,6 +61,4 @@ int main() {
 	vector<ll> res = polyMult(freqA, freqB); 
 	for (int i = 2; i <= k << 1; i++)
 		cout << res[i] << ' '; cout << '\n';
-
-	cin.ignore(2); return 0;
 }

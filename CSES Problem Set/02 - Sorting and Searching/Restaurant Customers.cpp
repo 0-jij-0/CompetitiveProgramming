@@ -1,8 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <map>
-#include <algorithm>
-#include <numeric>
+#include <bits/stdc++.h>
 using namespace std;
 
 map<int, int> t;
@@ -16,6 +12,5 @@ int main() {
 	for (auto &x : t) { x.second = id++; }
 	for (auto &x : v) { freqTime[t[x.first]]++; freqTime[t[x.second] + 1]--; }
 	partial_sum(freqTime.begin(), freqTime.end(), freqTime.begin());
-	cout << *max_element(freqTime.begin(), freqTime.end()) << endl;
-	cin.ignore(2); return 0;
+	cout << *max_element(freqTime.begin(), freqTime.end()) << '\n';
 }

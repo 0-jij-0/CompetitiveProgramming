@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <queue>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 const ll INF = 1ll << 60;
@@ -56,6 +53,5 @@ int main() {
 		int u, v, c; cin >> u >> v >> c;
 		u--; v--; g.add_edge(u, v, c);
 	}
-	cout << g.dijkstra(0) << endl;
-	cin.ignore(2); return 0;
+	cout << g.dijkstra(0) << '\n';
 }

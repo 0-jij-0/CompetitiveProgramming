@@ -1,8 +1,4 @@
-#include <iostream>
-#include <iomanip>
-#include <algorithm>
-#include <vector>
-#include <cmath>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long double ld;
 
@@ -32,5 +28,5 @@ int main() {
 			pEmpty[a][b] += log2l(1.0 - prob(k, c, d, a, b));
 
 	ld res = 0.0; for (int i = 0; i < 64; i++) { res += exp2l(pEmpty[i / 8][i % 8]); }
-	cout << fixed << setprecision(6) << res << endl; cin.ignore(2); return 0;
+	cout << fixed << setprecision(6) << res << '\n';
 }

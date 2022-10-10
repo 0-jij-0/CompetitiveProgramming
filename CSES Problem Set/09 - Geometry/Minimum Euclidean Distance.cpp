@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <cmath>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -51,5 +48,4 @@ int main() {
 	sort(points.begin(), points.end());
 
 	cout << closestPair(points) << '\n';
-	cin.ignore(2); return 0;
 }

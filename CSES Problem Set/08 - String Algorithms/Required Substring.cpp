@@ -1,6 +1,4 @@
-#include <iostream>
-#include <string>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 const int K = 26;
 const char first = 'A';
@@ -80,5 +78,4 @@ int main() {
 		res = (res + dp[n][i][1]) % mod;
 
 	cout << res << '\n';
-	cin.ignore(2); return 0;
 }

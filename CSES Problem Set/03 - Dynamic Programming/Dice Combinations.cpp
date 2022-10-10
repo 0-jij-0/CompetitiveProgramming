@@ -1,5 +1,4 @@
-#include <iostream>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 const int mod = 1000 * 1000 * 1000 + 7;
 int dp[6] = { 1, 0, 0, 0, 0, 0 };
@@ -18,5 +17,4 @@ int main() {
 		sum = (sum + t) % mod;
 	}
 	cout << dp[n % 6] << '\n';
-	cin.ignore(2); return 0;
 }

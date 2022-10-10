@@ -1,9 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <complex>
-#include <algorithm>
-#include <cmath>
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 typedef double ld;
@@ -62,5 +57,4 @@ int main() {
 	vector<ll> res = polyMult(a, b);
 	for (int i = n; i < (n << 1) - 1; i++)
 		cout << res[i] << ' '; cout << '\n';
-	cin.ignore(2); return 0;
 }

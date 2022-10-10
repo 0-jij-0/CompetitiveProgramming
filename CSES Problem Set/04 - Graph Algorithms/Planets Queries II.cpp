@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 
 //Graphs where each vertex has out degree exactly one
@@ -86,6 +84,4 @@ int main() {
         int u, v; cin >> u >> v;
         cout << g.dist(--u, --v) << '\n';
     }
-
-    cin.ignore(2); return 0;
 }

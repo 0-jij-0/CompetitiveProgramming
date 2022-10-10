@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 
 int dp[200005][2];
@@ -53,5 +51,4 @@ int main() {
 	}
 	fill(dp[0], dp[0] + 200005 * 2, -1);
 	cout << g.treeMatching(0, -1, 0) << '\n';
-	cin.ignore(2); return 0;
 }

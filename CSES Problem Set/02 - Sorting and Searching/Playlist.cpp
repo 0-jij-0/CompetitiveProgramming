@@ -1,7 +1,4 @@
-#include <iostream>
-#include <algorithm>
-#include <vector>
-#include <set>
+#include <bits/stdc++.h>
 using namespace std;
 
 vector<int> v; multiset<int> s;
@@ -15,6 +12,5 @@ int main() {
 		res = max(res, j - i);
 		while (s.count(v[j])) { s.erase(s.find(v[i++])); }
 	}
-	cout << max(res, j - i) << endl;
-	cin.ignore(2); return 0;
+	cout << max(res, j - i) << '\n';
 }

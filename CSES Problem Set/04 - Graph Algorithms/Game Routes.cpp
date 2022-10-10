@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 const ll mod = 1000 * 1000 * 1000 + 7;
@@ -40,6 +38,5 @@ int main() {
 		u--; v--; g.add_edge(u, v);
 	}
 	vector<ll> res(n, -1); res.back() = 1;
-	cout << g.count(0, res) << endl;
-	cin.ignore(2); return 0;
+	cout << g.count(0, res) << '\n';
 }

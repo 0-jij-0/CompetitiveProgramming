@@ -1,8 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <queue>
-#include <algorithm>
-#include <numeric>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -20,7 +16,7 @@ vector<ll> slidingWindowMax(int k) {
 		while (!dq.empty() && v[i] > dq.back()) { dq.pop_back(); }
 		dq.push_back(v[i]); res.push_back(dq.front());
 	}
-	return move(res);
+	return res;
 }
 
 int main() {
@@ -32,13 +28,11 @@ int main() {
 	for (int i = n - 2; i >= 0; i--)
 		sufMax[i] = max(v[i], sufMax[i + 1]);
 	winMax = slidingWindowMax(b - a + 1);
-	//for (auto &x : v) { cout << x << ' '; } cout << '\n';
-	//for (auto &x : sufMax) { cout << x << ' '; } cout << '\n';
-	//for (auto &x : winMax) { cout << x << ' '; } cout << '\n';
+
 	int j = a; ll res = winMax[j - 1];
 	for(; j < n - (b - a + 1); j++)
 		res = max(res, winMax[j] - v[j - a]);
 	for (; j < n; j++)
 		res = max(res, sufMax[j] - v[j - a]);
-	cout << res << endl; cin.ignore(2); return 0;
+	cout << res << '\n';
 }

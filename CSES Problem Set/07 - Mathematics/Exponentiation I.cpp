@@ -15,5 +15,4 @@ int main() {
 		int a, b; cin >> a >> b;
 		cout << power(a, b) << endl;
 	}
-	cin.ignore(2); return 0;
 }

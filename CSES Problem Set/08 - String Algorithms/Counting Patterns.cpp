@@ -1,9 +1,4 @@
-#include <iostream>
-#include <string>
-#include <map>
-#include <set>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -92,6 +87,4 @@ int main() {
 		string t; cin >> t;
 		cout << countSubstr(s, t, SA) << '\n';
 	}
-
-	cin.ignore(2); return 0;
 }

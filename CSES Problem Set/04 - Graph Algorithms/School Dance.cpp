@@ -1,5 +1,4 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct edge {
@@ -9,17 +8,7 @@ struct edge {
 
 struct node { vector<edge> edges; node() {} };
 
-//Classic Problems:
-//Maximum Matching - Minimum Vertex Cover
-//Minimum Path Cover - Maximum Bipartite Clique
 struct bipartiteGraph {
-	//Matching: Set of edges that do not share a node
-	//Vertex Cover: Set of nodes that cover all edges
-	//Cut Capacity: Set of edges that disconnect source(L) from sink(R) upon removal
-	//Independent Set: Set of nodes not connected by edges
-
-	//Complement of vertex cover = independent Set
-	//Clique in graph = Independent Set in inverse Graph
 	vector<node> nodes; int n, m;
 	vector<bool> vis;
 	vector<int> unMatched, match;
@@ -43,10 +32,7 @@ struct bipartiteGraph {
 		return 0;
 	}
 
-	//In Bipartite Graphs (Konig's Theorem)
-	//Max Matching = Min Vertex Cover = Max Flow = Min Cut
-	//Min Path Cover = n - Max Matching
-	int maxMatching() { //With Greedy initialization
+	int maxMatching() {
 		int w = 0;
 		for (int x = 0; x < n; x++) {
 			if (match[x] != -1) { continue; }
@@ -80,5 +66,5 @@ int main() {
 		int a, b; cin >> a >> b;
 		a--; b--; g.add_edge(a, n + b);
 	}
-	g.printMaxMatching(); cin.ignore(2); return 0;
+	g.printMaxMatching();
 }

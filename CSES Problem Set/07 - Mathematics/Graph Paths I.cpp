@@ -1,5 +1,4 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 const ll mod = 1000 * 1000 * 1000 + 7;
@@ -32,7 +31,7 @@ struct Matrix {
 		Matrix res(n), a(v);
 		for (; x; x >>= 1, a = a * a)
 			if (x & 1) { res = res * a; }
-		return move(res);
+		return res;
 	}
 };
 
@@ -45,6 +44,5 @@ int main() {
 		int u, v; cin >> u >> v;
 		u--; v--; M[u][v]++;
 	}
-	cout << (M ^ k)[0].back() << endl;
-	cin.ignore(2); return 0;
+	cout << (M ^ k)[0].back() << '\n';
 }

@@ -1,7 +1,4 @@
-#include <iostream>
-#include <string>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -28,5 +25,4 @@ int main() {
 	string O = s.substr(cO - o[cO], o[cO] << 1 | 1);
 
 	cout << (E.size() < O.size() ? O : E) << '\n';
-	cin.ignore(2); return 0;
 }

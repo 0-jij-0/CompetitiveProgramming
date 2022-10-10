@@ -22,6 +22,4 @@ int main() {
 		if (res <= n) { cout << res << '\n'; continue; }
 		res -= n + 1; cout << (res << 1 | 1) << '\n';
 	}
-
-	cin.ignore(2); return 0;
 }

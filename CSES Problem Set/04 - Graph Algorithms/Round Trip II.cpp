@@ -1,9 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <set>
-#include <queue>
-#include <stack>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct edge {
@@ -47,11 +42,10 @@ int main() {
 	for (int i = 0; i < n; i++) if (!col[i])
 		if (x = g.dfs(i, -1, col, par), x != -1) { break; }
 
-	if (x == -1) { cout << "IMPOSSIBLE" << '\n'; return 0; }
+	if (x == -1) { cout << "IMPOSSIBLE\n"; return 0; }
 	vector<int> res(1, x); int y = par[x];
 	while (y != x) { res.push_back(y); y = par[y]; }
-	res.push_back(x); cout << res.size() << endl;
+	res.push_back(x); cout << res.size() << '\n';
 	reverse(res.begin(), res.end());
-	for (auto &x : res) { cout << x + 1 << ' '; }
-	cout << '\n'; cin.ignore(2); return 0;
+	for (auto &x : res) cout << x + 1 << ' '; cout << '\n';
 }

@@ -1,8 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <queue>
-#include <algorithm>
-#include <cmath>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -86,6 +82,5 @@ int main() {
 	} g.dfs(0, -1);
 	for (int i = 0; i < n; i++)
 		cout << g.nodes[i].s << ' ';
-
-	cout << '\n'; cin.ignore(2); return 0;
+	cout << '\n';
 }

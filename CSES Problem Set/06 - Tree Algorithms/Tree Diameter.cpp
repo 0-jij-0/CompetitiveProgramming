@@ -1,9 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <set>
-#include <queue>
-#include <stack>
+#include <bits/stdc++.h>
 using namespace std;
 
 vector<int> d;
@@ -52,5 +47,4 @@ int main() {
 	}
 	int f = g.bfs(0);
 	cout << d[g.bfs(f)] << '\n';
-	cin.ignore(2); return 0;
 }

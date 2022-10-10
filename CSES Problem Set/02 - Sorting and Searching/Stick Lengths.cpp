@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <numeric>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -13,6 +10,5 @@ int main() {
 	sort(v.begin(), v.end());
 	int med = v[n / 2];
 	for (auto &x : v) { x = abs(x - med); }
-	cout << accumulate(v.begin(), v.end(), 0ll) << endl;
-	cin.ignore(2); return 0;
+	cout << accumulate(v.begin(), v.end(), 0ll) << '\n';
 }

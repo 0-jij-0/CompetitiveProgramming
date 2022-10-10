@@ -1,5 +1,4 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 const int SVSZ = 1000009;
@@ -52,10 +51,7 @@ int main() {
 		for (int j = i; j < maxA; j += i)
 			multCount[i] += freq[j];
 
-	//for (int i = 0; i <= 20; i++) cout << freq[i] << ' '; cout << '\n';
-	//for (int i = 0; i <= 20; i++)cout << multCount[i] << ' '; cout << '\n';
-
 	ll res = 0; for (int i = 1; i < maxA; i++)
 		res += func[i] * multCount[i] * (multCount[i] - 1);
-	cout << (res >> 1) << '\n'; cin.ignore(2); return 0;
+	cout << (res >> 1) << '\n';
 }

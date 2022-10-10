@@ -1,8 +1,6 @@
 #pragma GCC target("popcnt")
 
-#include <iostream>
-#include <vector>
-#include <bitset>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -22,5 +20,4 @@ int main() {
 		}
 
 	cout << res << '\n';
-	cin.ignore(2); return 0;
 }

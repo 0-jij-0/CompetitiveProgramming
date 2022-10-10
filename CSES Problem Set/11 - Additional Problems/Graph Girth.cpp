@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <queue>
+#include <bits/stdc++.h>
 using namespace std;
 
 int res = 1 << 20;
@@ -51,6 +48,4 @@ int main() {
 	}
 
 	cout << (res == 1 << 20 ? -1 : res) << '\n';
-
-	cin.ignore(2); return 0;
 }

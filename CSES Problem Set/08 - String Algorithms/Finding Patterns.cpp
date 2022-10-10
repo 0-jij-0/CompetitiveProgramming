@@ -1,9 +1,4 @@
-#include <iostream>
-#include <string>
-#include <map>
-#include <set>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -83,6 +78,4 @@ int main() {
 		string t; cin >> t;
 		cout << (isSubstr(s, t, SA) ? "YES" : "NO") << '\n';
 	}
-
-	cin.ignore(2); return 0;
 }

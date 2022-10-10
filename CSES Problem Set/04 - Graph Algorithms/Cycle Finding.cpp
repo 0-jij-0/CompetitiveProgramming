@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -55,8 +53,7 @@ int main() {
 	}
 	for (int i = 1; i < n; i++) g.add_edge(0, i, 1ll << 50);
 	vector<int> cycle = g.bellman_ford(0);
-	if (cycle.empty()) { cout << "NO" << '\n'; return 0; }
-	cout << "YES" << endl;
-	for (auto &x : cycle) cout << x + 1 << ' '; cout << '\n';
-	cin.ignore(2); return 0;
+	if (cycle.empty()) { cout << "NO\n"; return 0; }
+	cout << "YES\n"; for (auto &x : cycle) 
+		cout << x + 1 << ' '; cout << '\n';
 }

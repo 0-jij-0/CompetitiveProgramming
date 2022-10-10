@@ -1,7 +1,4 @@
-#include <iostream>
-#include <string>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 const int p1 = 257, p2 = 619;
@@ -88,6 +85,4 @@ int main() {
 			cout << (st1.query(l, r) == st2.query(l, r) ? "YES" : "NO") << '\n';
 		}
 	}
-
-	cin.ignore(2); return 0;
 }

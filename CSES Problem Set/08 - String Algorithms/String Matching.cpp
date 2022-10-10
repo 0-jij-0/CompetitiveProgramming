@@ -1,7 +1,4 @@
-#include <string>
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 
 vector<int> prefixFunction(string& s) {
@@ -28,5 +25,4 @@ int main() {
 
 	string s, p; cin >> s >> p;
 	cout << stringMatch(s, p) << '\n';
-	cin.ignore(2); return 0;
 }

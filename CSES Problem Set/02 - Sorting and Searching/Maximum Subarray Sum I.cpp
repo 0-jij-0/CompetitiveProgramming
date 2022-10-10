@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -14,6 +12,5 @@ int main() {
 		cur += x; res = max(res, cur);
 		if (cur < 0) { cur = 0; }
 	}
-	cout << res << endl;
-	cin.ignore(2); return 0;
+	cout << res << '\n';
 }

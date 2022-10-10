@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <queue>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct Tree {
@@ -31,6 +28,28 @@ struct Tree {
 
 		res.resize(1 + levels[last]);
 		return res;
+	}
+
+	vector<int> diameterBFS(int u, bool getPath = false) {
+		vector<int> par(n, -1); par[u] = u;
+		queue<int> Q; Q.push(u); int last = u;
+
+		while (!Q.empty()) {
+			int cur = Q.front(); Q.pop();
+			last = cur; for (auto& e : nodes[cur])
+				if (par[e] == -1) { par[e] = cur; Q.push(e); }
+		}
+
+		if (!getPath) return { last };
+		vector<int> res(1, last);
+		while (par[last] != last)
+			res.push_back(last = par[last]);
+
+		return res;
+	}
+
+	vector<int> getDiameter() {
+		return diameterBFS(diameterBFS(0).front(), true);
 	}
 
 	static bool compareNames(const vector<int>& A, const vector<int>& B) {
@@ -90,6 +109,17 @@ struct Tree {
 
 		return ok && (curCannonicalNames[root1] == rhsCannonicalNames[root2]);
 	}
+
+	bool isomorphismTest(Tree& rhs) {
+		vector<int> curDiam = getDiameter();
+		vector<int> rhsDiam = rhs.getDiameter();
+		if (curDiam.size() != rhsDiam.size()) return false;
+
+		int K = (int)curDiam.size();
+		if (K & 1) return rootedIsomorphismTest(rhs, curDiam[K >> 1], rhsDiam[K >> 1]);
+		return rootedIsomorphismTest(rhs, curDiam[K >> 1], rhsDiam[K >> 1])
+			|| rootedIsomorphismTest(rhs, curDiam[K >> 1], rhsDiam[(K >> 1) - 1]);
+	}
 };
 
 int main() {
@@ -107,6 +137,6 @@ int main() {
 			T2.addEdge(--u, --v);
 		}
 
-		cout << (T1.rootedIsomorphismTest(T2, 0, 0) ? "YES" : "NO") << '\n';
+		cout << (T1.isomorphismTest(T2) ? "YES" : "NO") << '\n';
 	}
 }

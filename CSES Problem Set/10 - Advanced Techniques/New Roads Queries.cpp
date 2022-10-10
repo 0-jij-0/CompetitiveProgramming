@@ -1,9 +1,4 @@
-#include <iostream>
-#include <set>
-#include <vector>
-#include <numeric>
-#include <algorithm>
-#include <fstream>
+#include <bits/stdc++.h>
 using namespace std;
 
 int TIME = 0;
@@ -63,6 +58,4 @@ int main() {
 		int u, v; cin >> u >> v;
 		cout << dsu.query(--u, --v) << '\n';
 	}
-
-	cin.ignore(2); return 0;
 }

@@ -1,8 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <numeric>
-#include <functional>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -49,6 +45,5 @@ int main() {
 
 	int n; cin >> n; v.resize(n);
 	for (auto &x : v) { cin >> x; }
-	cout << BinaryTrie<int>().maxXorSubarray(v) << endl;
-	cin.ignore(2); return 0;
+	cout << BinaryTrie<int>().maxXorSubarray(v) << '\n';
 }

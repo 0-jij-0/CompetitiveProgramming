@@ -1,5 +1,4 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 const int mod = 1000 * 1000 * 1000 + 7;
 
@@ -23,5 +22,4 @@ int main() {
 				dp[e][mask | (1 << e)] = (dp[e][mask | (1 << e)] + dp[cur][mask]) % mod;
 	
 	cout << dp[n - 1][(1 << n) - 1] << '\n';
-	cin.ignore(2); return 0;
 }

@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <set>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -37,6 +35,5 @@ int main() {
 		med = k % 2 ? *hi.begin() : *lo.rbegin();
 		res[i - k + 1] = lo.size() * med - loS + hiS - hi.size() * med;
 	}
-	for (auto &x : res) { cout << x << ' '; }
-	cout << '\n'; cin.ignore(2); return 0;
+	for (auto &x : res) cout << x << ' '; cout << '\n';
 }

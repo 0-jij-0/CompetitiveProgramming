@@ -1,5 +1,4 @@
-#include <iostream>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -10,6 +9,5 @@ int main() {
 		res += (n / mask) * (mask >> 1);
 		res += max(0ll, n % mask - (mask >> 1));
 	}
-	cout << res << endl;
-	cin.ignore(2); return 0;
+	cout << res << '\n';
 }

@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <assert.h>
+#include <bits/stdc++.h>
 using namespace std;
 typedef int ll;
 
@@ -15,7 +12,7 @@ struct FT {
 	}
 
 	ll query(int i) const { // sum from 0 ... i
-		assert(i >= -1 && i < n); ll sum = 0;
+		ll sum = 0;
 		for (++i; i; i -= i & -i) { sum += vals[i]; }
 		return sum;
 	}
@@ -52,6 +49,4 @@ int main() {
 	}
 
 	for (auto& x : res) cout << x << '\n';
-
-	cin.ignore(2); return 0;
 }

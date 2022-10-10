@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 
 vector<int> p, res;
@@ -15,5 +13,5 @@ int main() {
 		res[i] = find(v.begin(), v.end(), false) - v.begin();
 	}
 	for (int i = 1; i <= n; i++) cout << (res[i] ? 'W' : 'L');
-	cout << '\n'; cin.ignore(2); return 0;
+	cout << '\n'; 
 }

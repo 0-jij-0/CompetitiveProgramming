@@ -1,6 +1,4 @@
-#include <iostream>
-#include <algorithm>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 typedef double ld;
@@ -68,6 +66,4 @@ int main() {
 		if (x == 2) { cout << "BOUNDARY" << '\n'; continue; }
 		cout << (x ? "INSIDE" : "OUTSIDE") << '\n';
 	}
-
-	cin.ignore(2); return 0;
 }

@@ -1,9 +1,4 @@
-#include <iostream>
-#include <string>
-#include <set>
-#include <queue>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 
 string s; vector<int> freq(26);

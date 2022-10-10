@@ -1,8 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <queue>
-#include <stack>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -36,7 +32,7 @@ struct graph {
 					pq.push({ dist[e.v], e.v });
 				}
 		}
-		return move(dist);
+		return dist;
 	}
 };
 
@@ -51,6 +47,5 @@ int main() {
 	}
 	vector<ll> res = g.dijkstra_sp(0);
 	for (auto &x : res) { cout << x << ' '; }
-
-	cout << '\n'; cin.ignore(2); return 0;
+	cout << '\n';
 }

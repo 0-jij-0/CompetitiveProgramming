@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <numeric>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -107,5 +104,5 @@ int main() {
 		if (idx - l < r - idx) { res += idx - l++; st.update(0, a[i] - 1, 1); }
 		else { res += r-- - idx; st.update(a[i] + 1, n - 1, -1); }
 	}
-	cout << res << endl; cin.ignore(2); return 0;
+	cout << res << '\n';
 }

@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 const ll mod = 1000 * 1000 * 1000 + 7;
@@ -39,6 +37,4 @@ int main() {
 		int n; cin >> n; Matrix M = G ^ (n - 1);
 		cout << (M[0][0] + M[0][1] + M[1][0] + M[1][1]) % mod << '\n';
 	}
-
-	cin.ignore(2); return 0;
 }

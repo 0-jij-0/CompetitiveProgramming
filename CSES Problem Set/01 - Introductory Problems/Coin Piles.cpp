@@ -6,8 +6,7 @@ int main() {
 	while (t--) {
 		int a, b; cin >> a >> b;
 		if (a > b) { swap(a, b); }
-		if (2 * a < b) { cout << "NO" << endl; continue; }
-		a -= (b - a); cout << (a % 3 ? "NO" : "YES") << endl;
+		if (2 * a < b) { cout << "NO\n"; continue; }
+		a -= (b - a); cout << (a % 3 ? "NO" : "YES") << '\n';
 	}
-	cin.ignore(2); return 0;
 }

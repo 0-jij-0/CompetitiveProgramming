@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <assert.h>
-#include <map>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 typedef pair<char, pair<int, int>> query;
@@ -18,7 +15,7 @@ struct FT {
 	}
 
 	ll query(int i) const { // sum from 0 ... i
-		assert(i >= -1 && i < n); ll sum = 0;
+		ll sum = 0;
 		for (++i; i; i -= i & -i) { sum += vals[i]; }
 		return sum;
 	}
@@ -52,5 +49,4 @@ int main() {
 			cout << ft.query(l, r) << '\n';
 		}
 	}
-	cin.ignore(2); return 0;
 }

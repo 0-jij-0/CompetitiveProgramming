@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -69,5 +66,5 @@ int main() {
 		int k; cin >> k; st.update(--k);
 		cout << st.query(0, n - 1).res << ' ';
 	}
-	cout << '\n'; cin.ignore(2); return 0;
+	cout << '\n';
 }

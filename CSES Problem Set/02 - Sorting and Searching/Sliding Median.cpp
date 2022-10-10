@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <set>
+#include <bits/stdc++.h>
 using namespace std;
 
 vector<int> v, res;
@@ -22,6 +20,5 @@ int main() {
 		while (hi.size() < lo.size()) { hi.insert(*lo.rbegin()); lo.erase(lo.find(*lo.rbegin())); }
 		res[i - k + 1] = k % 2 ? *hi.begin() : *lo.rbegin();
 	}
-	for (auto &x : res) { cout << x << ' '; }
-	cout << '\n'; cin.ignore(2); return 0;
+	for (auto &x : res) cout << x << ' '; cout << '\n';
 }

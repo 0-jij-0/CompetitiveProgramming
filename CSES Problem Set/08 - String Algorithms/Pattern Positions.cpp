@@ -1,9 +1,4 @@
-#include <iostream>
-#include <string>
-#include <map>
-#include <set>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -117,6 +112,4 @@ int main() {
 		string t; cin >> t;
 		cout << firstSubstr(s, t, SA, rmq) << '\n';
 	}
-
-	cin.ignore(2); return 0;
 }

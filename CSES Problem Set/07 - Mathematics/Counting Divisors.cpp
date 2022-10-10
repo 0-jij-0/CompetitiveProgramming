@@ -1,5 +1,4 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 const int SVSZ = 1000009;
@@ -46,5 +45,4 @@ int main() {
 	while (n--) {
 		int x; cin >> x; cout << func[x] << endl;
 	}
-	cin.ignore(2); return 0;
 }

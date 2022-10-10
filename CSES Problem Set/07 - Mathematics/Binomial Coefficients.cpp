@@ -1,5 +1,4 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 const ll mod = 1000 * 1000 * 1000 + 7;
@@ -21,7 +20,6 @@ int main() {
 	int n; cin >> n; while (n--) {
 		int a, b; cin >> a >> b;
 		ll res = (fact[a] * modInv((fact[b] * fact[a - b]) % mod)) % mod;
-		cout << res << endl;
+		cout << res << '\n';
 	}
-	cin.ignore(2); return 0;
 }

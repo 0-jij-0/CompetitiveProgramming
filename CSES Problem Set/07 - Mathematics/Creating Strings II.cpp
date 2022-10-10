@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 const ll mod = 1000 * 1000 * 1000 + 7;
@@ -22,6 +20,5 @@ int main() {
 	string s; cin >> s; int n = (int)s.size();
 	for (char &c : s) { d[c - 'a']++; }
 	ll inv = 1; for (int i = 0; i < 26; i++) inv = (inv * fact[d[i]]) % mod;
-	cout << (fact[n] * modInv(inv)) % mod << endl;
-	cin.ignore(2); return 0;
+	cout << (fact[n] * modInv(inv)) % mod << '\n';
 }

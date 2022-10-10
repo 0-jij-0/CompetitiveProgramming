@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <numeric>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct RMQ {
@@ -36,7 +33,6 @@ int main() {
 	for (auto &x : v) { cin >> x; }
 	RMQ rmq(v); while (q--) {
 		int a, b; cin >> a >> b;
-		cout << rmq.query(--a, --b) << endl;
+		cout << rmq.query(--a, --b) << '\n';
 	}
-	cin.ignore(2); return 0;
 }

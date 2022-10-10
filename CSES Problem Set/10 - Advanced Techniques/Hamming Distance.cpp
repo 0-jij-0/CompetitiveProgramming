@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
 
 vector<int> v;
@@ -21,5 +19,4 @@ int main() {
 		res = min(res, __builtin_popcount(v[i] ^ v[j]));
 
 	cout << res << '\n';
-	cin.ignore(2); return 0;
 }

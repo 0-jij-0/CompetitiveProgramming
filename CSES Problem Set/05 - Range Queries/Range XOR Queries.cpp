@@ -1,5 +1,4 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
 vector<int> v;
@@ -13,5 +12,4 @@ int main() {
 		int a, b; cin >> a >> b;
 		cout << (v[b] ^ v[a - 1]) << endl;
 	}
-	cin.ignore(2); return 0;
 }

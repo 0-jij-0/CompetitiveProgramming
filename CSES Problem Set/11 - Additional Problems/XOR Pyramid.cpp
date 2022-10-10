@@ -11,5 +11,4 @@ int main() {
 		if (!(i & (n - 1 - i))) { res ^= x; }
 	}
 	cout << res << '\n';
-	cin.ignore(2); return 0;
 }

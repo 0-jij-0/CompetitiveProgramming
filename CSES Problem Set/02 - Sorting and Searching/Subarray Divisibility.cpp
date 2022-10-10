@@ -1,8 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <numeric>
-#include <map>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -17,5 +13,5 @@ int main() {
 	ll res = freq[0]; for (auto &x : v) {
 		freq[x]--; res += freq[x];
 	}
-	cout << res << endl; cin.ignore(2); return 0;
+	cout << res << '\n';
 }

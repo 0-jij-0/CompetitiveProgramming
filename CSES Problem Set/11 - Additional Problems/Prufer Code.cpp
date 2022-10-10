@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <map>
-#include <set>
+#include <bits/stdc++.h>
 using namespace std;
 
 vector<pair<int, int>> tree;

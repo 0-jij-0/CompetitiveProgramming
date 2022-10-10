@@ -1,5 +1,4 @@
-#include <iostream>
-#include <set>
+#include <bits/stdc++.h>
 using namespace std;
 
 int main() {
@@ -12,5 +11,4 @@ int main() {
 		if (it == s.end()) { cout << -1 << '\n'; continue; }
 		cout << *it << '\n'; s.erase(it);
 	}
-	cin.ignore(2); return 0;
 }

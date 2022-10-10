@@ -1,5 +1,4 @@
-#include <iostream>
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -23,5 +22,4 @@ int main() {
 	B = string(20 - B.size(), '0') + B;
 	fill(dp[0][0][0][0], dp[0][0][0][0] + 21 * 10 * 2 * 2 * 2, -1);
 	cout << count(0, 0, 1, 1, 1) << '\n';
-	cin.ignore(2); return 0;
 }

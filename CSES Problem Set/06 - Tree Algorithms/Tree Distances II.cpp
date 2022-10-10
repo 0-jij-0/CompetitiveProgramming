@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -53,6 +51,4 @@ int main() {
 	} g.init(0, -1); g.dfs(0, -1, 0);
 
 	for (auto &x : res) cout << x << ' '; cout << '\n';
-
-	cin.ignore(2); return 0;
 }

@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 
 int dp[1000001];
@@ -16,5 +14,4 @@ int main() {
 			dp[i] = min(dp[i], 1 + dp[i - v[j]]);
 
 	cout << (dp[x] < (1 << 30) ? dp[x] : -1) << '\n';
-	cin.ignore(2); return 0;
 }

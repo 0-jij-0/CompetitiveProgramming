@@ -1,5 +1,4 @@
-#include <iostream>
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
 
 string s, m = "LRUD";
@@ -32,5 +31,4 @@ int count(int x, int y, int i, char prev) {
 int main() {
 	cin >> s; vis[0][0] = true;
 	cout << count(0, 0, 0, 0) << '\n';
-	cin.ignore(2); return 0;
 }

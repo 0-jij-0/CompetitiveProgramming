@@ -1,9 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <set>
-#include <queue>
-#include <stack>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct edge {
@@ -49,5 +44,4 @@ int main() {
 
 
 	if (m % 2) cout << leaves[K - 1] + 1 << ' ' << leaves[m - 1] + 1 << '\n';
-	cin.ignore(2); return 0;
 }

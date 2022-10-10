@@ -1,5 +1,4 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
 vector<int> v(1000001, 0);
@@ -17,5 +16,4 @@ int main() {
 		for (int j = i; j <= N; j += i)	res += v[j];
 		if (res > 1) { cout << i << '\n'; break; }
 	}
-	cin.ignore(2); return 0;
 }

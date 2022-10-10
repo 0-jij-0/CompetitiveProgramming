@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <numeric>
-#include <queue>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct DSU {
@@ -33,6 +30,4 @@ int main() {
 		if (dsu.merge(--u, --v)) { res--; c = max(c, dsu.size(u)); }
 		cout << res << ' ' << c << '\n';
 	}
-
-	cin.ignore(2); return 0;
 }
