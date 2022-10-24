@@ -14,8 +14,8 @@ Accepted solutions to the [CSES Problem Set](https://cses.fi/problemset/), writt
 | String Algorithms     |     17/17     |
 | Geometry              |      7/7      |
 | Advanced Techniques   |     24/24     |
-| Additional Problems   |     55/77     |
-| **Total**             |  **278/300**  |
+| Additional Problems   |     59/77     |
+| **Total**             |  **282/300**  |
 
 # Table of Contents
 
@@ -376,16 +376,16 @@ Accepted solutions to the [CSES Problem Set](https://cses.fi/problemset/), writt
 1. [XOR Pyramid](/CSES%20Problem%20Set/11%20-%20Additional%20Problems/XOR%20Pyramid.cpp)
 1. [Writing Numbers](/CSES%20Problem%20Set/11%20-%20Additional%20Problems/Writing%20Numbers.cpp)
 1. [String Transform](/CSES%20Problem%20Set/11%20-%20Additional%20Problems/String%20Transform.cpp)
-1. Letter Pair Move Game
+1. [Letter Pair Move Game](/CSES%20Problem%20Set/11%20-%20Additional%20Problems/Letter%20Pair%20Move%20Game.cpp)
 1. [Maximum Building I](/CSES%20Problem%20Set/11%20-%20Additional%20Problems/Maximum%20Building%20I.cpp)
 1. [Sorting Methods](/CSES%20Problem%20Set/11%20-%20Additional%20Problems/Sorting%20Methods.cpp)
 1. [Cyclic Array](/CSES%20Problem%20Set/11%20-%20Additional%20Problems/Cyclic%20Array.cpp)
-1. List of Sums
+1. [List of Sums](/CSES%20Problem%20Set/11%20-%20Additional%20Problems/List%20of%20Sums.cpp)
 1. [Increasing Array II](/CSES%20Problem%20Set/11%20-%20Additional%20Problems/Increasing%20Array%20II.cpp)
 1. Food Division
 1. [Bit Problem](/CSES%20Problem%20Set/11%20-%20Additional%20Problems/Bit%20Problem.cpp)
 1. [Swap Round Sorting](/CSES%20Problem%20Set/11%20-%20Additional%20Problems/Swap%20Round%20Sorting.cpp)
-1. Binary Subsequences
+1. [Binary Subsequences](/CSES%20Problem%20Set/11%20-%20Additional%20Problems/Binary%20Subsequences.cpp)
 1. [Tree Isomorphism I](/CSES%20Problem%20Set/11%20-%20Additional%20Problems/Tree%20Isomorphism%20I.cpp)
 1. [Counting Sequences](/CSES%20Problem%20Set/11%20-%20Additional%20Problems/Counting%20Sequences.cpp)
 1. [Critical Cities](/CSES%20Problem%20Set/11%20-%20Additional%20Problems/Critical%20Cities.cpp)
@@ -421,7 +421,7 @@ Accepted solutions to the [CSES Problem Set](https://cses.fi/problemset/), writt
 1. Grid Completion
 1. Creating Offices
 1. Permutations II
-1. Functional Graph Distribution
+1. [Functional Graph Distribution](/CSES%20Problem%20Set/11%20-%20Additional%20Problems/Functional%20Graph%20Distribution.cpp)
 1. New Flight Routes
 1. Grid Path Construction
 
