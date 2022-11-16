@@ -14,8 +14,8 @@ Accepted solutions to the [CSES Problem Set](https://cses.fi/problemset/), writt
 | String Algorithms     |     17/17     |
 | Geometry              |      7/7      |
 | Advanced Techniques   |     24/24     |
-| Additional Problems   |     59/77     |
-| **Total**             |  **282/300**  |
+| Additional Problems   |     61/77     |
+| **Total**             |  **284/300**  |
 
 # Table of Contents
 
@@ -382,7 +382,7 @@ Accepted solutions to the [CSES Problem Set](https://cses.fi/problemset/), writt
 1. [Cyclic Array](/CSES%20Problem%20Set/11%20-%20Additional%20Problems/Cyclic%20Array.cpp)
 1. [List of Sums](/CSES%20Problem%20Set/11%20-%20Additional%20Problems/List%20of%20Sums.cpp)
 1. [Increasing Array II](/CSES%20Problem%20Set/11%20-%20Additional%20Problems/Increasing%20Array%20II.cpp)
-1. Food Division
+1. [Food Division](/CSES%20Problem%20Set/11%20-%20Additional%20Problems/Food%20Division.cpp)
 1. [Bit Problem](/CSES%20Problem%20Set/11%20-%20Additional%20Problems/Bit%20Problem.cpp)
 1. [Swap Round Sorting](/CSES%20Problem%20Set/11%20-%20Additional%20Problems/Swap%20Round%20Sorting.cpp)
 1. [Binary Subsequences](/CSES%20Problem%20Set/11%20-%20Additional%20Problems/Binary%20Subsequences.cpp)
@@ -420,7 +420,7 @@ Accepted solutions to the [CSES Problem Set](https://cses.fi/problemset/), writt
 1. [Area of Rectangles](/CSES%20Problem%20Set/11%20-%20Additional%20Problems/Area%20of%20Rectangles.cpp)
 1. Grid Completion
 1. Creating Offices
-1. Permutations II
+1. [Permutations II](/CSES%20Problem%20Set/11%20-%20Additional%20Problems/Permutations%20II.cpp)
 1. [Functional Graph Distribution](/CSES%20Problem%20Set/11%20-%20Additional%20Problems/Functional%20Graph%20Distribution.cpp)
 1. New Flight Routes
 1. Grid Path Construction
