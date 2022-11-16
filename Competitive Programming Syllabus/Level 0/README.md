@@ -37,8 +37,8 @@ Before moving to the next step, starting our problem solving journey, [here](htt
 
 You should first familiarize yourself with the language you're gonna use to solve problems. Historically, C++ is the most popular language used in Competitive Programming, and also a personal preference, so I'll give you an overview of what we can do using C++. Of course, I assume you already know the language and will instead present to you how to use the STL Library in order to write clean and bug-free code:
 
-1. [STL Data Structures](/STL%20Data%20Structures.cpp): Here's a C++ file introducing various STL Containers/Data Structures.
-2. [STL Functions](/STL%20Functions.cpp): Here's a C++ file introducing various STL functions and their applications.
+1. [STL Data Structures](/Competitive%20Programming%20Syllabus/Level%200/STL%20Data%20Structures.cpp): Here's a C++ file introducing various STL Containers/Data Structures.
+2. [STL Functions](/Competitive%20Programming%20Syllabus/Level%200/STL%20Functions.cpp): Here's a C++ file introducing various STL functions and their applications.
 
 I will also include a list of blogs discussing various C++ tricks that you might find interesting:
 
