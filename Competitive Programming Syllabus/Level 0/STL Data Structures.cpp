@@ -3,6 +3,7 @@ using namespace std;
 typedef long long ll;
 
 int main() {
+	mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 	cin.tie(0)->sync_with_stdio(0);
 
 	///////////////////////////////////////////////////////////////////////////
@@ -135,6 +136,22 @@ int main() {
 
 	cout << "Map Pairs:\n"; for (auto& [key, val] : mp)
 		cout << key << ' ' << val << '\n'; cout << '\n';	
+
+	///////////////////////////////////////////////////////////////////////////
+
+	//string: vector of characters
+	cout << "string:\n";
+	string str1(3, 'a'); string str;
+	for (int i = 0; i < 10; i++) {
+		char c = i & 1 ? 'A' : 'a';
+		//Also has pop_back
+		str.push_back(c + (rng() % 6));
+	}
+	str += str1; cout << str << '\n';
+	cout << "Sequence 'aaa' first found at index " << str.find("aaa") << '\n';
+	cout << "First vowel found at " << str.find_first_of("aeiouAEIOU") << '\n';
+	cout << "Last vowel found at " << str.find_last_of("aeiouAEIOU") << '\n';
+	cout << "Substring starting at index 2 of length 5: " << str.substr(2, 5) << '\n';
 
 	///////////////////////////////////////////////////////////////////////////
 
