@@ -19,10 +19,8 @@ Accepted solutions to the [CSES Problem Set](https://cses.fi/problemset/), writt
 
 # Table of Contents
 
-## Introductory Problems
-
 <details>
-    <summary>Click Here to Expand</summary>
+    <summary><font size = "4">Introductory Problems</font></summary>
 
 1. [Weird Algorithm](/CSES%20Problem%20Set/01%20-%20Introductory%20Problems/Weird%20Algorithm.cpp)
 1. [Missing Number](/CSES%20Problem%20Set/01%20-%20Introductory%20Problems/Missing%20Number.cpp)
@@ -45,13 +43,9 @@ Accepted solutions to the [CSES Problem Set](https://cses.fi/problemset/), writt
 1. [Grid Paths](/CSES%20Problem%20Set/01%20-%20Introductory%20Problems/Grid%20Paths%20I.cpp)
 
 </details>
-
 <br/><br/>
-
-## Sorting and Searching
-
 <details>
-    <summary>Click Here to Expand</summary>
+    <summary><font size = "4">Sorting and Searching</font></summary>
 
 1. [Distinct Numbers](/CSES%20Problem%20Set/02%20-%20Sorting%20and%20Searching/Distinct%20Numbers.cpp)
 1. [Apartments](/CSES%20Problem%20Set/02%20-%20Sorting%20and%20Searching/Apartments.cpp)
@@ -90,13 +84,9 @@ Accepted solutions to the [CSES Problem Set](https://cses.fi/problemset/), writt
 1. [Maximum Subarray Sum II](/CSES%20Problem%20Set/02%20-%20Sorting%20and%20Searching/Maximum%20Subarray%20Sum%20II.cpp)
 
 </details>
-
 <br/><br/>
-
-## Dynamic Programming
-
 <details>
-    <summary>Click Here to Expand</summary>
+    <summary><font size = "4">Dynamic Programming</font></summary>
 
 1. [Dice Combinations](/CSES%20Problem%20Set/03%20-%20Dynamic%20Programming/Dice%20Combinations.cpp)
 1. [Minimizing Coins](/CSES%20Problem%20Set/03%20-%20Dynamic%20Programming/Minimizing%20Coins.cpp)
@@ -119,13 +109,9 @@ Accepted solutions to the [CSES Problem Set](https://cses.fi/problemset/), writt
 1. [Counting Numbers](/CSES%20Problem%20Set/03%20-%20Dynamic%20Programming/Counting%20Numbers.cpp)
 
 </details>
-
 <br/><br/>
-
-## Graph Algorithms
-
 <details>
-    <summary>Click Here to Expand</summary>
+    <summary><font size = "4">Graph Algorithms</font></summary>
 
 1. [Counting Rooms](/CSES%20Problem%20Set/04%20-%20Graph%20Algorithms/Counting%20Rooms.cpp)
 1. [Labyrinth](/CSES%20Problem%20Set/04%20-%20Graph%20Algorithms/Labyrinth.cpp)
@@ -165,13 +151,9 @@ Accepted solutions to the [CSES Problem Set](https://cses.fi/problemset/), writt
 1. [Distinct Routes](/CSES%20Problem%20Set/04%20-%20Graph%20Algorithms/Distinct%20Routes%20I.cpp)
 
 </details>
-
 <br/><br/>
-
-## Range Queries
-
 <details>
-    <summary>Click Here to Expand</summary>
+    <summary><font size = "4">Range Queries</font></summary>
 
 1. [Static Range Sum Queries](/CSES%20Problem%20Set/05%20-%20Range%20Queries/Static%20Range%20Sum%20Queries.cpp)
 1. [Static Range Minimum Queries](/CSES%20Problem%20Set/05%20-%20Range%20Queries/Static%20Range%20Minimum%20Queries.cpp)
@@ -194,13 +176,9 @@ Accepted solutions to the [CSES Problem Set](https://cses.fi/problemset/), writt
 1. [Range Queries and Copies](/CSES%20Problem%20Set/05%20-%20Range%20Queries/Range%20Queries%20and%20Copies.cpp)
 
 </details>
-
 <br/><br/>
-
-## Tree Algorithms
-
 <details>
-    <summary>Click Here to Expand</summary>
+    <summary><font size = "4">Tree Algorithms</font></summary>
 
 1. [Subordinates](/CSES%20Problem%20Set/06%20-%20Tree%20Algorithms/Subordinates.cpp)
 1. [Tree Matching](/CSES%20Problem%20Set/06%20-%20Tree%20Algorithms/Tree%20Matching.cpp)
@@ -220,13 +198,9 @@ Accepted solutions to the [CSES Problem Set](https://cses.fi/problemset/), writt
 1. [Fixed-Length Paths II](/CSES%20Problem%20Set/06%20-%20Tree%20Algorithms/Fixed%20Length%20Paths%20II.cpp)
 
 </details>
-
 <br/><br/>
-
-## Mathematics
-
 <details>
-    <summary>Click Here to Expand</summary>
+    <summary><font size = "4">Mathematics</font></summary>
 
 1. [Josephus Queries](/CSES%20Problem%20Set/07%20-%20Mathematics/Josephus%20Queries.cpp)
 1. [Exponentiation](/CSES%20Problem%20Set/07%20-%20Mathematics/Exponentiation%20I.cpp)
@@ -261,13 +235,9 @@ Accepted solutions to the [CSES Problem Set](https://cses.fi/problemset/), writt
 1. [Another Game](/CSES%20Problem%20Set/07%20-%20Mathematics/Another%20Game.cpp)
 
 </details>
-
 <br/><br/>
-
-## String Algorithms
-
 <details>
-    <summary>Click Here to Expand</summary>
+    <summary><font size = "4">String Algorithms</font></summary>
 
 1. [Word Combinations](/CSES%20Problem%20Set/08%20-%20String%20Algorithms/Word%20Combinations.cpp)
 1. [String Matching](/CSES%20Problem%20Set/08%20-%20String%20Algorithms/String%20Matching.cpp)
@@ -288,13 +258,9 @@ Accepted solutions to the [CSES Problem Set](https://cses.fi/problemset/), writt
 1. [Substring Distribution](/CSES%20Problem%20Set/08%20-%20String%20Algorithms/Substring%20Distribution.cpp)
 
 </details>
-
 <br/><br/>
-
-## Geometry
-
 <details>
-    <summary>Click Here to Expand</summary>
+    <summary><font size = "4">Geometry</font></summary>
 
 1. [Point Location Test](/CSES%20Problem%20Set/09%20-%20Geometry/Point%20Location%20Test.cpp)
 1. [Line Segment Intersection](/CSES%20Problem%20Set/09%20-%20Geometry/Line%20Segment%20Intersection.cpp)
@@ -305,13 +271,9 @@ Accepted solutions to the [CSES Problem Set](https://cses.fi/problemset/), writt
 1. [Convex Hull](/CSES%20Problem%20Set/09%20-%20Geometry/Convex%20Hull.cpp)
 
 </details>
-
 <br/><br/>
-
-## Advanced Techniques
-
 <details>
-    <summary>Click Here to Expand</summary>
+    <summary><font size = "4">Advanced Techniques</font></summary>
 
 1. [Meet in the Middle](/CSES%20Problem%20Set/10%20-%20Advanced%20Techniques/Meet%20in%20the%20Middle.cpp)
 1. [Hamming Distance](/CSES%20Problem%20Set/10%20-%20Advanced%20Techniques/Hamming%20Distance.cpp)
@@ -339,13 +301,9 @@ Accepted solutions to the [CSES Problem Set](https://cses.fi/problemset/), writt
 1. [Distinct Routes II](/CSES%20Problem%20Set/10%20-%20Advanced%20Techniques/Distinct%20Routes%20II.cpp)
 
 </details>
-
 <br/><br/>
-
-## Additional Problems
-
 <details>
-    <summary>Click Here to Expand</summary>
+    <summary><font size = "4">Additional Problems</font></summary>
 
 1. [Shortest Subsequence](/CSES%20Problem%20Set/11%20-%20Additional%20Problems/Shortest%20Subsequence.cpp)
 1. [Counting Bits](/CSES%20Problem%20Set/11%20-%20Additional%20Problems/Counting%20Bits.cpp)
