@@ -4,25 +4,24 @@ If you've made it here from [Level 0](/Competitive%20Programming%20Syllabus/Leve
 
 This section will be divided into subsections, based on the general topic it introduces:
 
-- [Basic Techniques]()
+- [Basic Techniques](/Competitive%20Programming%20Syllabus/Level%201/Basic%20Techniques)
     - Binary Search
     - Difference Array
-    - Partial Sums
     - Simulation Algorithms
     - Sliding Window Technique
     - Sorting Methods
     - Two Pointers
 <br/><br/>
-- [Combinatorics]()
+- [Combinatorics](/Competitive%20Programming%20Syllabus/Level%201/Combinatorics)
     - Binomial Coefficients
     - Inclusion Exclusion Principle (IEP)
     - Stars and Bars
 <br/><br/>
-- [Dynamic Programming]()
+- [Dynamic Programming](/Competitive%20Programming%20Syllabus/Level%201/Dynamic%20Programming)
     - Basics
     - Matrix Exponentiation
 <br/><br/>
-- [Graph Algorithms]()
+- [Graph Algorithms](/Competitive%20Programming%20Syllabus/Level%201/Graph%20Algorithms)
     - Breadth-First Search (BFS) and Depth-First Search (DFS)
     - Cycle Finding in Graphs and Digraphs
     - Single Source Shortest Path (0-1 BFS)
@@ -33,17 +32,17 @@ This section will be divided into subsections, based on the general topic it int
     - Minimum Spanning Tree (Prim)
     - Topological Sort of Digraphs
 <br/><br/>
-- [Mathematics]()
+- [Mathematics](/Competitive%20Programming%20Syllabus/Level%201/Mathematics)
     - Binary Exponentiation
     - Euclidean Algorithm
     - Fermat's Little Theorem
     - Legendre's Formula
     - Modular Arithmetic
 <br/><br/>
-- [String Algorithms]()
+- [String Algorithms](/Competitive%20Programming%20Syllabus/Level%201/String%20Algorithms)
     - String Hashing
     - Trie
 <br/><br/>
-- [Tree Algorithms]()
+- [Tree Algorithms](/Competitive%20Programming%20Syllabus/Level%201/Tree%20Algorithms)
     - Augmenting Trees
     - Center, Centroid and Diameter
