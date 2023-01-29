@@ -37,6 +37,7 @@
 *.log
 *.gz
 *.toc
+.vscode*
 Makefile
 
 
