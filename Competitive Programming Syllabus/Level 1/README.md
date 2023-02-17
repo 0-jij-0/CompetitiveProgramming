@@ -9,7 +9,7 @@ This section will be divided into subsections, based on the general topic it int
     - Difference Array
     - Simulation Algorithms
     - Sliding Window Technique
-    - Sorting Methods
+    - Sorting Algorithms
     - Two Pointers
 <br/><br/>
 - [Combinatorics](/Competitive%20Programming%20Syllabus/Level%201/Combinatorics)
