@@ -50,7 +50,7 @@ Finally, here is an [additional practice problem](https://cses.fi/problemset/tas
 
 Although every programming language has its own sorting function, the ideas behind sorting algorithms can be very useful and sometimes need to be implemented from scratch.
 
-There's also a concept of stability that you should grasp. A sorting algorithm is called stable if elements deemed equal preserve their relative order. This means if I'm sorting the list $\{34, 12, 1, 1024, 239\}$ based on the number of digits, $\{1, 34, 12, 239, 1024\}$ is called a stable sorting whereas $\{1, 12, 34, 239, 1024\}$ is not, because $34$ and $12$ have equal number of digits but did not preserve their relative order.
+There are two concepts of interest when talking about sorting algorithms. The first one is the concept of <b/>in-place sorting</b>, which are sorting algorithms that operate of the array itself, instead of using additional memory. The second one is the concept of <b/>stability</b>. A sorting algorithm is called stable if elements deemed equal preserve their relative order. This means if I'm sorting the list $\{34, 12, 1, 1024, 239\}$ based on the number of digits, $\{1, 34, 12, 239, 1024\}$ is called a stable sorting whereas $\{1, 12, 34, 239, 1024\}$ is not, because $34$ and $12$ have equal number of digits but did not preserve their relative order.
 
 Here's a list of interesting sorting algorithms:
 
@@ -60,7 +60,12 @@ Here's a list of interesting sorting algorithms:
 | [Selection Sort](https://www.youtube.com/watch?v=g-PGLbMth_g) | [Quick Sort](https://www.youtube.com/watch?v=Hoixgm4-P4M) | [Radix Sort](https://www.youtube.com/watch?v=XiuSW_mEn7g) |
 | [Insertion Sort](https://www.youtube.com/watch?v=JU767SDMDvA) | [Heap Sort](https://www.youtube.com/watch?v=2DmK_H7IdTo) | [Bucket Sort]() |
 
-I encourage you to think for each one of those algorithms, if they are stable or not, and what would it take to make them stable. (In particular, make sure to learn how to make Quick Sort and Counting Sort stable)
+I encourage you to think for each one of those algorithms, if they are in-place/stable or not, and what would it take to make them in-place/stable, if possible. Some interesting readings about that are:
+- [Stable Quick Sort](https://iq.opengenus.org/3-way-partitioning-quick-sort/)
+- [Stable Counting Sort](https://medium.com/javarevisited/counting-sort-algorithm-implementation-in-java-an-analysis-of-stability-parallelizability-and-48ac7e43bcf1)
+- Merge [Sorted Arrays](https://leetcode.com/problems/merge-sorted-array/) vs [Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/) and the implication on the in-place property of Merge Sort.
+
+Finally, here is a very nice reading: [Comparison-Based Lower Bounds for Sorting](https://www.cs.cmu.edu/~avrim/451f11/lectures/lect0913.pdf)
 
 <br></br>
 ## Two Pointers
