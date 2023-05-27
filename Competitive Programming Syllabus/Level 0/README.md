@@ -75,6 +75,8 @@ I will also include a list of blogs discussing various C++ tricks that you might
 
 - [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html)
 
+- [Common Mistakes in Competitive Programming in C++](https://codeforces.com/blog/entry/111217)
+
 
 ## Solving Problems
 
