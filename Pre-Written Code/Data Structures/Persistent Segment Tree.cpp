@@ -2,45 +2,41 @@
 using namespace std;
 typedef long long ll;
 
-vector<int> v;
-vector<int> versions;	//contains the root of each version, 1-based since version 0 is the empty segtree
-
 struct StVal {
-	StVal* left = NULL, * right = NULL;
-	ll sum = 0; int idx = 0; StVal() {}
-	StVal(const ll _v, int i) : sum(_v), idx(i) { left = right = NULL; }
-	StVal(StVal* L, StVal* R, int i) : idx(i) {	//L, R are never NULL
-		sum = *L + *R; left = L; right = R;
+	int value = 0;
+	StVal *left = NULL, *right = NULL;
+	StVal() {}
+	StVal(const int _v) : value(_v) { left = right = NULL; }
+	StVal(StVal* v1, StVal* v2) {	// v1, v2 are never NULL
+		value = *v1 + *v2;
+		left = v1; right = v2;
 	}
-	operator ll() const { return sum; }
+	operator int() const { return value; }
 };
 
-struct PSSegTree {
-	int n, last = 0;
-	vector<StVal*> st;	//st[1] is the root
+struct PSSegTree{
+	int n;
+	vector<StVal*> versions;	// Contains the root of each version, 1-based since version 0 empty
+	vector<StVal*> st;	// st[1] is the root
 
-	PSSegTree(const int n) : n(n) {
-		init(1, 0, n - 1);
-		last = (int)st.size();
-		versions.push_back(1);
-	}
+	PSSegTree(const int n) : n(n) { init(1, 0, n - 1); versions.push_back(st[1]); }
 
 	void init(const int si, const int lo, const int hi) {
 		if (lo == hi) {
 			if (si >= (int)st.size()) st.resize(si + 1);
-			st[si] = new StVal(v[lo], si);
+			st[si] = new StVal();
 		}
 		else {
 			const int mid = (lo + hi) >> 1;
 			init(si << 1, lo, mid);
 			init(si << 1 | 1, mid + 1, hi);
-			st[si] = new StVal(st[si << 1], st[si << 1 | 1], si);
+			st[si] = new StVal(st[si << 1], st[si << 1 | 1]);
 		}
 	}
 
-	//l and r inclusive, 0-indexed, version v
+	// l and r inclusive, 0-indexed, version v
 	StVal* query(const int l, const int r, const int v = 0) {
-		return (l <= r && l < n&& r >= 0) ? query(l, r, st[versions[v]], 0, n - 1) : new StVal();
+		return (l <= r && l < n && r >= 0) ? query(l, r, versions[v], 0, n - 1) : new StVal();
 	}
 	StVal* query(const int l, const int r, StVal* si, const int lo, const int hi) {
 		if (l <= lo && hi <= r) return si;
@@ -48,32 +44,39 @@ struct PSSegTree {
 		const int mid = (lo + hi) >> 1;
 		if (r <= mid) return query(l, r, si->left, lo, mid);
 		if (mid < l) return query(l, r, si->right, mid + 1, hi);
-		return new StVal(query(l, r, si->left, lo, mid), query(l, r, si->right, mid + 1, hi), 0);
+		return new StVal(query(l, r, si->left, lo, mid), query(l, r, si->right, mid + 1, hi));
 	}
 
-	//PERSISTENT UPDATE
-	//v version, i idx, x INCREMENT/VALUE
-	void PSUpdate(int v, int i, ll x, bool setUpdate = false) {
-		//increment by nx, remove if we want to assign or if the query returns smthg else
-		if(setUpdate) x -= query(i, i, v)->sum;
-		PSUpdate(0, n - 1, i, x, versions[v]);
+	// PERSISTENT UPDATE
+	// v version, i idx, nx new INCREMENT
+	StVal* PSUpdate(int v, int i, int nx) {
+		// Increment by nx, remove modify based on the query.
+		int curVal = query(i, i, v)->value + nx;
+		return PSUpdate(0, n - 1, i, curVal, versions[v]);
 	}
-
-	int PSUpdate(int lo, int hi, int i, ll inc, int& curRoot, bool b = true) {
-		st.push_back(new StVal(st[curRoot]->sum + inc, last));
-		st[last]->left = st[curRoot]->left;
-		st[last]->right = st[curRoot]->right;
-		if (b) curRoot = last; int idx = last++;
-
-		if (lo == hi) return idx; int mid = (lo + hi) >> 1;
-		if (i <= mid) st[idx]->left = st[PSUpdate(lo, mid, i, inc, st[idx]->left->idx, false)];
-		else st[idx]->right = st[PSUpdate(mid + 1, hi, i, inc, st[idx]->right->idx, false)];
-		return idx;
+	StVal* PSUpdate(int l, int r, int i, int nx, StVal* cur) {
+		if (l == r) {
+			StVal* nv = new StVal(nx);
+			if (l == 0 && r == n - 1) { versions.push_back(nv); }
+			return nv;
+		}
+		int m = (l + r) >> 1;
+		if (i <= m) {
+			StVal* nl = PSUpdate(l, m, i, nx, cur->left);
+			StVal* par = new StVal(nl, cur->right);
+			if (l == 0 && r == n - 1) { versions.push_back(par); }
+			return par;
+		}
+		else {
+			StVal* nr = PSUpdate(m + 1, r, i, nx, cur->right);
+			StVal* par = new StVal(cur->left, nr);
+			if (l == 0 && r == n - 1) { versions.push_back(par); }
+			return par;
+		}
 	}
 };
 
 int main() {
-	ios::sync_with_stdio(0);
-	cin.tie(0); cout.tie(0);
+	cin.tie(0)->sync_with_stdio(0);
 
 }
